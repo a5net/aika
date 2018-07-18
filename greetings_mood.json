@@ -1,0 +1,1674 @@
+[
+	{
+		"class": "greetings_mood",
+		"text": "день добрый как ты?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "привет?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "привет как дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "привет как оно вообще?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "привет как ты?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "привет как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "привет как поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "привет как ты поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "привет как твои дела сегодня?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "привет как ты этим вечером?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "привет как у тебя дела сегодня утром?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "привет как ты этим утром?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "привет как ты как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "привет как у тебя дела сегодня?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "привет как жизнь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "привет как оно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "привет как твой день?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "привет как прошёл твой день?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "привет как твоё утро?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "привет как настроение?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "привет как сама?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "привет как поживаете?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здравствуй как дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здравствуй как ты?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здравствуй как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здравствуй как поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здравствуй как ты поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здравствуй как твои дела сегодня?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здравствуй как ты как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здравствуй как жизнь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здравствуй как оно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здравствуй как твой день?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здравствуй как прошёл твой день?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здравствуй как настроение?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здравствуй как поживаете?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветствую как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветствую что новенького?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветствую что нового?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветствую как ты?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветствую как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветствую как поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветствую как ты поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветствую как твои дела сегодня?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветствую как ты как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветствую как ваши дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хей как дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хей что слышно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хей как оно вообще?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хей что новенького?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хей что нового?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хей как ты?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хей как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хей как поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хей как ты поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хей как твои дела сегодня?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хей как ты этим вечером?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хей как жизнь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хей как оно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хей как прошёл твой день?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хей как настроение?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хей как сама?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хей как поживаете?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хей как сам?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветствую тебя как дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветствую тебя как ты?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветствую тебя как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветствую тебя как поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветствую тебя как ты поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветствую тебя как жизнь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветствую тебя как сама?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветствую тебя как поживаете?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветствую тебя какие новости?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветствую тебя как сам?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветик как дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветик что новенького?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветик что нового?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветик как ты?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветик как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветик как поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветик как ты поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветик как твои дела сегодня?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветик как жизнь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветик как оно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветик как настроение?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветик как сама?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветик как поживаете?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветик как сам?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здравствуйте как ваши дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здравствуйте как вы?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здравствуйте как вы поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здравствуйте как ваши дела сегодня?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здравствуйте как вы как ваши дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здравствуйте как прошёл ваш день?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здравствуйте как сами?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здравствуйте как поживаете?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "и снова здравствуйте как ваши дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "и снова здравствуйте как вы?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "и снова здравствуйте как вы поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "и снова здравствуйте как ваши дела сегодня?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "и снова здравствуйте как вы как ваши дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "и снова здравствуйте как прошёл ваш день?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "и снова здравствуйте как сами?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "и снова здравствуйте как поживаете?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "и снова здравствуйте как ваши дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "и снова здравствуйте как вы?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "и снова здравствуйте как вы поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "и снова здравствуйте как ваши дела сегодня?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "и снова здравствуйте как вы как ваши дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "и снова здравствуйте как прошёл ваш день?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "и снова здравствуйте как сами?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "и снова здравствуйте как поживаете?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "давно не виделись как дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "давно не виделись что нового?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "давно не виделись как ты?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "давно не виделись как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "давно не виделись как поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "давно не виделись как ты поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "давно не виделись как жизнь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "давно не виделись как оно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "давно не виделись как сама?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "давно не виделись как сам?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здарова как дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здарова как оно вообще?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здарова как ты?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здарова как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здарова как поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здарова как ты поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здарова как твои дела сегодня?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здарова как ты этим вечером?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здарова как у тебя дела сегодня утром?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здарова как ты этим утром?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здарова как ты как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здарова как у тебя дела сегодня?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здарова как жизнь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здарова как оно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здарова как твой день?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здарова как прошёл твой день?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здарова как твоё утро?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здарова как настроение?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здарова как сама?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здарова как поживаете?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салам как дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салам как оно вообще?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салам как ты?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салам как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салам как поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салам как ты поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салам как твои дела сегодня?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салам как ты этим вечером?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салам как у тебя дела сегодня утром?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салам как ты этим утром?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салам как ты как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салам как у тебя дела сегодня?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салам как жизнь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салам как оно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салам как твой день?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салам как прошёл твой день?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салам как твоё утро?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салам как настроение?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салам как сама?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салам как поживаете?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "шелом как дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "шелом как оно вообще?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "шелом как ты?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "шелом как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "шелом как поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "шелом как ты поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "шелом как твои дела сегодня?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "шелом как ты этим вечером?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "шелом как у тебя дела сегодня утром?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "шелом как ты этим утром?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "шелом как ты как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "шелом как у тебя дела сегодня?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "шелом как жизнь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "шелом как оно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "шелом как твой день?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "шелом как прошёл твой день?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "шелом как твоё утро?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "шелом как настроение?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "шелом как сама?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "шелом как поживаете?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здравия желаю как ваши дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здравия желаю как вы?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здравия желаю как вы поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здравия желаю как ваши дела сегодня?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здравия желаю как вы как ваши дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здравия желаю как прошёл ваш день?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здравия желаю как сами?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "здравия желаю как поживаете?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветствую вас как ваши дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветствую вас как вы?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветствую вас как вы поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветствую вас как ваши дела сегодня?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветствую вас как вы как ваши дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветствую вас как прошёл ваш день?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветствую вас как сами?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветствую вас как поживаете?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салют как дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салют что слышно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салют как оно вообще?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салют что новенького?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салют что нового?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салют как ты?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салют как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салют как поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салют как ты поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салют как твои дела сегодня?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салют как ты этим вечером?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салют как жизнь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салют как оно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салют как прошёл твой день?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салют как настроение?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салют как сама?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "салют как сам?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "саламчик как дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "саламчик что слышно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "саламчик как оно вообще?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "саламчик что новенького?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "саламчик что нового?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "саламчик как ты?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "саламчик как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "саламчик как поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "саламчик как ты поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "саламчик как твои дела сегодня?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "саламчик как ты этим вечером?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "саламчик как жизнь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "саламчик как оно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "саламчик как прошёл твой день?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "саламчик как настроение?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "саламчик как сама?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "саламчик как сам?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветики как дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветики как оно вообще?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветики как ты?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветики как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветики как поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветики как ты поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветики как твои дела сегодня?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветики как ты этим вечером?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветики как у тебя дела сегодня утром?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветики как ты этим утром?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветики как ты как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветики как у тебя дела сегодня?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветики как жизнь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветики как оно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветики как твой день?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветики как прошёл твой день?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветики как твоё утро?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветики как настроение?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "приветики как сама?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "даров как дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "даров что слышно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "даров как оно вообще?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "даров что новенького?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "даров что нового?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "даров как ты?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "даров как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "даров как поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "даров как ты поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "даров как твои дела сегодня?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "даров как ты этим вечером?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "даров как жизнь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "даров как оно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "даров как прошёл твой день?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "даров как настроение?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "даров как сама?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "даров как поживаете?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "даров как сам?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хай как дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хай что слышно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хай как оно вообще?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хай что новенького?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хай что нового?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хай как ты?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хай как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хай как поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хай как ты поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хай как твои дела сегодня?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хай как ты этим вечером?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хай как жизнь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хай как оно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хай как прошёл твой день?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хай как настроение?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хай как сама?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хай как поживаете?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хай как сам?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэллоу как дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэллоу что слышно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэллоу как оно вообще?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэллоу что новенького?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэллоу что нового?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэллоу как ты?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэллоу как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэллоу как поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэллоу как ты поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэллоу как твои дела сегодня?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэллоу как ты этим вечером?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэллоу как жизнь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэллоу как оно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэллоу как прошёл твой день?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэллоу как настроение?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэллоу как сама?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэллоу как поживаете?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэллоу как сам?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэлло как дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэлло что слышно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэлло как оно вообще?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэлло что новенького?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэлло что нового?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэлло как ты?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэлло как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэлло как поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэлло как ты поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэлло как твои дела сегодня?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэлло как ты этим вечером?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэлло как жизнь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэлло как оно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэлло как прошёл твой день?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэлло как настроение?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэлло как сама?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэлло как поживаете?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хэлло как сам?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хаюшки как дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хаюшки что слышно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хаюшки как оно вообще?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хаюшки что новенького?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хаюшки что нового?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хаюшки как ты?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хаюшки как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хаюшки как поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хаюшки как ты поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хаюшки как твои дела сегодня?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хаюшки как ты этим вечером?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хаюшки как жизнь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хаюшки как оно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хаюшки как прошёл твой день?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хаюшки как настроение?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хаюшки как сама?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хаюшки как поживаете?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "хаюшки как сам?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "утро доброе как дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "утро доброе как оно вообще?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "утро доброе что нового?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "утро доброе как ты?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "утро доброе как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "утро доброе как поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "утро доброе как ты поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "утро доброе как ты как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "утро доброе как оно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "утро доброе как настроение?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "утро доброе как сама?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "утро доброе как поживаете?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "утро доброе как сам?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "доброе утро как дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "доброе утро как оно вообще?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "доброе утро что нового?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "доброе утро как ты?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "доброе утро как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "доброе утро как поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "доброе утро как ты поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "доброе утро как ты как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "доброе утро как оно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "доброе утро как настроение?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "доброе утро как сама?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "доброе утро как поживаете?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "доброе утро как сам?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "добрый день как дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "добрый день как оно вообще?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "добрый день что нового?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "добрый день как ты?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "добрый день как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "добрый день как поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "добрый день как ты поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "добрый день как ты как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "добрый день как оно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "добрый день как настроение?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "добрый день как сама?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "добрый день как поживаете?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "добрый день как сам?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "день добрый как дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "день добрый как оно вообще?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "день добрый что нового?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "день добрый как ты?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "день добрый как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "день добрый как поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "день добрый как ты поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "день добрый как ты как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "день добрый как оно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "день добрый как настроение?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "день добрый как сама?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "день добрый как поживаете?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "день добрый как сам?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "вечер добрый как дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "вечер добрый как оно вообще?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "вечер добрый что нового?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "вечер добрый как ты?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "вечер добрый как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "вечер добрый как поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "вечер добрый как ты поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "вечер добрый как ты как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "вечер добрый как оно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "вечер добрый как настроение?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "вечер добрый как сама?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "вечер добрый как поживаете?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "вечер добрый как сам?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "добрый вечер как дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "добрый вечер как оно вообще?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "добрый вечер что нового?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "добрый вечер как ты?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "добрый вечер как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "добрый вечер как поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "добрый вечер как ты поживаешь?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "добрый вечер как ты как твои дела?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "добрый вечер как оно?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "добрый вечер как настроение?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "добрый вечер как сама?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "добрый вечер как поживаете?"
+	},
+	{
+		"class": "greetings_mood",
+		"text": "добрый вечер как сам?"
+	}
+]
