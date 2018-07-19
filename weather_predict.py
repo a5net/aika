@@ -156,6 +156,7 @@ def extract_city(command):
         city_dict[stemmer.stem(i).lower()] = i
     city_dict['астан'] = 'Астана'
     city_name = ""
+    print('на' in city_dict.keys())
     command = re.sub(r'[^\w\s]', ' ', command)
     word_list = command.split()
     word_list = [stemmer.stem(a).lower() for a in word_list]
@@ -227,14 +228,14 @@ def extract_date_and_time(command):
             if(difference >= 0):
                 days_ahead = difference
             else:
-                days_ahead = 6 - difference
+                days_ahead = 7 + difference
             if(days_ahead > 4):
                 inp = input("У нас имеется погода на ближайшие 4 дня, введите другой день недели: ")
                 difference = day_of_the_week[inp] - current_day_of_the_week
                 if(difference >= 0):
                     days_ahead = difference
                 else:
-                    days_ahead = 6 - difference
+                    days_ahead = 7 + difference
 
     for nearday in nearest_days:
         if(stemmer.stem(nearday).lower() in word_list):
@@ -258,41 +259,41 @@ def get_weather(command):
             city = input("Введите название города: ")
             city = translator.translate(city).text
     date_and_time_array = extract_date_and_time(command)
-    try:
-        if((not date_and_time_array[0]) and (not date_and_time_array[1])):
-            data = data_organizer_current(data_fetch(url_builder(city, 'weather')))
-            if('погода' in feature_list or not feature_list):
-                print('Погода в: {}, {}:'.format(data['city'], data['country']))
-                print(data['temp'], m_symbol, data['weather'])
-                print('Влажность воздуха: {} %'.format(data['humidity']))
-                print('Скорость ветра: {} м/сек'.format(data['wind']))
-                print('-----------------------------------------------')
-                print('Последние обновления были получены с сервера: {}'.format(data['dt']))
-            elif('температура' in feature_list):
-                print('Температура воздуха: {}'.format(data['temp']), m_symbol)
-            elif('влажность' in feature_list):
-                print('Влажность воздуха: {} %'.format(data['humidity']))
-            elif('скорость' in feature_list):
-                print('Скорость ветра: {} м/сек'.format(data['wind']))
-        else:
-            data = data_organizer_forecast(data_fetch(url_builder(city, 'forecast')))
-            if date_and_time_array[0]:
-                days_ahead = date_and_time_array[0]
-            if date_and_time_array[1]:
-                time_of_the_day = date_and_time_array[1]
-            day_dict = 'day_' + str(days_ahead)
-            time_of_the_day_array = ['night', 'morning', 'afternoon', 'evening']
+    # try:
+    if((not date_and_time_array[0]) and (not date_and_time_array[1])):
+        data = data_organizer_current(data_fetch(url_builder(city, 'weather')))
+        if('погода' in feature_list or not feature_list):
+            print('Погода в: {}, {}:'.format(data['city'], data['country']))
+            print(data['temp'], m_symbol, data['weather'])
+            print('Влажность воздуха: {} %'.format(data['humidity']))
+            print('Скорость ветра: {} м/сек'.format(data['wind']))
+            print('-----------------------------------------------')
+            print('Последние обновления были получены с сервера: {}'.format(data['dt']))
+        elif('температура' in feature_list):
+            print('Температура воздуха: {}'.format(data['temp']), m_symbol)
+        elif('влажность' in feature_list):
+            print('Влажность воздуха: {} %'.format(data['humidity']))
+        elif('скорость' in feature_list):
+            print('Скорость ветра: {} м/сек'.format(data['wind']))
+    else:
+        data = data_organizer_forecast(data_fetch(url_builder(city, 'forecast')))
+        if date_and_time_array[0]:
+            days_ahead = date_and_time_array[0]
+        if date_and_time_array[1]:
+            time_of_the_day = date_and_time_array[1]
+        day_dict = 'day_' + str(days_ahead)
+        time_of_the_day_array = ['night', 'morning', 'afternoon', 'evening']
 
-            if('погода' in feature_list or not feature_list):
-                print('Погода в: {}, {}:'.format(data['city'], data['country']))
-                print(data[day_dict][time_of_the_day_array[time_of_the_day] + '_temp'], m_symbol, data[day_dict][time_of_the_day_array[time_of_the_day] + '_weather'])
-                print('Влажность воздуха: {} %'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_humidity']))
-                print('Скорость ветра: {} м/сек'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_windspeed']))
-            elif('температура' in feature_list):
-                print('Температура воздуха: {}'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_temp']), m_symbol)
-            elif('влажность' in feature_list):
-                print('Влажность воздуха: {} %'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_humidity']))
-            elif('скорость' in feature_list):
-                print('Скорость ветра: {} м/сек'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_windspeed']))
-    except:
-        print('В работе программы возникли неполадки, введите запрос еще раз.')
+        if('погода' in feature_list or not feature_list):
+            print('Погода в: {}, {}:'.format(data['city'], data['country']))
+            print(data[day_dict][time_of_the_day_array[time_of_the_day] + '_temp'], m_symbol, data[day_dict][time_of_the_day_array[time_of_the_day] + '_weather'])
+            print('Влажность воздуха: {} %'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_humidity']))
+            print('Скорость ветра: {} м/сек'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_windspeed']))
+        elif('температура' in feature_list):
+            print('Температура воздуха: {}'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_temp']), m_symbol)
+        elif('влажность' in feature_list):
+            print('Влажность воздуха: {} %'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_humidity']))
+        elif('скорость' in feature_list):
+            print('Скорость ветра: {} м/сек'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_windspeed']))
+    # except:
+    #     print('В работе программы возникли неполадки, введите запрос еще раз.')
