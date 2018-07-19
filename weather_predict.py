@@ -139,7 +139,7 @@ def data_organizer_current(raw_api_dict):
 
 def extract_feature_list(command):
     features = []
-    feature_list = ['погода','температура','влажность','скорость']
+    feature_list = ['погода','температура','влажность','скорость','ветер']
     command = re.sub(r'[^\w\s]', ' ', command)
     word_list = command.split()
     word_list = [stemmer.stem(a).lower() for a in word_list]
@@ -272,7 +272,7 @@ def get_weather(command):
                 print('Температура воздуха: {}'.format(data['temp']), m_symbol)
             elif('влажность' in feature_list):
                 print('Влажность воздуха: {} %'.format(data['humidity']))
-            elif('скорость' in feature_list):
+            elif('скорость' in feature_list or 'ветер' in feature_list):
                 print('Скорость ветра: {} м/сек'.format(data['wind']))
         else:
             data = data_organizer_forecast(data_fetch(url_builder(city, 'forecast')))
@@ -292,7 +292,7 @@ def get_weather(command):
                 print('Температура воздуха: {}'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_temp']), m_symbol)
             elif('влажность' in feature_list):
                 print('Влажность воздуха: {} %'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_humidity']))
-            elif('скорость' in feature_list):
+            elif('скорость' in feature_list or 'ветер' in feature_list):
                 print('Скорость ветра: {} м/сек'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_windspeed']))
     except:
         print('В работе программы возникли неполадки, введите запрос еще раз.')
