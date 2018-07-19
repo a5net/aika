@@ -1,0 +1,186 @@
+[
+	{
+		"class": "action",
+		"text": "что делаешь"
+	},
+	{
+		"class": "action",
+		"text": "чем занят"
+	},
+	{
+		"class": "action",
+		"text": "чем занята"
+	},
+	{
+		"class": "action",
+		"text": "чем маешься"
+	},
+	{
+		"class": "action",
+		"text": "чем занимаешься"
+	},
+	{
+		"class": "action",
+		"text": "что творишь"
+	},
+	{
+		"class": "action",
+		"text": "что делаете"
+	},
+	{
+		"class": "action",
+		"text": "что ты делаешь"
+	},
+	{
+		"class": "action",
+		"text": "чем ты занят"
+	},
+	{
+		"class": "action",
+		"text": "чем ты занята"
+	},
+	{
+		"class": "action",
+		"text": "чем ты маешься"
+	},
+	{
+		"class": "action",
+		"text": "чем ты занимаешься"
+	},
+	{
+		"class": "action",
+		"text": "что вы делаете"
+	},
+	{
+		"class": "action",
+		"text": "над чем заняты"
+	},
+	{
+		"class": "action",
+		"text": "над чем занят"
+	},
+	{
+		"class": "action",
+		"text": "над чем занята"
+	},
+	{
+		"class": "action",
+		"text": "над чем работаешь"
+	},
+	{
+		"class": "action",
+		"text": "над чем ты работаешь"
+	},
+	{
+		"class": "action",
+		"text": "над чем вы заняты"
+	},
+	{
+		"class": "action",
+		"text": "над чем ты занят"
+	},
+	{
+		"class": "action",
+		"text": "над чем ты занята"
+	},
+	{
+		"class": "action",
+		"text": "над чем ты работаешь"
+	},
+	{
+		"class": "action",
+		"text": "над чем трудитесь"
+	},
+	{
+		"class": "action",
+		"text": "над чем вы трудитесь"
+	},
+	{
+		"class": "action",
+		"text": "над чем трудишься"
+	},
+	{
+		"class": "action",
+		"text": "над чем ты трудишься"
+	},
+	{
+		"class": "action",
+		"text": "что там по работе"
+	},
+	{
+		"class": "action",
+		"text": "чем ты в данный момент занимаешься"
+	},
+	{
+		"class": "action",
+		"text": "чем вы в данный момент занимаетесь"
+	},
+	{
+		"class": "action",
+		"text": "что ты в данный момент делаешь"
+	},
+	{
+		"class": "action",
+		"text": "что вы в данный момент делаете"
+	},
+	{
+		"class": "action",
+		"text": "чем ты сейчас занят"
+	},
+	{
+		"class": "action",
+		"text": "чем ты сейчас занята"
+	},
+	{
+		"class": "action",
+		"text": "чем ты щяс маешься"
+	},
+	{
+		"class": "action",
+		"text": "чем щяс занимаетесь"
+	},
+	{
+		"class": "action",
+		"text": "чем маешься сейчас"
+	},
+	{
+		"class": "action",
+		"text": "над чем щяс трудишься"
+	},
+	{
+		"class": "action",
+		"text": "над чем в данный момент трудишься"
+	},
+	{
+		"class": "action",
+		"text": "чем вы заняты"
+	},
+	{
+		"class": "action",
+		"text": "что там чем занят"
+	},
+	{
+		"class": "action",
+		"text": "что там над чем работаешь"
+	},
+	{
+		"class": "action",
+		"text": "что там что делаешь"
+	},
+	{
+		"class": "action",
+		"text": "что делала сегодня"
+	},
+	{
+		"class": "action",
+		"text": "чем была занята сегодня"
+	},
+	{
+		"class": "action",
+		"text": "чем был занят сегодня"
+	},
+	{
+		"class": "action",
+		"text": "что делал сегодня"
+	}
+]
