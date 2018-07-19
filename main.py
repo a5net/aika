@@ -2,11 +2,11 @@ from weather_predict import *
 import random
 from classify import *
 
-answer = ["Привет!", "Здравствуй", "Приветствую!", "Здарова", "Здравствуйте"]
+answer = ["Привет!", "Здравствуй", "Приветствую!", "Здравствуйте"]
 answer_greetings_mood = ["Привет. Пойдет. Как у тебя?", "Здравствуй. Хорошо. Как у тебя?", "Приветствую. Нормально. Как у тебя?", "Здарова. Неплохо. Как у тебя?", "Здравствуйте. Все отлично. Как у вас?"]
 answer_mood = ["Замечательно, спасибо!!", "Хорошо как у тебя дела?", "Все нормально как у вас?", "Все отлично как у тебя?", "Пойдет а у тебя?"]
 answer_philosophy = ['42']
-answer_action = ['Общаюсь с тобой кожаный ублюдок']
+answer_action = ['Разговариваю с тобой', 'Существую', 'Тихо жду здесь пока у меня что-то спросят']
 
 command = '1'
 
@@ -24,6 +24,6 @@ while command != '-1':
 	elif(predicted_class == 'philosophy'):
 		print(answer_philosophy[0])
 	elif(predicted_class == 'action'):
-		print(answer_action[0])
+		print (answer_action[random.randint(0,(len(answer_action)-1))])
 	else:
 		print('Извините, я вас не понимаю, но я учусь :3')
