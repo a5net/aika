@@ -9,7 +9,7 @@ import nltk
 from nltk.stem.snowball import RussianStemmer
 
 stemmer = RussianStemmer()
-class_name_list = {'weather','greetings', 'greetings_mood', 'mood', 'philosophy'}
+class_name_list = {'weather','greetings', 'greetings_mood', 'mood', 'philosophy', 'action'}
 
 
 def get_class_examples(name):
@@ -29,8 +29,7 @@ def get_city_names():
     city_list = city_frame["name"].tolist()
     res = {''}
     for j in city_list:
-        if j != "Дели":
-            res.add(stemmer.stem(j).lower())
+        res.add(stemmer.stem(j).lower())
     return res
 
 
