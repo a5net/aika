@@ -5,8 +5,10 @@ import json
 from googletrans import Translator
 from nltk.stem.snowball import RussianStemmer
 import re
+from cachetools import cached, TTLCache
 
 stemmer = RussianStemmer()
+cache = TTLCache(maxsize=500, ttl=1800)
 
 def time_converter(time):
     converted_time = datetime.datetime.fromtimestamp(
@@ -22,6 +24,7 @@ def url_builder(city_name, state):
     full_api_url = api + city_name + '&mode=json&units=' + unit +'&lang=ru&APPID=' + user_api
     return full_api_url
 
+@cached(cache)
 def data_fetch(full_api_url):
     url = urllib.request.urlopen(full_api_url)
     output = url.read().decode('utf-8')
@@ -148,15 +151,18 @@ def extract_feature_list(command):
 def extract_city(command):
     city_frame = pd.read_csv("city.csv", encoding='cp1251')
     city_list = city_frame["name"].tolist()
+    city_dict = dict()
+    for i in city_list:
+        city_dict[stemmer.stem(i).lower()] = i
+    city_dict['астан'] = 'Астана'
     city_name = ""
     command = re.sub(r'[^\w\s]', ' ', command)
-    arr = command.split()
-    for i in arr:
-        for j in city_list:
-            if(stemmer.stem(i).lower() == stemmer.stem(j).lower() or i[:-1].lower() == j[:-1].lower()):
-                translator = Translator()
-                city_name = translator.translate(j).text
-                break
+    word_list = command.split()
+    word_list = [stemmer.stem(a).lower() for a in word_list]
+    for word in word_list:
+        if(word in city_dict.keys()):
+            translator = Translator()
+            city_name = translator.translate(city_dict[word]).text
     return city_name
 
 def extract_date_and_time(command):
