@@ -1,0 +1,1062 @@
+[
+	{
+		"class": "status_good",
+		"text": "хорошо"
+	},
+	{
+		"class": "status_good",
+		"text": "неплохо"
+	},
+	{
+		"class": "status_good",
+		"text": "отлично"
+	},
+	{
+		"class": "status_good",
+		"text": "нормально"
+	},
+	{
+		"class": "status_good",
+		"text": "норм"
+	},
+	{
+		"class": "status_good",
+		"text": "супер"
+	},
+	{
+		"class": "status_good",
+		"text": "супер пупер"
+	},
+	{
+		"class": "status_good",
+		"text": "очень хорошо"
+	},
+	{
+		"class": "status_good",
+		"text": "в порядке"
+	},
+	{
+		"class": "status_good",
+		"text": "в поряде"
+	},
+	{
+		"class": "status_good",
+		"text": "заебись"
+	},
+	{
+		"class": "status_good",
+		"text": "зашибись"
+	},
+	{
+		"class": "status_good",
+		"text": "прекрасно"
+	},
+	{
+		"class": "status_good",
+		"text": "ахуено"
+	},
+	{
+		"class": "status_good",
+		"text": "охуенно"
+	},
+	{
+		"class": "status_good",
+		"text": "классно"
+	},
+	{
+		"class": "status_good",
+		"text": "изумительно"
+	},
+	{
+		"class": "status_good",
+		"text": "недурно"
+	},
+	{
+		"class": "status_good",
+		"text": "отменно"
+	},
+	{
+		"class": "status_good",
+		"text": "нихуево"
+	},
+	{
+		"class": "status_good",
+		"text": "нихуёво"
+	},
+	{
+		"class": "status_good",
+		"text": "чудненько"
+	},
+	{
+		"class": "status_good",
+		"text": "чудно"
+	},
+	{
+		"class": "status_good",
+		"text": "улетно"
+	},
+	{
+		"class": "status_good",
+		"text": "нифигова"
+	},
+	{
+		"class": "status_good",
+		"text": "офигенно"
+	},
+	{
+		"class": "status_good",
+		"text": "афигенно"
+	},
+	{
+		"class": "status_good",
+		"text": "ок"
+	},
+	{
+		"class": "status_good",
+		"text": "ништяк"
+	},
+	{
+		"class": "status_good",
+		"text": "ништикова"
+	},
+	{
+		"class": "status_good",
+		"text": "ништияк"
+	},
+	{
+		"class": "status_good",
+		"text": "нормалец"
+	},
+	{
+		"class": "status_good",
+		"text": "о'кей"
+	},
+	{
+		"class": "status_good",
+		"text": "кайфова"
+	},
+	{
+		"class": "status_good",
+		"text": "потихоньку"
+	},
+	{
+		"class": "status_good",
+		"text": "потихоньку дела"
+	},
+	{
+		"class": "status_good",
+		"text": "все окей"
+	},
+	{
+		"class": "status_good",
+		"text": "все хорошо"
+	},
+	{
+		"class": "status_good",
+		"text": "все неплохо"
+	},
+	{
+		"class": "status_good",
+		"text": "все отлично"
+	},
+	{
+		"class": "status_good",
+		"text": "все нормально"
+	},
+	{
+		"class": "status_good",
+		"text": "все норм"
+	},
+	{
+		"class": "status_good",
+		"text": "все супер"
+	},
+	{
+		"class": "status_good",
+		"text": "все супер пупер"
+	},
+	{
+		"class": "status_good",
+		"text": "все очень хорошо"
+	},
+	{
+		"class": "status_good",
+		"text": "все в порядке"
+	},
+	{
+		"class": "status_good",
+		"text": "все в поряде"
+	},
+	{
+		"class": "status_good",
+		"text": "все заебись"
+	},
+	{
+		"class": "status_good",
+		"text": "все зашибись"
+	},
+	{
+		"class": "status_good",
+		"text": "все прекрасно"
+	},
+	{
+		"class": "status_good",
+		"text": "все ахуено"
+	},
+	{
+		"class": "status_good",
+		"text": "все охуенно"
+	},
+	{
+		"class": "status_good",
+		"text": "все классно"
+	},
+	{
+		"class": "status_good",
+		"text": "все изумительно"
+	},
+	{
+		"class": "status_good",
+		"text": "все недурно"
+	},
+	{
+		"class": "status_good",
+		"text": "все отменно"
+	},
+	{
+		"class": "status_good",
+		"text": "все нихуево"
+	},
+	{
+		"class": "status_good",
+		"text": "все нихуёво"
+	},
+	{
+		"class": "status_good",
+		"text": "все чудненько"
+	},
+	{
+		"class": "status_good",
+		"text": "все чудно"
+	},
+	{
+		"class": "status_good",
+		"text": "все улетно"
+	},
+	{
+		"class": "status_good",
+		"text": "все нифигова"
+	},
+	{
+		"class": "status_good",
+		"text": "все офигенно"
+	},
+	{
+		"class": "status_good",
+		"text": "все афигенно"
+	},
+	{
+		"class": "status_good",
+		"text": "все ок"
+	},
+	{
+		"class": "status_good",
+		"text": "все ништяк"
+	},
+	{
+		"class": "status_good",
+		"text": "все ништикова"
+	},
+	{
+		"class": "status_good",
+		"text": "все ништияк"
+	},
+	{
+		"class": "status_good",
+		"text": "все нормалец"
+	},
+	{
+		"class": "status_good",
+		"text": "все о'кей"
+	},
+	{
+		"class": "status_good",
+		"text": "все кайфова"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё хорошо"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё неплохо"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё отлично"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё нормально"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё норм"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё супер"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё супер пупер"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё очень хорошо"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё заебись"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё зашибись"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё прекрасно"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё ахуено"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё охуенно"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё классно"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё изумительно"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё недурно"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё отменно"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё нихуево"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё нихуёво"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё чудненько"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё чудно"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё улетно"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё нифигова"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё офигенно"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё афигенно"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё ок"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё ништяк"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё ништикова"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё ништияк"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё нормалец"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё о'кей"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня всё кайфова"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все хорошо"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все неплохо"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все отлично"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все нормально"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все норм"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все супер"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все супер пупер"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все очень хорошо"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все заебись"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все зашибись"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все прекрасно"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все ахуено"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все охуенно"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все классно"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все изумительно"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все недурно"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все отменно"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все нихуево"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все нихуёво"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все чудненько"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все чудно"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все улетно"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все нифигова"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все офигенно"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все афигенно"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все ок"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все ништяк"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все ништикова"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все ништияк"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все нормалец"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все о'кей"
+	},
+	{
+		"class": "status_good",
+		"text": "у меня все кайфова"
+	},
+	{
+		"class": "status_good",
+		"text": "я в порядке"
+	},
+	{
+		"class": "status_good",
+		"text": "я в поряде"
+	},
+	{
+		"class": "status_good",
+		"text": "всё окей"
+	},
+	{
+		"class": "status_good",
+		"text": "всё хорошо"
+	},
+	{
+		"class": "status_good",
+		"text": "всё неплохо"
+	},
+	{
+		"class": "status_good",
+		"text": "всё отлично"
+	},
+	{
+		"class": "status_good",
+		"text": "всё нормально"
+	},
+	{
+		"class": "status_good",
+		"text": "всё норм"
+	},
+	{
+		"class": "status_good",
+		"text": "всё супер"
+	},
+	{
+		"class": "status_good",
+		"text": "всё супер пупер"
+	},
+	{
+		"class": "status_good",
+		"text": "всё очень хорошо"
+	},
+	{
+		"class": "status_good",
+		"text": "всё в порядке"
+	},
+	{
+		"class": "status_good",
+		"text": "всё в поряде"
+	},
+	{
+		"class": "status_good",
+		"text": "всё заебись"
+	},
+	{
+		"class": "status_good",
+		"text": "всё зашибись"
+	},
+	{
+		"class": "status_good",
+		"text": "всё прекрасно"
+	},
+	{
+		"class": "status_good",
+		"text": "всё ахуено"
+	},
+	{
+		"class": "status_good",
+		"text": "всё охуенно"
+	},
+	{
+		"class": "status_good",
+		"text": "всё классно"
+	},
+	{
+		"class": "status_good",
+		"text": "всё изумительно"
+	},
+	{
+		"class": "status_good",
+		"text": "всё недурно"
+	},
+	{
+		"class": "status_good",
+		"text": "всё отменно"
+	},
+	{
+		"class": "status_good",
+		"text": "всё нихуево"
+	},
+	{
+		"class": "status_good",
+		"text": "всё нихуёво"
+	},
+	{
+		"class": "status_good",
+		"text": "всё чудненько"
+	},
+	{
+		"class": "status_good",
+		"text": "всё чудно"
+	},
+	{
+		"class": "status_good",
+		"text": "всё улетно"
+	},
+	{
+		"class": "status_good",
+		"text": "всё нифигова"
+	},
+	{
+		"class": "status_good",
+		"text": "всё офигенно"
+	},
+	{
+		"class": "status_good",
+		"text": "всё афигенно"
+	},
+	{
+		"class": "status_good",
+		"text": "всё ок"
+	},
+	{
+		"class": "status_good",
+		"text": "всё ништяк"
+	},
+	{
+		"class": "status_good",
+		"text": "всё ништикова"
+	},
+	{
+		"class": "status_good",
+		"text": "всё ништияк"
+	},
+	{
+		"class": "status_good",
+		"text": "всё нормалец"
+	},
+	{
+		"class": "status_good",
+		"text": "всё о'кей"
+	},
+	{
+		"class": "status_good",
+		"text": "всё кайфова"
+	},
+	{
+		"class": "status_good",
+		"text": "хорошо как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "неплохо как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "отлично как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "нормально как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "норм как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "супер как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "очень хорошо как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "в порядке как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "в поряде как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "заебись как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "зашибись как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "прекрасно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "ахуено как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "охуенно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "классно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "изумительно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "недурно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "отменно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "нихуево как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "нихуёво как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "чудненько как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "чудно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "улетно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "нифигова как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "офигенно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "афигенно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "ништяк как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "ништикова как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "ништияк как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "нормалец как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "кайфова как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все хорошо как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все неплохо как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все отлично как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все нормально как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все норм как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все супер как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все очень хорошо как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все в порядке как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все в поряде как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все заебись как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все зашибись как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все прекрасно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все ахуено как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все охуенно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все классно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все изумительно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все недурно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все отменно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все нихуево как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все нихуёво как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все чудненько как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все чудно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все улетно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все нифигова как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все офигенно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все афигенно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все ништяк как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все ништикова как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все ништияк как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все нормалец как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "все кайфова как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё хорошо как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё неплохо как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё отлично как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё нормально как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё норм как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё супер как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё очень хорошо как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё в порядке как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё в поряде как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё заебись как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё зашибись как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё прекрасно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё ахуено как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё охуенно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё классно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё изумительно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё недурно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё отменно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё нихуево как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё нихуёво как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё чудненько как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё чудно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё улетно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё нифигова как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё офигенно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё афигенно как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё ништяк как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё ништикова как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё ништияк как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё нормалец как никогда"
+	},
+	{
+		"class": "status_good",
+		"text": "всё кайфова как никогда"
+	}
+]
