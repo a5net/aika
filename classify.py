@@ -40,6 +40,7 @@ def get_stopwords():
 #     stop_words_list = stopwords.words('russian')
     stop_words = get_city_names()
     
+    stop_words.add('дела')
     stop_words.add('как')
     stop_words.add('в')
     return stop_words
