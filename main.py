@@ -26,6 +26,6 @@ while command != '-1':
 	elif(predicted_class == 'action'):
 		print (answer_action[random.randint(0,(len(answer_action)-1))])
 	elif(predicted_class == 'status_good'):
-		print (answer_status_good[random.randint(0,(len(status_good)-1))])
+		print (answer_status_good[random.randint(0,(len(answer_status_good)-1))])
 	else:
 		print('Извините, я вас не понимаю, но я учусь :3')
