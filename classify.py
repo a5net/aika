@@ -25,7 +25,7 @@ def get_all_class():
 
 
 def get_city_names():
-    city_frame = pd.read_csv("../input/city.csv", encoding='cp1251')
+    city_frame = pd.read_csv("city.csv", encoding='cp1251')
     city_list = city_frame["name"].tolist()
     res = {''}
     for j in city_list:
