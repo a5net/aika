@@ -1,7 +1,7 @@
 import numpy as np # linear algebra
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 import json
-
+import re
 #import os
 #print(os.listdir("../input"))
 
@@ -25,11 +25,13 @@ def get_all_class():
 
 
 def get_city_names():
-    city_frame = pd.read_csv("city.csv", encoding='cp1251')
+    city_frame = pd.read_csv("../input/city.csv", encoding='cp1251')
     city_list = city_frame["name"].tolist()
     res = {''}
     for j in city_list:
-        res.add(stemmer.stem(j).lower())
+        if j != "Дели":
+            res.add(stemmer.stem(j).lower())
+        
     return res
 
 
@@ -64,7 +66,7 @@ training_data = get_all_class()
 classes = list(set([a['class'] for a in training_data]))
 
 stop_words = get_stopwords()
-
+city_names = get_city_names()
 for c in classes:
     class_words[c] = []
 
@@ -91,19 +93,14 @@ def calculate_class_score(text, class_name):
 
 
 def cleaner(text):
-    stop_words = get_stopwords()
+    text = re.sub(r'[^\w\s]', ' ', text)
     temp = ""
     arr = text.split()
     for i in arr:
-        #print(i)
         i = stemmer.stem(i).lower()
-        #print(i)
         if i  not in stop_words:
             temp += i + " "
-    return text
-
-def do_something_later():
-    return 'TODO'
+    return temp
 
 
 
@@ -111,26 +108,22 @@ def classify(sentence):
     sentence = cleaner(sentence)
     high_class = None
     high_score = 0
-    stop_words = get_city_names()
-    average = get_length(sentence.split(), stop_words)
+    average = get_length(sentence.split(), city_names)
     high_average = 0    
     for c in class_words.keys():
         score = calculate_class_score(sentence, c)
         if score > high_score and score != 0:
             high_class = c
             high_score = score
-            high_average = get_average_of_class(c, stop_words)
+            high_average = get_average_of_class(c, city_names)
         elif score == high_score and score != 0:
-            new_class_average = get_average_of_class(c, stop_words)
+            new_class_average = get_average_of_class(c, city_names)
             related_to_origin_class = (average - high_average) * (average - high_average)
             related_to_new_class = (average - new_class_average) * (average - new_class_average)
             if related_to_new_class < related_to_origin_class:
                 high_class = c
                 high_score = score
-                high_average = related_to_new_class
-            elif related_to_new_class == related_to_origin_class:
-                #TODO
-                do_something_later()
+                high_average = related_to_new_class            
     if(high_class == None): high_class = "unknown_command"
     return high_class
  
