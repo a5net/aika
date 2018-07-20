@@ -156,13 +156,20 @@ def extract_city(command):
         city_dict[stemmer.stem(i).lower()] = i
     city_dict['астан'] = 'Астана'
     city_name = ""
-    command = re.sub(r'[^\w\s]', ' ', command)
     word_list = command.split()
     word_list = [stemmer.stem(a).lower() for a in word_list]
     for word in word_list:
         if(word in city_dict.keys()):
             translator = Translator()
             city_name = translator.translate(city_dict[word]).text
+    if city_name == "":
+        command_punc = re.sub(r'[^\w\s]', ' ', command)
+        word_list = command.split()
+        word_list = [stemmer.stem(a).lower() for a in word_list]
+        for word in word_list:
+            if(word in city_dict.keys()):
+                translator = Translator()
+                city_name = translator.translate(city_dict[word]).text
     return city_name
 
 def extract_date_and_time(command):
