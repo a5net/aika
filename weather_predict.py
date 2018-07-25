@@ -1,6 +1,7 @@
 import pandas as pd
 import datetime
 import urllib.request
+import urllib.parse
 import json
 from googletrans import Translator
 from nltk.stem.snowball import RussianStemmer
@@ -16,11 +17,15 @@ def time_converter(time):
     ).strftime('%I:%M %p')
     return converted_time
 
-def url_builder(city_name, state):
-    user_api = '89f22ce44fe09b07e925aa6420546626'  # Obtain yours form: http://openweathermap.org/
-    unit = 'metric'  # For Fahrenheit use imperial, for Celsius use metric, and the default is Kelvin.
-    api = 'http://api.openweathermap.org/data/2.5/' + state + '?q='     # Search for your city ID here: http://bulk.openweathermap.org/sample/city.list.json.gz
+def url_builder_geocoding(city):
+    user_api = 'AIzaSyD7f6PKr81BsUX0FmB7PzaeSbvwjjnr-dI'
+    full_api_url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + urllib.parse.quote_plus(city) + '&key=' + user_api
+    return full_api_url
 
+def url_builder(city_name, state):
+    user_api = '89f22ce44fe09b07e925aa6420546626'
+    unit = 'metric'
+    api = 'http://api.openweathermap.org/data/2.5/' + state + '?q='
     full_api_url = api + city_name + '&mode=json&units=' + unit +'&lang=ru&APPID=' + user_api
     return full_api_url
 
@@ -149,28 +154,45 @@ def extract_feature_list(command):
     return features
 
 def extract_city(command):
-    city_frame = pd.read_csv("city.csv", encoding='cp1251')
-    city_list = city_frame["name"].tolist()
-    city_dict = dict()
-    for i in city_list:
-        city_dict[stemmer.stem(i).lower()] = i
-    city_dict['астан'] = 'Астана'
-    city_name = ""
-    word_list = command.split()
-    word_list = [stemmer.stem(a).lower() for a in word_list]
-    for word in word_list:
-        if(word in city_dict.keys()):
-            translator = Translator()
-            city_name = translator.translate(city_dict[word]).text
-    if city_name == "":
-        command_punc = re.sub(r'[^\w\s]', ' ', command)
-        word_list = command.split()
-        word_list = [stemmer.stem(a).lower() for a in word_list]
-        for word in word_list:
-            if(word in city_dict.keys()):
-                translator = Translator()
-                city_name = translator.translate(city_dict[word]).text
-    return city_name
+    fname = 'regex.txt'
+    with open(fname, encoding='cp1251') as f:
+        regex = f.readlines()
+    regex = [line.rstrip('\n') for line in regex]
+    match_list = []
+    for i in regex:
+        m = re.search(i, command)
+        if(m != None):
+            match_list.append(m.group(1))
+    for i in match_list:
+        data = data_fetch(url_builder_geocoding(i))
+        if(data.get('status') != 'ZERO_RESULTS'):
+            return data.get('results')[0].get('address_components')[0].get('long_name')
+
+
+
+# def extract_city(command):
+#     city_frame = pd.read_csv("city.csv", encoding='cp1251')
+#     city_dict = dict()
+#     for index, row in city_frame.iterrows():
+#         name = row["name"]
+#         city_dict[stemmer.stem(name).lower()] = name.lower()
+#     city_dict['астан'] = 'астана'
+#     city_name = ""
+#     word_list = command.split()
+#     word_list = [stemmer.stem(a).lower() for a in word_list]
+#     for word in word_list:
+#         if(word in city_dict.keys()):
+#             translator = Translator()
+#             city_name = translator.translate(city_dict[word]).text
+#     if city_name == "":
+#         command_punc = re.sub(r'[^\w\s]', ' ', command)
+#         word_list = command.split()
+#         word_list = [stemmer.stem(a).lower() for a in word_list]
+#         for word in word_list:
+#             if(word in city_dict.keys()):
+#                 translator = Translator()
+#                 city_name = translator.translate(city_dict[word]).text
+#     return city_name
 
 def extract_date_and_time(command):
     time_of_the_day = ''

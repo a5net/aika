@@ -10,8 +10,10 @@ answer_action = ['Разговариваю с тобой', 'Существую',
 answer_status_good = ['Рада слышать', 'Круто', 'Отлично!', 'Я очень рада :)']
 command = '1'
 
-while command != '-1':
+while True:
 	command = input('Введите команду: ')
+	if command == '-1':
+		break
 	predicted_class = classify(command)
 	if(predicted_class == 'weather'):
 		get_weather(command)

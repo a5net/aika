@@ -8,6 +8,7 @@ import re
 import nltk
 from nltk.stem.snowball import RussianStemmer
 
+
 stemmer = RussianStemmer()
 class_name_list = {'weather','greetings', 'greetings_mood', 'mood', 'philosophy', 'action', 'status_good'}
 
@@ -39,8 +40,8 @@ def get_stopwords():
 #     from nltk.corpus import stopwords
 #     stop_words_list = stopwords.words('russian')
     stop_words = get_city_names()
+
     
-    stop_words.add('дела')
     stop_words.add('как')
     stop_words.add('в')
     return stop_words
