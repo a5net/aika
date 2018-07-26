@@ -1,6 +1,7 @@
 from weather_predict import *
 import random
 from classify import *
+from translate import *
 
 answer = ["Привет!", "Здравствуй", "Приветствую!", "Здравствуйте"]
 answer_greetings_mood = ["Привет. Пойдет. Как у тебя?", "Здравствуй. Хорошо. Как у тебя?", "Приветствую. Нормально. Как у тебя?", "Здарова. Неплохо. Как у тебя?", "Здравствуйте. Все отлично. Как у вас?"]
@@ -11,7 +12,7 @@ answer_status_good = ['Рада слышать', 'Круто', 'Отлично!'
 command = '1'
 
 while True:
-	command = input('Введите команду: ')
+	command = input('Введите команду(-1 чтобы закончить разговор): ')
 	if command == '-1':
 		break
 	predicted_class = classify(command)
@@ -29,5 +30,7 @@ while True:
 		print (answer_action[random.randint(0,(len(answer_action)-1))])
 	elif(predicted_class == 'status_good'):
 		print (answer_status_good[random.randint(0,(len(answer_status_good)-1))])
+	elif(predicted_class == 'translate'):
+		print(translate(command))
 	else:
 		print('Извините, я вас не понимаю, но я учусь :3')
