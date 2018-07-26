@@ -10,7 +10,7 @@ from nltk.stem.snowball import RussianStemmer
 
 
 stemmer = RussianStemmer()
-class_name_list = {'weather','greetings', 'greetings_mood', 'mood', 'philosophy', 'action', 'status_good'}
+class_name_list = {'weather','greetings', 'greetings_mood', 'mood', 'philosophy', 'action', 'status_good', 'translate'}
 
 
 def get_class_examples(name):
