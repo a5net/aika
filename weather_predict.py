@@ -155,19 +155,29 @@ def extract_feature_list(command):
 
 def extract_city(command):
     fname = 'regex.txt'
+    out = []
+    city = ''
     with open(fname, encoding='cp1251') as f:
         regex = f.readlines()
     regex = [line.rstrip('\n') for line in regex]
     match_list = []
     for i in regex:
-        m = re.search(i, command)
-        if(m != None):
-            match_list.append(m.group(1))
+        result = re.findall(i, command)
+        if(result):
+            match_list.append(result[0])
     for i in match_list:
         data = data_fetch(url_builder_geocoding(i))
         if(data.get('status') != 'ZERO_RESULTS'):
-            return data.get('results')[0].get('address_components')[0].get('long_name')
+            out.append(data.get('results')[0].get('address_components')[0].get('long_name'))
+    if(not out):
+        inp = input('Введите название города: ')
+        data = data_fetch(url_builder_geocoding(inp))
+        if(data.get('status') != 'ZERO_RESULTS'):
+            city = data.get('results')[0].get('address_components')[0].get('long_name')
+    else:
+        city = out[0]
 
+    return city
 
 
 # def extract_city(command):
