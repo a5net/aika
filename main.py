@@ -12,7 +12,7 @@ answer_status_good = ['Рада слышать', 'Круто', 'Отлично!'
 command = '1'
 
 while True:
-	command = input('Введите команду: ')
+	command = input('Введите команду(-1 чтобы закончить разговор): ')
 	if command == '-1':
 		break
 	predicted_class = classify(command)
@@ -31,6 +31,6 @@ while True:
 	elif(predicted_class == 'status_good'):
 		print (answer_status_good[random.randint(0,(len(answer_status_good)-1))])
 	elif(predicted_class == 'translate'):
-		translate(command)
+		print(translate(command))
 	else:
 		print('Извините, я вас не понимаю, но я учусь :3')

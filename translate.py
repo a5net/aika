@@ -41,5 +41,3 @@ def translate(command):
     translation = translator.translate(phrase, dest = dest).text
 
     return translation
-
-print(translate('переведи'))
