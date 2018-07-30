@@ -17,7 +17,7 @@ while True:
 		break
 	predicted_class = classify(command)
 	if(predicted_class == 'weather'):
-		get_weather(command)
+		print(get_weather(command))
 	elif(predicted_class == 'greetings'):
 		print(answer[random.randint(0,(len(answer)-1))])
 	elif(predicted_class == 'greetings_mood'):

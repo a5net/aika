@@ -42,7 +42,7 @@ def get_stopwords():
     stop_words = get_city_names()
 
     
-    stop_words.add('как')
+    #stop_words.add('как')
     stop_words.add('в')
     return stop_words
 
