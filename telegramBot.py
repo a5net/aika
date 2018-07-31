@@ -23,7 +23,8 @@ def bot0(message):
         #     break
         predicted_class = classify(command)
         if(predicted_class == 'weather'):
-                bot.send_message(message.chat.id, get_weather(command))
+                get_weather(command)
+                bot.send_message(message.chat.id, output)
         elif(predicted_class == 'greetings'):
                 bot.send_message(message.chat.id, answer[random.randint(0,(len(answer)-1))])
         elif(predicted_class == 'greetings_mood'):
