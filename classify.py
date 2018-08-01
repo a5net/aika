@@ -2,7 +2,8 @@ import numpy as np # linear algebra
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 import json
 import re
-#import os
+import os
+from pathlib import Path
 #print(os.listdir("../input"))
 
 import nltk
@@ -10,12 +11,23 @@ from nltk.stem.snowball import RussianStemmer
 
 
 stemmer = RussianStemmer()
-class_name_list = {'weather','greetings', 'greetings_mood', 'mood', 'philosophy', 'action', 'status_good', 'translate'}
 
 
 def get_class_examples(name):
     train = pd.read_json(name + '.json', orient = 'columns')
     return train.to_dict('records')
+
+def get_class_name_list():
+    print(type(os.listdir("../input")))
+    list_names = os.listdir("../input")
+    res = []
+    for i in range(0, len(list_names)):
+        candidate = Path(list_names[i]).suffix
+        if(candidate == ".json"):
+            res.append(list_names[i].replace('.json', ''))
+    return set(res)
+    
+class_name_list = get_class_name_list()
 
 def get_all_class():
     train_data = []
@@ -30,8 +42,8 @@ def get_city_names():
     city_list = city_frame["name"].tolist()
     res = {''}
     for j in city_list:
-        if j != "Дели":
-            res.add(stemmer.stem(j).lower())
+        #if j != "Дели":
+        res.add(stemmer.stem(j).lower())
         
     return res
 
