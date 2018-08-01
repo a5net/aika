@@ -300,6 +300,7 @@ def extract_date_and_time(command):
 def get_weather(command):
     command = replace_dates(command)
     output = ''
+    speech = ''
     days_ahead = 0
     time_of_the_day = 2
     m_symbol = '\xb0' + 'C'
@@ -319,16 +320,20 @@ def get_weather(command):
                 output = output + 'Скорость ветра: {} м/сек\n'.format(data['wind'])
                 output = output + '-----------------------------------------------\n'
                 output = output + 'Последние обновления были получены с сервера: {}\n'.format(data['dt'])
-                return output
+                speech = 'В городе {} {}, {} градусов по цельсию'.format(city, data['weather'], str(int(data['temp']))) 
+                return output, speech
             elif('температура' in feature_list):
                 output = output + 'Температура воздуха: {}'.format(data['temp']) + m_symbol
-                return output
+                speech = 'Температура воздуха в городе {} {} градусов по цельсию'.format(city, int(data['temp']))
+                return output, speech
             elif('влажность' in feature_list):
                 output = output + 'Влажность воздуха: {} %'.format(data['humidity'])
-                return output
+                speech = 'Влажность водуха в городе {} {} процентов'.format(city, int(data['humidity']))
+                return output, speech
             elif('скорость' in feature_list or 'ветер' in feature_list):
-                output = output = 'Скорость ветра: {} м/сек'.format(data['wind'])
-                return output
+                output = output + 'Скорость ветра: {} м/сек'.format(data['wind'])
+                speech = 'Скорость ветра в городе {} {} метров в секунду'.format(city, data['wind'])
+                return output, speech
         else:
             data = data_organizer_forecast(data_fetch(url_builder(city, 'forecast')))
             if date_and_time_array[0]:
@@ -345,15 +350,19 @@ def get_weather(command):
                 output = output + str(data[day_dict][time_of_the_day_array[time_of_the_day] + '_temp']) + m_symbol + ' ' + data[day_dict][time_of_the_day_array[time_of_the_day] + '_weather'] + '\n'
                 output = output + 'Влажность воздуха: {} %\n'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_humidity'])
                 output = output + 'Скорость ветра: {} м/сек'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_windspeed'])
-                return output
+                speech = 'В городе {} {}, {} градусов по цельсию'.format(city, data[day_dict][time_of_the_day_array[time_of_the_day] + '_weather'], str(int(data[day_dict][time_of_the_day_array[time_of_the_day] + '_temp'])))
+                return output, speech
             elif('температура' in feature_list):
                 output = output + 'Температура воздуха: {}'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_temp']) + m_symbol
-                return output
+                speech = 'Температура воздуха в городе {} {} градусов по цельсию'.format(city, str(int(data[day_dict][time_of_the_day_array[time_of_the_day] + '_temp'])))
+                return output, speech
             elif('влажность' in feature_list):
                 output = output + 'Влажность воздуха: {} %'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_humidity'])
-                return output
+                speech = 'Влажность водуха в городе {} {} процентов'.format(city, int(data[day_dict][time_of_the_day_array[time_of_the_day] + '_humidity']))
+                return output, speech
             elif('скорость' in feature_list or 'ветер' in feature_list):
                 output = output + 'Скорость ветра: {} м/сек'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_windspeed'])
-                return output
+                speech = 'Скорость ветра в городе {} {} метров в секунду'.format(city, data[day_dict][time_of_the_day_array[time_of_the_day] + '_windspeed'])
+                return output, speech
     except:
         print('В работе программы возникли неполадки, введите запрос еще раз.')
