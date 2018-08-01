@@ -4,6 +4,7 @@ from classify import *
 from translate import *
 import telebot
 from speech_to_text import *
+import requests
 
 
 
@@ -17,6 +18,14 @@ answer_status_good = ['Рада слышать', 'Круто', 'Отлично!'
 command = '1'
 bot = telebot.TeleBot(token)
 print("Программа запущена")
+
+def get_voice(message):
+    speech_url = 'https://tts.voicetech.yandex.net/generate?text={}&format=mp3&quality=lo&lang=ru-RU&speaker=oksana&emotion=good&key=c3667808-f5a2-4c52-8f90-699a3e23e4f2'.format(message)
+    doc = requests.get(speech_url)
+    with open('audio.ogg', 'wb') as f:
+        f.write(doc.content)
+    voice = open('audio.ogg', 'rb')
+    return voice
 
 @bot.message_handler(content_types=["text","voice"])
 def handle_message(message):
@@ -52,36 +61,52 @@ def handle_message(message):
             command = speech_to_text(bytes=file.content)
         except:
             bot.send_message(message.chat.id, 'Распознование голоса не удалось, попробуйте снова')
-        try:
+        try:    
             predicted_class = classify(command)
             if(predicted_class == 'weather'):
                 output, speech = get_weather(command)
-                speech_url = 'https://tts.voicetech.yandex.net/generate?text={}&format=mp3&quality=lo&lang=ru-RU&speaker=oksana&emotion=good&key=c3667808-f5a2-4c52-8f90-699a3e23e4f2'.format(speech)
-                doc = requests.get(speech_url)
-                with open('audio.ogg', 'rb') as f:
-                    f.write(doc.content)
-                voice = open('audio.ogg', 'rb')
+                voice = get_voice(speech)
                 bot.send_message(message.chat.id, output)
                 bot.send_voice(message.chat.id, voice)
             elif(predicted_class == 'greetings'):
-                bot.send_message(message.chat.id, answer[random.randint(0,(len(answer)-1))])
+                answer = answer[random.randint(0,(len(answer)-1))]
+                voice = get_voice(answer)
+                # bot.send_message(message.chat.id, message)
+                bot.send_voice(message.chat.id, voice)
             elif(predicted_class == 'greetings_mood'):
-                bot.send_message(message.chat.id, answer_greetings_mood[random.randint(0,(len(answer_greetings_mood)-1))])
+                answer = answer_greetings_mood[random.randint(0,(len(answer_greetings_mood)-1))]
+                voice = get_voice(answer)
+                # bot.send_message(message.chat.id, answer)
+                bot.send_voice(message.chat.id, voice)
             elif(predicted_class == 'mood'):
-                bot.send_message(message.chat.id, answer_mood[random.randint(0,(len(answer_mood)-1))])
+                answer = answer_mood[random.randint(0,(len(answer_mood)-1))]
+                voice = get_voice(answer)
+                # bot.send_message(message.chat.id, answer)
+                bot.send_voice(message.chat.id, voice)
             elif(predicted_class == 'philosophy'):
-                bot.send_message(message.chat.id, answer_philosophy[0]) 
+                answer = answer_philosophy[0]
+                voice = get_voice(answer)
+                # bot.send_message(message.chat.id, answer)
+                bot.send_voice(message.chat.id, voice) 
             elif(predicted_class == 'action'):
-                bot.send_message(message.chat.id, answer_action[random.randint(0,(len(answer_action)-1))])
+                answer = answer_action[random.randint(0,(len(answer_action)-1))]
+                voice = get_voice(answer)
+                # bot.send_message(message.chat.id, answer)
+                bot.send_voice(message.chat.id, voice)
             elif(predicted_class == 'status_good'):
-                bot.send_message(message.chat.id, answer_status_good[random.randint(0,(len(answer_status_good)-1))])
+                answer = answer_status_good[random.randint(0,(len(answer_status_good)-1))]
+                voice = get_voice(answer)
+                # bot.send_message(message.chat.id, answer)
+                bot.send_voice(message.chat.id, voice)
             # elif(predicted_class == 'translate'):
             #         bot.send_message(message.chat.id, print(translate(command)))
             else:
-                bot.send_message(message.chat.id, 'Извините, я вас не понимаю, но я учусь :3')
+                answer = 'Извините, я вас не понимаю, но я учусь :3'
+                voice = get_voice(answer)
+                # bot.send_message(message.chat.id, answer)
+                bot.send_voice(message.chat.id, voice)
         except:
             pass
-
 
 
 if __name__ == '__main__':
