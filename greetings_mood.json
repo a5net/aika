@@ -141,14 +141,6 @@
 	},
 	{
 		"class": "greetings_mood",
-		"text": "приветствую что новенького?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "приветствую что нового?"
-	},
-	{
-		"class": "greetings_mood",
 		"text": "приветствую как ты?"
 	},
 	{
@@ -181,19 +173,7 @@
 	},
 	{
 		"class": "greetings_mood",
-		"text": "хей что слышно?"
-	},
-	{
-		"class": "greetings_mood",
 		"text": "хей как оно вообще?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "хей что новенького?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "хей что нового?"
 	},
 	{
 		"class": "greetings_mood",
@@ -290,14 +270,6 @@
 	{
 		"class": "greetings_mood",
 		"text": "приветик как дела?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "приветик что новенького?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "приветик что нового?"
 	},
 	{
 		"class": "greetings_mood",
@@ -442,10 +414,6 @@
 	{
 		"class": "greetings_mood",
 		"text": "давно не виделись как дела?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "давно не виделись что нового?"
 	},
 	{
 		"class": "greetings_mood",
@@ -789,22 +757,6 @@
 	},
 	{
 		"class": "greetings_mood",
-		"text": "салют что слышно?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "салют как оно вообще?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "салют что новенького?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "салют что нового?"
-	},
-	{
-		"class": "greetings_mood",
 		"text": "салют как ты?"
 	},
 	{
@@ -854,22 +806,6 @@
 	{
 		"class": "greetings_mood",
 		"text": "саламчик как дела?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "саламчик что слышно?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "саламчик как оно вообще?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "саламчик что новенького?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "саламчик что нового?"
 	},
 	{
 		"class": "greetings_mood",
@@ -1001,22 +937,6 @@
 	},
 	{
 		"class": "greetings_mood",
-		"text": "даров что слышно?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "даров как оно вообще?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "даров что новенького?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "даров что нового?"
-	},
-	{
-		"class": "greetings_mood",
 		"text": "даров как ты?"
 	},
 	{
@@ -1070,22 +990,6 @@
 	{
 		"class": "greetings_mood",
 		"text": "хай как дела?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "хай что слышно?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "хай как оно вообще?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "хай что новенького?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "хай что нового?"
 	},
 	{
 		"class": "greetings_mood",
@@ -1145,22 +1049,6 @@
 	},
 	{
 		"class": "greetings_mood",
-		"text": "хэллоу что слышно?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "хэллоу как оно вообще?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "хэллоу что новенького?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "хэллоу что нового?"
-	},
-	{
-		"class": "greetings_mood",
 		"text": "хэллоу как ты?"
 	},
 	{
@@ -1217,22 +1105,6 @@
 	},
 	{
 		"class": "greetings_mood",
-		"text": "хэлло что слышно?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "хэлло как оно вообще?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "хэлло что новенького?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "хэлло что нового?"
-	},
-	{
-		"class": "greetings_mood",
 		"text": "хэлло как ты?"
 	},
 	{
@@ -1286,22 +1158,6 @@
 	{
 		"class": "greetings_mood",
 		"text": "хаюшки как дела?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "хаюшки что слышно?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "хаюшки как оно вообще?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "хаюшки что новенького?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "хаюшки что нового?"
 	},
 	{
 		"class": "greetings_mood",
@@ -1365,10 +1221,6 @@
 	},
 	{
 		"class": "greetings_mood",
-		"text": "утро доброе что нового?"
-	},
-	{
-		"class": "greetings_mood",
 		"text": "утро доброе как ты?"
 	},
 	{
@@ -1414,10 +1266,6 @@
 	{
 		"class": "greetings_mood",
 		"text": "доброе утро как оно вообще?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "доброе утро что нового?"
 	},
 	{
 		"class": "greetings_mood",
@@ -1469,10 +1317,6 @@
 	},
 	{
 		"class": "greetings_mood",
-		"text": "добрый день что нового?"
-	},
-	{
-		"class": "greetings_mood",
 		"text": "добрый день как ты?"
 	},
 	{
@@ -1518,10 +1362,6 @@
 	{
 		"class": "greetings_mood",
 		"text": "день добрый как оно вообще?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "день добрый что нового?"
 	},
 	{
 		"class": "greetings_mood",
@@ -1573,10 +1413,6 @@
 	},
 	{
 		"class": "greetings_mood",
-		"text": "вечер добрый что нового?"
-	},
-	{
-		"class": "greetings_mood",
 		"text": "вечер добрый как ты?"
 	},
 	{
@@ -1622,10 +1458,6 @@
 	{
 		"class": "greetings_mood",
 		"text": "добрый вечер как оно вообще?"
-	},
-	{
-		"class": "greetings_mood",
-		"text": "добрый вечер что нового?"
 	},
 	{
 		"class": "greetings_mood",
