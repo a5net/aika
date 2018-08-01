@@ -14,12 +14,12 @@ stemmer = RussianStemmer()
 
 
 def get_class_examples(name):
-    train = pd.read_json("/input/" + name + '.json', orient = 'columns')
+    train = pd.read_json("input/" + name + '.json', orient = 'columns')
     return train.to_dict('records')
 
 def get_class_name_list():
-    print(type(os.listdir("/input")))
-    list_names = os.listdir("/input")
+    path = "input"
+    list_names = os.listdir(path)
     res = []
     for i in range(0, len(list_names)):
         candidate = Path(list_names[i]).suffix

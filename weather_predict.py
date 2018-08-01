@@ -21,7 +21,7 @@ def time_converter(time):
 
 def url_builder_geocoding(city):
     user_api = 'AIzaSyD7f6PKr81BsUX0FmB7PzaeSbvwjjnr-dI'
-    full_api_url = 'https://maps.googleapis.com/maps/api/geocode/json?types=political|locality&address=' + urllib.parse.quote_plus(city) +'&key=' + user_api
+    full_api_url = 'https://maps.googleapis.com/maps/api/geocode/json?&address=' + urllib.parse.quote_plus(city) +'&components=administrative_area:1&key=' + user_api
     return full_api_url
 
 def url_builder(city_name, state):
@@ -93,42 +93,42 @@ def data_organizer_forecast(raw_api_dict):
             afternoon_humidity = raw_api_dict.get('list')[17].get('main').get('humidity'),
             evening_humidity = raw_api_dict.get('list')[19].get('main').get('humidity'),
             ),
-        # day_3 = dict(
-        #     night_temp = raw_api_dict.get('list')[21].get('main').get('temp'),
-        #     morning_temp = raw_api_dict.get('list')[24].get('main').get('temp'),
-        #     afternoon_temp = raw_api_dict.get('list')[25].get('main').get('temp'),
-        #     evening_temp = raw_api_dict.get('list')[27].get('main').get('temp'),
-        #     night_weather = raw_api_dict.get('list')[21].get('weather')[0].get('description'),
-        #     morning_weather = raw_api_dict.get('list')[24].get('weather')[0].get('description'),
-        #     afternoon_weather = raw_api_dict.get('list')[25].get('weather')[0].get('description'),
-        #     evening_weather = raw_api_dict.get('list')[27].get('weather')[0].get('description'),
-        #     night_windspeed = raw_api_dict.get('list')[21].get('wind').get('speed'),
-        #     morning_windspeed = raw_api_dict.get('list')[24].get('wind').get('speed'),
-        #     afternoon_windspeed = raw_api_dict.get('list')[25].get('wind').get('speed'),
-        #     evening_windspeed = raw_api_dict.get('list')[27].get('wind').get('speed'),
-        #     night_humidity = raw_api_dict.get('list')[21].get('main').get('humidity'),
-        #     morning_humidity = raw_api_dict.get('list')[24].get('main').get('humidity'),
-        #     afternoon_humidity = raw_api_dict.get('list')[25].get('main').get('humidity'),
-        #     evening_humidity = raw_api_dict.get('list')[27].get('main').get('humidity')
-        #     ),
-        # day_4 = dict(
-        #     night_temp = raw_api_dict.get('list')[29].get('main').get('temp'),
-        #     morning_temp = raw_api_dict.get('list')[32].get('main').get('temp'),
-        #     afternoon_temp = raw_api_dict.get('list')[33].get('main').get('temp'),
-        #     evening_temp = raw_api_dict.get('list')[35].get('main').get('temp'),
-        #     night_weather = raw_api_dict.get('list')[29].get('weather')[0].get('description'),
-        #     morning_weather = raw_api_dict.get('list')[32].get('weather')[0].get('description'),
-        #     afternoon_weather = raw_api_dict.get('list')[33].get('weather')[0].get('description'),
-        #     evening_weather = raw_api_dict.get('list')[35].get('weather')[0].get('description'),
-        #     night_windspeed = raw_api_dict.get('list')[29].get('wind').get('speed'),
-        #     morning_windspeed = raw_api_dict.get('list')[32].get('wind').get('speed'),
-        #     afternoon_windspeed = raw_api_dict.get('list')[33].get('wind').get('speed'),
-        #     evening_windspeed = raw_api_dict.get('list')[35].get('wind').get('speed'),
-        #     night_humidity = raw_api_dict.get('list')[29].get('main').get('humidity'),
-        #     morning_humidity = raw_api_dict.get('list')[32].get('main').get('humidity'),
-        #     afternoon_humidity = raw_api_dict.get('list')[33].get('main').get('humidity'),
-        #     evening_humidity = raw_api_dict.get('list')[35].get('main').get('humidity')
-        #     )
+        day_3 = dict(
+            night_temp = raw_api_dict.get('list')[21].get('main').get('temp'),
+            morning_temp = raw_api_dict.get('list')[24].get('main').get('temp'),
+            afternoon_temp = raw_api_dict.get('list')[25].get('main').get('temp'),
+            evening_temp = raw_api_dict.get('list')[27].get('main').get('temp'),
+            night_weather = raw_api_dict.get('list')[21].get('weather')[0].get('description'),
+            morning_weather = raw_api_dict.get('list')[24].get('weather')[0].get('description'),
+            afternoon_weather = raw_api_dict.get('list')[25].get('weather')[0].get('description'),
+            evening_weather = raw_api_dict.get('list')[27].get('weather')[0].get('description'),
+            night_windspeed = raw_api_dict.get('list')[21].get('wind').get('speed'),
+            morning_windspeed = raw_api_dict.get('list')[24].get('wind').get('speed'),
+            afternoon_windspeed = raw_api_dict.get('list')[25].get('wind').get('speed'),
+            evening_windspeed = raw_api_dict.get('list')[27].get('wind').get('speed'),
+            night_humidity = raw_api_dict.get('list')[21].get('main').get('humidity'),
+            morning_humidity = raw_api_dict.get('list')[24].get('main').get('humidity'),
+            afternoon_humidity = raw_api_dict.get('list')[25].get('main').get('humidity'),
+            evening_humidity = raw_api_dict.get('list')[27].get('main').get('humidity')
+            ),
+        day_4 = dict(
+            night_temp = raw_api_dict.get('list')[29].get('main').get('temp'),
+            morning_temp = raw_api_dict.get('list')[32].get('main').get('temp'),
+            afternoon_temp = raw_api_dict.get('list')[33].get('main').get('temp'),
+            evening_temp = raw_api_dict.get('list')[35].get('main').get('temp'),
+            night_weather = raw_api_dict.get('list')[29].get('weather')[0].get('description'),
+            morning_weather = raw_api_dict.get('list')[32].get('weather')[0].get('description'),
+            afternoon_weather = raw_api_dict.get('list')[33].get('weather')[0].get('description'),
+            evening_weather = raw_api_dict.get('list')[35].get('weather')[0].get('description'),
+            night_windspeed = raw_api_dict.get('list')[29].get('wind').get('speed'),
+            morning_windspeed = raw_api_dict.get('list')[32].get('wind').get('speed'),
+            afternoon_windspeed = raw_api_dict.get('list')[33].get('wind').get('speed'),
+            evening_windspeed = raw_api_dict.get('list')[35].get('wind').get('speed'),
+            night_humidity = raw_api_dict.get('list')[29].get('main').get('humidity'),
+            morning_humidity = raw_api_dict.get('list')[32].get('main').get('humidity'),
+            afternoon_humidity = raw_api_dict.get('list')[33].get('main').get('humidity'),
+            evening_humidity = raw_api_dict.get('list')[35].get('main').get('humidity')
+            )
         )
     return data
 
@@ -143,6 +143,48 @@ def data_organizer_current(raw_api_dict):
         dt=time_converter(raw_api_dict.get('dt'))
     )
     return data
+
+def replace_dates(command):
+    dates = {
+        'первое' : 1,
+        'второе' : 2,
+        'третье' : 3,
+        'четвертое' : 4,
+        'пятое' : 5,
+        'шестое' : 6,
+        'седьмое' : 7,
+        'восьмое' : 8,
+        'девятое' : 9,
+        'десятое' : 10,
+        'одиннадцатое' : 11,
+        'двеннадцатое' : 12,
+        'тринадцатое' : 13,
+        'четырнадцатое' : 14,
+        'пятнадцатое' : 15,
+        'шестнадцатое' : 16,
+        'семнадцатое' : 17,
+        'восемнадцатое' : 18,
+        'девятнадцатое' : 19,
+        'двадцатое' : 20,
+        'двадцать первое' : 21,
+        'двадцать второе' : 22,
+        'двадцать третье' : 23,
+        'двадцать четвертое' : 24,
+        'двадцать пятое' : 25,
+        'двадцать шестое' : 26,
+        'двадцать седьмое' : 27,
+        'двадцать восьмое' : 28,
+        'двадцать девятое' : 29,
+        'тридцатое' : 30,
+        'тридцать первое' : 31
+        }
+
+    word_list = command.split()
+    word_list = [stemmer.stem(a).lower() for a in word_list]
+    for i in dates:
+        if(stemmer.stem(i) in word_list):
+            command = re.sub(i, str(dates[i]), command)
+    return command
 
 def extract_feature_list(command):
     features = []
@@ -170,15 +212,9 @@ def extract_city(command):
     match_list = [word for word in match_list if word.strip() not in stopwords.words('russian')]
     for i in match_list:
         data = data_fetch(url_builder_geocoding(i))
-        print(data)
         if(data.get('status') != 'ZERO_RESULTS'):
             out.append(data.get('results')[0].get('address_components')[0].get('long_name'))
-    if(not out):
-        inp = input('Введите название города: ')
-        data = data_fetch(url_builder_geocoding(inp))
-        if(data.get('status') != 'ZERO_RESULTS'):
-            city = data.get('results')[0].get('address_components')[0].get('long_name')
-    else:
+    if(out):
         city = out[0]
     return city
 
@@ -222,15 +258,9 @@ def extract_date_and_time(command):
                 forecast_day = int(word_list[word_list.index(stemmer.stem(word).lower()) + 1])
                 if(forecast_day > current_day):
                     days_ahead = forecast_day - current_day
-                    if(days_ahead > 4):
-                        inp = input("У нас имеется прогноз погоды на ближайшие 4 дня, введите другую дату: ")
-                        days_ahead = int(inp) - current_day
                 else:
                     number_of_days = int(calendar.monthrange(datetime.datetime.now().year, datetime.datetime.now().month)[1])
                     days_ahead = (number_of_days - current_day) + forecast_day
-                    if(days_ahead > 4):
-                        inp = input("У нас имеется прогноз погоды на ближайшие 4 дня, введите другую дату: ")
-                        days_ahead = int(inp) - current_day
         except:
             pass
 
@@ -241,15 +271,9 @@ def extract_date_and_time(command):
                 forecast_day = int(word_list[word_list.index(stemmer.stem(word).lower()) - 1])
                 if(forecast_day > current_day):
                     days_ahead = forecast_day - current_day
-                    if(days_ahead > 4):
-                        inp = input("У нас имеется прогноз погоды на ближайшие 4 дня, введите другую дату: ")
-                        days_ahead = int(inp) - current_day
                 else:
                     number_of_days = int(calendar.monthrange(datetime.datetime.now().year, datetime.datetime.now().month)[1])
                     days_ahead = (number_of_days - current_day) + forecast_day
-                    if(days_ahead > 4):
-                        inp = input("У нас имеется прогноз погоды на ближайшие 4 дня, введите другую дату: ")
-                        days_ahead = int(inp) - current_day
         except:
             pass
 
@@ -261,13 +285,6 @@ def extract_date_and_time(command):
                 days_ahead = difference
             else:
                 days_ahead = 7 + difference
-            if(days_ahead > 4):
-                inp = input("У нас имеется погода на ближайшие 4 дня, введите другой день недели: ")
-                difference = day_of_the_week[inp] - current_day_of_the_week
-                if(difference >= 0):
-                    days_ahead = difference
-                else:
-                    days_ahead = 7 + difference
 
     for nearday in nearest_days:
         if(stemmer.stem(nearday).lower() in word_list):
@@ -281,6 +298,7 @@ def extract_date_and_time(command):
     return return_array
 
 def get_weather(command):
+    command = replace_dates(command)
     output = ''
     days_ahead = 0
     time_of_the_day = 2
@@ -288,50 +306,54 @@ def get_weather(command):
     translator = Translator()
     feature_list = extract_feature_list(command)
     city = extract_city(command)
+    if(city == ''):
+        return('Не указано название города')
     date_and_time_array = extract_date_and_time(command)
-    # try:
-    if((not date_and_time_array[0]) and (not date_and_time_array[1])):
-        data = data_organizer_current(data_fetch(url_builder(city, 'weather')))
-        if('погода' in feature_list or not feature_list):
-            output = output + 'Погода в: {}, {}: \n'.format(data['city'], data['country'])
-            output = output + str(data['temp']) + m_symbol + ' ' + data['weather'] + '\n'
-            output = output + 'Влажность воздуха: {} %\n'.format(data['humidity']) 
-            output = output + 'Скорость ветра: {} м/сек\n'.format(data['wind'])
-            output = output + '-----------------------------------------------\n'
-            output = output + 'Последние обновления были получены с сервера: {}\n'.format(data['dt'])
-            return output
-        elif('температура' in feature_list):
-            output = output + 'Температура воздуха: {}'.format(data['temp']) + m_symbol
-            return output
-        elif('влажность' in feature_list):
-            output = output + 'Влажность воздуха: {} %'.format(data['humidity'])
-            return output
-        elif('скорость' in feature_list or 'ветер' in feature_list):
-            output = output = 'Скорость ветра: {} м/сек'.format(data['wind'])
-            return output
-    else:
-        data = data_organizer_forecast(data_fetch(url_builder(city, 'forecast')))
-        if date_and_time_array[0]:
-            days_ahead = date_and_time_array[0]
-        if date_and_time_array[1]:
-            time_of_the_day = date_and_time_array[1]
-        day_dict = 'day_' + str(days_ahead)
-        time_of_the_day_array = ['night', 'morning', 'afternoon', 'evening']
+    try:
+        if((not date_and_time_array[0]) and (not date_and_time_array[1])):
+            data = data_organizer_current(data_fetch(url_builder(city, 'weather')))
+            if('погода' in feature_list or not feature_list):
+                output = output + 'Погода в: {}, {}: \n'.format(data['city'], data['country'])
+                output = output + str(data['temp']) + m_symbol + ' ' + data['weather'] + '\n'
+                output = output + 'Влажность воздуха: {} %\n'.format(data['humidity']) 
+                output = output + 'Скорость ветра: {} м/сек\n'.format(data['wind'])
+                output = output + '-----------------------------------------------\n'
+                output = output + 'Последние обновления были получены с сервера: {}\n'.format(data['dt'])
+                return output
+            elif('температура' in feature_list):
+                output = output + 'Температура воздуха: {}'.format(data['temp']) + m_symbol
+                return output
+            elif('влажность' in feature_list):
+                output = output + 'Влажность воздуха: {} %'.format(data['humidity'])
+                return output
+            elif('скорость' in feature_list or 'ветер' in feature_list):
+                output = output = 'Скорость ветра: {} м/сек'.format(data['wind'])
+                return output
+        else:
+            data = data_organizer_forecast(data_fetch(url_builder(city, 'forecast')))
+            if date_and_time_array[0]:
+                days_ahead = date_and_time_array[0]
+                if(days_ahead > 4):
+                    return('У нас имеется прогноз погоды на ближайшие четыре дня')
+            if date_and_time_array[1]:
+                time_of_the_day = date_and_time_array[1]
+            day_dict = 'day_' + str(days_ahead)
+            time_of_the_day_array = ['night', 'morning', 'afternoon', 'evening']
 
-        if('погода' in feature_list or not feature_list):
-            output = output + 'Погода в: {}, {}:\n'.format(data['city'], data['country'])
-            output = output + str(data[day_dict][time_of_the_day_array[time_of_the_day] + '_temp']) + m_symbol + ' ' + data[day_dict][time_of_the_day_array[time_of_the_day] + '_weather'] + '\n'
-            output = output + 'Влажность воздуха: {} %\n'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_humidity'])
-            output = output + 'Скорость ветра: {} м/сек'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_windspeed'])
-            return output
-        elif('температура' in feature_list):
-            output = output + 'Температура воздуха: {}'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_temp']) + m_symbol
-            return output
-        elif('влажность' in feature_list):
-            output = output + 'Влажность воздуха: {} %'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_humidity'])
-            return output
-        elif('скорость' in feature_list or 'ветер' in feature_list):
-            output = output + 'Скорость ветра: {} м/сек'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_windspeed'])
-            return output
-    # except:
-    #     print('В работе программы возникли неполадки, введите запрос еще раз.')
+            if('погода' in feature_list or not feature_list):
+                output = output + 'Погода в: {}, {}:\n'.format(data['city'], data['country'])
+                output = output + str(data[day_dict][time_of_the_day_array[time_of_the_day] + '_temp']) + m_symbol + ' ' + data[day_dict][time_of_the_day_array[time_of_the_day] + '_weather'] + '\n'
+                output = output + 'Влажность воздуха: {} %\n'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_humidity'])
+                output = output + 'Скорость ветра: {} м/сек'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_windspeed'])
+                return output
+            elif('температура' in feature_list):
+                output = output + 'Температура воздуха: {}'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_temp']) + m_symbol
+                return output
+            elif('влажность' in feature_list):
+                output = output + 'Влажность воздуха: {} %'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_humidity'])
+                return output
+            elif('скорость' in feature_list or 'ветер' in feature_list):
+                output = output + 'Скорость ветра: {} м/сек'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_windspeed'])
+                return output
+    except:
+        print('В работе программы возникли неполадки, введите запрос еще раз.')

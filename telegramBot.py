@@ -3,10 +3,11 @@ import random
 from classify import *
 from translate import *
 import telebot
+from speech_to_text import *
 
 
 
-token = '519406193:AAFBzLaoLqvt81lG1A6hpTWBoJQVCWrMo9M'
+token = '655665228:AAGfa7LvWw46UzckGEMbyG3HZ4-XTo3nQ0E'
 answer = ["Привет!", "Здравствуй", "Приветствую!", "Здравствуйте"]
 answer_greetings_mood = ["Привет. Пойдет. Как у тебя?", "Здравствуй. Хорошо. Как у тебя?", "Приветствую. Нормально. Как у тебя?", "Здарова. Неплохо. Как у тебя?", "Здравствуйте. Все отлично. Как у вас?"]
 answer_mood = ["Замечательно, спасибо!!", "Хорошо. Как у тебя дела?", "Все нормально. Как у вас?", "Все отлично. Как у тебя?", "Пойдет. А у тебя?"]
@@ -15,34 +16,43 @@ answer_action = ['Разговариваю с тобой', 'Существую',
 answer_status_good = ['Рада слышать', 'Круто', 'Отлично!', 'Я очень рада :)']
 command = '1'
 bot = telebot.TeleBot(token)
-@bot.message_handler(content_types=["text"])
-def bot0(message):
-    # while True:
+print("Программа запущена")
+
+@bot.message_handler(content_types=["text","voice"])
+def handle_message(message):
+    if message.text:
         command = message.text
-        # if command == '-1':
-        #     break
+    else:
+        file_info = bot.get_file(message.voice.file_id)
+        file = requests.get('https://api.telegram.org/file/bot{0}/{1}'.format(token, file_info.file_path))
+        try:
+            command = speech_to_text(bytes=file.content)
+        except:
+            bot.send_message(message.chat.id, 'Распознование голоса не удалось, попробуйте снова')
+    try:
         predicted_class = classify(command)
         if(predicted_class == 'weather'):
-                get_weather(command)
-                bot.send_message(message.chat.id, output)
+            output = get_weather(command)
+            bot.send_message(message.chat.id, output)
         elif(predicted_class == 'greetings'):
-                bot.send_message(message.chat.id, answer[random.randint(0,(len(answer)-1))])
+            bot.send_message(message.chat.id, answer[random.randint(0,(len(answer)-1))])
         elif(predicted_class == 'greetings_mood'):
-                bot.send_message(message.chat.id, answer_greetings_mood[random.randint(0,(len(answer_greetings_mood)-1))])
+            bot.send_message(message.chat.id, answer_greetings_mood[random.randint(0,(len(answer_greetings_mood)-1))])
         elif(predicted_class == 'mood'):
-                bot.send_message(message.chat.id, answer_mood[random.randint(0,(len(answer_mood)-1))])
+            bot.send_message(message.chat.id, answer_mood[random.randint(0,(len(answer_mood)-1))])
         elif(predicted_class == 'philosophy'):
-                bot.send_message(message.chat.id, answer_philosophy[0]) 
+            bot.send_message(message.chat.id, answer_philosophy[0]) 
         elif(predicted_class == 'action'):
-                bot.send_message(message.chat.id, answer_action[random.randint(0,(len(answer_action)-1))])
+            bot.send_message(message.chat.id, answer_action[random.randint(0,(len(answer_action)-1))])
         elif(predicted_class == 'status_good'):
-                bot.send_message(message.chat.id, answer_status_good[random.randint(0,(len(answer_status_good)-1))])
+            bot.send_message(message.chat.id, answer_status_good[random.randint(0,(len(answer_status_good)-1))])
         # elif(predicted_class == 'translate'):
         #         bot.send_message(message.chat.id, print(translate(command)))
         else:
-                bot.send_message(message.chat.id, 'Извините, я вас не понимаю, но я учусь :3')
+            bot.send_message(message.chat.id, 'Извините, я вас не понимаю, но я учусь :3')
+    except:
+        pass
 
+        
 if __name__ == '__main__':
     bot.polling(none_stop=True)
-
-print('The bot has started')
