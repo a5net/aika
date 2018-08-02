@@ -4,9 +4,11 @@ import json
 import re
 import os
 from pathlib import Path
+
 #print(os.listdir("../input"))
 
 import nltk
+nltk.download('punkt')
 from nltk.stem.snowball import RussianStemmer
 
 
