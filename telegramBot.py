@@ -9,7 +9,7 @@ import requests
 
 
 token = '655665228:AAGfa7LvWw46UzckGEMbyG3HZ4-XTo3nQ0E'
-answer = ["Привет!", "Здравствуй", "Приветствую!", "Здравствуйте"]
+answer_greetings = ["Привет!", "Здравствуй", "Приветствую!", "Здравствуйте"]
 answer_greetings_mood = ["Привет. Пойдет. Как у тебя?", "Здравствуй. Хорошо. Как у тебя?", "Приветствую. Нормально. Как у тебя?", "Здарова. Неплохо. Как у тебя?", "Здравствуйте. Все отлично. Как у вас?"]
 answer_mood = ["Замечательно, спасибо!!", "Хорошо. Как у тебя дела?", "Все нормально. Как у вас?", "Все отлично. Как у тебя?", "Пойдет. А у тебя?"]
 answer_philosophy = ['42']
@@ -37,7 +37,7 @@ def handle_message(message):
                 output, speech = get_weather(command)
                 bot.send_message(message.chat.id, output)
             elif(predicted_class == 'greetings'):
-                bot.send_message(message.chat.id, answer[random.randint(0,(len(answer)-1))])
+                bot.send_message(message.chat.id, answer_greetings[random.randint(0,(len(answer_greetings)-1))])
             elif(predicted_class == 'greetings_mood'):
                 bot.send_message(message.chat.id, answer_greetings_mood[random.randint(0,(len(answer_greetings_mood)-1))])
             elif(predicted_class == 'mood'):
