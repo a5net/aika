@@ -57,10 +57,10 @@ def handle_message(message):
     else:
         file_info = bot.get_file(message.voice.file_id)
         file = requests.get('https://api.telegram.org/file/bot{0}/{1}'.format(token, file_info.file_path))
-        try:
-            command = speech_to_text(bytes=file.content)
-        except:
-            bot.send_message(message.chat.id, 'Распознование голоса не удалось, попробуйте снова')
+        # try:
+        command = speech_to_text(bytes=file.content)
+        # except:
+            # bot.send_message(message.chat.id, 'Распознование голоса не удалось, попробуйте снова')
         try:    
             predicted_class = classify(command)
             if(predicted_class == 'weather'):
