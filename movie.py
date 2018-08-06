@@ -3,6 +3,7 @@ import urllib.parse
 import json
 import re
 from cachetools import cached, TTLCache
+import nltk
 from nltk.corpus import stopwords
 from num2words import num2words
 from transliterate import translit, get_available_language_codes
@@ -50,7 +51,7 @@ def extract_city_id(command):
 
     return city_id
 
-def get_city_dict:
+def get_city_dict():
     city_list = dict()
     data = data_fetch(url_api)
     for i in data:
