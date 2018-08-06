@@ -8,7 +8,7 @@ from num2words import num2words
 from transliterate import translit, get_available_language_codes
 
 
-url_api = 'http://localhost:3000/api/v1/cities'
+url_api = 'http://localhost:3000/api/v1/cities/'
 def url_builder_geocoding(city):
     user_api = 'AIzaSyB43dwBw0qIRcKVoMvCYuCh4bHEZjS0bG0'
     full_api_url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + urllib.parse.quote_plus(city) +'&language=ru&components=administrative_area:1&key=' + user_api
@@ -139,4 +139,13 @@ def get_ticket_url(cinema_name, city_id):
 
     return url
 
-print(extract_city_id('Афиша в Астане'))
+def movie_description(city_id, movie_name):
+    url = url_api + str(city_id) + '/movies'
+    data = data_fetch(url)
+    movie_description = 0
+    for i in data:
+        if(i.get('title') == movie_name):
+            movie_description = i.get('description')
+            break
+    
+    return movie_description
