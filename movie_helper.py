@@ -2,7 +2,7 @@ import telebot
 from telebot import types
 import time
 
-API_TOKEN = '655665228:AAGfa7LvWw46UzckGEMbyG3HZ4-XTo3nQ0E'
+API_TOKEN = '184429324:AAG4AbqtubyehDiFqgKItv4JE_bG0Dz5FTc'
 bot = telebot.TeleBot(API_TOKEN)
 
 
@@ -40,7 +40,7 @@ def process_movie_name(message):
         chat_id = message.chat.id
         user = user_dict[chat_id]
         user.movie = message.text
-        msg = bot.reply_to(message, "Tell me cinema name")        )
+        msg = bot.reply_to(message, "Tell me cinema name")       
         bot.register_next_step_handler(msg, process_cinema_name)
     except Exception as e:
         pass
