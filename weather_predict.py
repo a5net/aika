@@ -21,7 +21,7 @@ def time_converter(time):
     return converted_time
 
 def url_builder_geocoding(city):
-    user_api = 'AIzaSyD7f6PKr81BsUX0FmB7PzaeSbvwjjnr-dI'
+    user_api = 'AIzaSyB43dwBw0qIRcKVoMvCYuCh4bHEZjS0bG0'
     full_api_url = 'https://maps.googleapis.com/maps/api/geocode/json?&address=' + urllib.parse.quote_plus(city) +'&components=administrative_area:1&key=' + user_api
     return full_api_url
 
