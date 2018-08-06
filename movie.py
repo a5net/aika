@@ -24,6 +24,7 @@ def data_fetch(full_api_url):
 def extract_city_id(command):
     fname = 'regex_cinema.txt'
     out = []
+    city = ''
     city_id = 0
     with open(fname, encoding='cp1251') as f:
         regex = f.readlines()
@@ -48,6 +49,23 @@ def extract_city_id(command):
             city_id = i.get('id')
 
     return city_id
+
+def get_city_list:
+    city_list = []
+    data = data_fetch(url_api)
+    for i in data:
+        city_list.append(data.get('name'))
+    return city_list
+
+def city_id_by_name(city_name):
+    city_id = 0
+    data = data_fetch(url_api)
+    for i in data:
+        if(i.get('name') == city):
+            city_id = i.get('id')
+
+    return city_id
+
 
 def get_cinema_list(city_id):
     url = url_api + str(city_id)
@@ -149,3 +167,5 @@ def movie_description(city_id, movie_name):
             break
     
     return movie_description
+
+print(extract_city_id('афиша'))
