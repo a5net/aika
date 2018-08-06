@@ -50,22 +50,12 @@ def extract_city_id(command):
 
     return city_id
 
-def get_city_list:
-    city_list = []
+def get_city_dict:
+    city_list = dict()
     data = data_fetch(url_api)
     for i in data:
-        city_list.append(data.get('name'))
+        city_list[i.get('name')] = i.get('id')
     return city_list
-
-def city_id_by_name(city_name):
-    city_id = 0
-    data = data_fetch(url_api)
-    for i in data:
-        if(i.get('name') == city):
-            city_id = i.get('id')
-
-    return city_id
-
 
 def get_cinema_list(city_id):
     url = url_api + str(city_id)
