@@ -10,7 +10,7 @@ from telebot import types
 
 
 
-token = '655665228:AAGfa7LvWw46UzckGEMbyG3HZ4-XTo3nQ0E'
+token = '695195394:AAEsxvvCgKTClHNKL2ElIYbN_iBZYhHki-U'
 answer_greetings = ["Привет!", "Здравствуй", "Приветствую!", "Здравствуйте"]
 answer_greetings_mood = ["Привет. Пойдет. Как у тебя?", "Здравствуй. Хорошо. Как у тебя?", "Приветствую. Нормально. Как у тебя?", "Здарова. Неплохо. Как у тебя?", "Здравствуйте. Все отлично. Как у вас?"]
 answer_mood = ["Замечательно, спасибо!!", "Хорошо. Как у тебя дела?", "Все нормально. Как у вас?", "Все отлично. Как у тебя?", "Пойдет. А у тебя?"]
@@ -29,12 +29,12 @@ help_text = ('''    Данный бот имеет следующий списо
 
 command = '1'
 bot = telebot.TeleBot(token)
-emojize(KEYBOARD = {
+KEYBOARD = {
     'CINEMA': ':movie camera: Кино',
     'WEATHER': ':earth_asia: Погода',
     'HELP': ':book: Помощь',
     'COMPANION': ':speech_balloon: Собеседник '
-})
+}
 
 markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
 markup.row(KEYBOARD['CINEMA'], KEYBOARD['WEATHER'])

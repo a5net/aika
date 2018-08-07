@@ -9,16 +9,67 @@ import re
 from cachetools import cached, TTLCache
 import calendar
 from nltk.corpus import stopwords
-import emoji
+from emoji import emojize
 
 stemmer = RussianStemmer()
 cache = TTLCache(maxsize=500, ttl=1800)
 
-def time_converter(time):
+Earth = emojize(":earth_asia:", use_aliases=True)
+Drops = emojize(":sweat_drops:", use_aliases=True)
+Fog = emojize(":fog:", use_aliases=True)
+Thermometer = emojize(":thermometer:", use_aliases=True)
+
+
+def get_date(time):
     converted_time = datetime.datetime.fromtimestamp(
         int(time)
-    ).strftime('%I:%M %p')
+    ).strftime('%Y-%m-%d')
     return converted_time
+
+def get_time_hour(time):
+    converted_time = datetime.datetime.fromtimestamp(
+        int(time)
+    ).strftime('%H')
+    return converted_time
+
+def getEmoji(weather_id):
+    # Openweathermap Weather codes and corressponding emojis
+    thunderstorm = u'\U0001F4A8'  # Code: 200's, 900, 901, 902, 905
+    drizzle = u'\U0001F4A7'  # Code: 300's
+    rain = u'\U00002614'  # Code: 500's
+    snowflake = u'\U00002744'  # Code: 600's snowflake
+    snowman = u'\U000026C4'  # Code: 600's snowman, 903, 906
+    atmosphere = u'\U0001F301'  # Code: 700's foogy
+    clear_sky = u'\U00002600'  # Code: 800 clear sky
+    few_clouds = u'\U000026C5'  # Code: 801 sun behind clouds
+    clouds = u'\U00002601'  # Code: 802-803-804 clouds general
+    hot = u'\U0001F525'  # Code: 904
+    default_emoji = u'\U0001F300'
+
+    if weather_id:
+        if str(weather_id)[0] == '2' or weather_id in (900, 901, 902, 905):
+            return thunderstorm
+        elif str(weather_id)[0] == '3':
+            return drizzle
+        elif str(weather_id)[0] == '5':
+            return rain
+        elif str(weather_id)[0] == '6' or weather_id in (903, 906):
+            return snowflake + ' ' + snowman
+        elif str(weather_id)[0] == '7':
+            return atmosphere
+        elif weather_id == 800:
+            return clear_sky
+        elif weather_id == 801:
+            return few_clouds
+        elif weather_id == 802 or weather_id == 803 or weather_id == 804:
+            return clouds
+        elif weather_id == 904:
+            return hot
+        else:
+            return default_emoji
+
+    else:
+        return default_emoji
 
 def url_builder_geocoding(city):
     user_api = 'AIzaSyB43dwBw0qIRcKVoMvCYuCh4bHEZjS0bG0'
@@ -41,94 +92,86 @@ def data_fetch(full_api_url):
     return raw_api_dict
 
 def data_organizer_forecast(raw_api_dict):
+    s = 0
+    for i in range(len(raw_api_dict.get('list'))):
+        s = i
+        h = get_time_hour(raw_api_dict['list'][i].get('dt'))
+        if(h == '06'):
+            break
     data = dict(
         city = raw_api_dict.get('city').get('name'),
         country = raw_api_dict.get('city').get('country'),
-        day_0 = dict(
-            morning_temp = raw_api_dict.get('list')[0].get('main').get('temp'),
-            afternoon_temp = raw_api_dict.get('list')[1].get('main').get('temp'),
-            evening_temp = raw_api_dict.get('list')[3].get('main').get('temp'),
-            morning_weather = raw_api_dict.get('list')[0].get('weather')[0].get('description'),
-            afternoon_weather = raw_api_dict.get('list')[1].get('weather')[0].get('description'),
-            evening_weather = raw_api_dict.get('list')[3].get('weather')[0].get('description'),
-            morning_windspeed = raw_api_dict.get('list')[0].get('wind').get('speed'),
-            afternoon_windspeed = raw_api_dict.get('list')[1].get('wind').get('speed'),
-            evening_windspeed = raw_api_dict.get('list')[3].get('wind').get('speed'),
-            morning_humidity = raw_api_dict.get('list')[0].get('main').get('humidity'),
-            afternoon_humidity = raw_api_dict.get('list')[1].get('main').get('humidity'),
-            evening_humidity = raw_api_dict.get('list')[3].get('main').get('humidity'),
-            ),
         day_1 = dict(
-            night_temp = raw_api_dict.get('list')[5].get('main').get('temp'),
-            morning_temp = raw_api_dict.get('list')[8].get('main').get('temp'),
-            afternoon_temp = raw_api_dict.get('list')[9].get('main').get('temp'),
-            evening_temp = raw_api_dict.get('list')[11].get('main').get('temp'),
-            night_weather = raw_api_dict.get('list')[5].get('weather')[0].get('description'),
-            morning_weather = raw_api_dict.get('list')[8].get('weather')[0].get('description'),
-            afternoon_weather = raw_api_dict.get('list')[9].get('weather')[0].get('description'),
-            evening_weather = raw_api_dict.get('list')[11].get('weather')[0].get('description'),
-            night_windspeed = raw_api_dict.get('list')[5].get('wind').get('speed'),
-            morning_windspeed = raw_api_dict.get('list')[8].get('wind').get('speed'),
-            afternoon_windspeed = raw_api_dict.get('list')[9].get('wind').get('speed'),
-            evening_windspeed = raw_api_dict.get('list')[11].get('wind').get('speed'),
-            night_humidity = raw_api_dict.get('list')[5].get('main').get('humidity'),
-            morning_humidity = raw_api_dict.get('list')[8].get('main').get('humidity'),
-            afternoon_humidity = raw_api_dict.get('list')[9].get('main').get('humidity'),
-            evening_humidity = raw_api_dict.get('list')[11].get('main').get('humidity'),
+            night_temp = raw_api_dict.get('list')[s].get('main').get('temp'),
+            morning_temp = raw_api_dict.get('list')[s+3].get('main').get('temp'),
+            afternoon_temp = raw_api_dict.get('list')[s+4].get('main').get('temp'),
+            evening_temp = raw_api_dict.get('list')[s+6].get('main').get('temp'),
+            night_weather = raw_api_dict.get('list')[s].get('weather'),
+            morning_weather = raw_api_dict.get('list')[s+3].get('weather'),
+            afternoon_weather = raw_api_dict.get('list')[s+4].get('weather'),
+            evening_weather = raw_api_dict.get('list')[s+6].get('weather'),
+            night_windspeed = raw_api_dict.get('list')[s].get('wind').get('speed'),
+            morning_windspeed = raw_api_dict.get('list')[s+3].get('wind').get('speed'),
+            afternoon_windspeed = raw_api_dict.get('list')[s+4].get('wind').get('speed'),
+            evening_windspeed = raw_api_dict.get('list')[s+6].get('wind').get('speed'),
+            night_humidity = raw_api_dict.get('list')[s].get('main').get('humidity'),
+            morning_humidity = raw_api_dict.get('list')[s+3].get('main').get('humidity'),
+            afternoon_humidity = raw_api_dict.get('list')[s+4].get('main').get('humidity'),
+            evening_humidity = raw_api_dict.get('list')[s+6].get('main').get('humidity'),
             ),
         day_2 = dict(
-            night_temp = raw_api_dict.get('list')[13].get('main').get('temp'),
-            morning_temp = raw_api_dict.get('list')[16].get('main').get('temp'),
-            afternoon_temp = raw_api_dict.get('list')[17].get('main').get('temp'),
-            evening_temp = raw_api_dict.get('list')[19].get('main').get('temp'),
-            night_weather = raw_api_dict.get('list')[13].get('weather')[0].get('description'),
-            morning_weather = raw_api_dict.get('list')[16].get('weather')[0].get('description'),
-            afternoon_weather = raw_api_dict.get('list')[17].get('weather')[0].get('description'),
-            evening_weather = raw_api_dict.get('list')[19].get('weather')[0].get('description'),
-            night_windspeed = raw_api_dict.get('list')[13].get('wind').get('speed'),
-            morning_windspeed = raw_api_dict.get('list')[16].get('wind').get('speed'),
-            afternoon_windspeed = raw_api_dict.get('list')[17].get('wind').get('speed'),
-            evening_windspeed = raw_api_dict.get('list')[19].get('wind').get('speed'),
-            night_humidity = raw_api_dict.get('list')[13].get('main').get('humidity'),
-            morning_humidity = raw_api_dict.get('list')[16].get('main').get('humidity'),
-            afternoon_humidity = raw_api_dict.get('list')[17].get('main').get('humidity'),
-            evening_humidity = raw_api_dict.get('list')[19].get('main').get('humidity'),
+            night_temp = raw_api_dict.get('list')[s+8].get('main').get('temp'),
+            morning_temp = raw_api_dict.get('list')[s+11].get('main').get('temp'),
+            afternoon_temp = raw_api_dict.get('list')[s+12].get('main').get('temp'),
+            evening_temp = raw_api_dict.get('list')[s+14].get('main').get('temp'),
+            night_weather = raw_api_dict.get('list')[s+8].get('weather'),
+            morning_weather = raw_api_dict.get('list')[s+11].get('weather'),
+            afternoon_weather = raw_api_dict.get('list')[s+12].get('weather'),
+            evening_weather = raw_api_dict.get('list')[s+14].get('weather'),
+            night_windspeed = raw_api_dict.get('list')[s+8].get('wind').get('speed'),
+            morning_windspeed = raw_api_dict.get('list')[s+11].get('wind').get('speed'),
+            afternoon_windspeed = raw_api_dict.get('list')[s+12].get('wind').get('speed'),
+            evening_windspeed = raw_api_dict.get('list')[s+14].get('wind').get('speed'),
+            night_humidity = raw_api_dict.get('list')[s+8].get('main').get('humidity'),
+            morning_humidity = raw_api_dict.get('list')[s+11].get('main').get('humidity'),
+            afternoon_humidity = raw_api_dict.get('list')[s+12].get('main').get('humidity'),
+            evening_humidity = raw_api_dict.get('list')[s+14].get('main').get('humidity'),
             ),
         day_3 = dict(
-            night_temp = raw_api_dict.get('list')[21].get('main').get('temp'),
-            morning_temp = raw_api_dict.get('list')[24].get('main').get('temp'),
-            afternoon_temp = raw_api_dict.get('list')[25].get('main').get('temp'),
-            evening_temp = raw_api_dict.get('list')[27].get('main').get('temp'),
-            night_weather = raw_api_dict.get('list')[21].get('weather')[0].get('description'),
-            morning_weather = raw_api_dict.get('list')[24].get('weather')[0].get('description'),
-            afternoon_weather = raw_api_dict.get('list')[25].get('weather')[0].get('description'),
-            evening_weather = raw_api_dict.get('list')[27].get('weather')[0].get('description'),
-            night_windspeed = raw_api_dict.get('list')[21].get('wind').get('speed'),
-            morning_windspeed = raw_api_dict.get('list')[24].get('wind').get('speed'),
-            afternoon_windspeed = raw_api_dict.get('list')[25].get('wind').get('speed'),
-            evening_windspeed = raw_api_dict.get('list')[27].get('wind').get('speed'),
-            night_humidity = raw_api_dict.get('list')[21].get('main').get('humidity'),
-            morning_humidity = raw_api_dict.get('list')[24].get('main').get('humidity'),
-            afternoon_humidity = raw_api_dict.get('list')[25].get('main').get('humidity'),
-            evening_humidity = raw_api_dict.get('list')[27].get('main').get('humidity')
+            night_temp = raw_api_dict.get('list')[s+16].get('main').get('temp'),
+            morning_temp = raw_api_dict.get('list')[s+19].get('main').get('temp'),
+            afternoon_temp = raw_api_dict.get('list')[s+20].get('main').get('temp'),
+            evening_temp = raw_api_dict.get('list')[s+22].get('main').get('temp'),
+            night_weather = raw_api_dict.get('list')[s+16].get('weather'),
+            morning_weather = raw_api_dict.get('list')[s+19].get('weather'),
+            afternoon_weather = raw_api_dict.get('list')[s+20].get('weather'),
+            evening_weather = raw_api_dict.get('list')[s+22].get('weather'),
+            night_windspeed = raw_api_dict.get('list')[s+16].get('wind').get('speed'),
+            morning_windspeed = raw_api_dict.get('list')[s+19].get('wind').get('speed'),
+            afternoon_windspeed = raw_api_dict.get('list')[s+20].get('wind').get('speed'),
+            evening_windspeed = raw_api_dict.get('list')[s+22].get('wind').get('speed'),
+            night_humidity = raw_api_dict.get('list')[s+16].get('main').get('humidity'),
+            morning_humidity = raw_api_dict.get('list')[s+19].get('main').get('humidity'),
+            afternoon_humidity = raw_api_dict.get('list')[s+20].get('main').get('humidity'),
+            evening_humidity = raw_api_dict.get('list')[s+22].get('main').get('humidity')
             ),
         day_4 = dict(
-            night_temp = raw_api_dict.get('list')[29].get('main').get('temp'),
-            morning_temp = raw_api_dict.get('list')[32].get('main').get('temp'),
-            afternoon_temp = raw_api_dict.get('list')[33].get('main').get('temp'),
-            evening_temp = raw_api_dict.get('list')[35].get('main').get('temp'),
-            night_weather = raw_api_dict.get('list')[29].get('weather')[0].get('description'),
-            morning_weather = raw_api_dict.get('list')[32].get('weather')[0].get('description'),
-            afternoon_weather = raw_api_dict.get('list')[33].get('weather')[0].get('description'),
-            evening_weather = raw_api_dict.get('list')[35].get('weather')[0].get('description'),
-            night_windspeed = raw_api_dict.get('list')[29].get('wind').get('speed'),
-            morning_windspeed = raw_api_dict.get('list')[32].get('wind').get('speed'),
-            afternoon_windspeed = raw_api_dict.get('list')[33].get('wind').get('speed'),
-            evening_windspeed = raw_api_dict.get('list')[35].get('wind').get('speed'),
-            night_humidity = raw_api_dict.get('list')[29].get('main').get('humidity'),
-            morning_humidity = raw_api_dict.get('list')[32].get('main').get('humidity'),
-            afternoon_humidity = raw_api_dict.get('list')[33].get('main').get('humidity'),
-            evening_humidity = raw_api_dict.get('list')[35].get('main').get('humidity')
+            night_temp = raw_api_dict.get('list')[s+24].get('main').get('temp'),
+            morning_temp = raw_api_dict.get('list')[s+27].get('main').get('temp'),
+            afternoon_temp = raw_api_dict.get('list')[s+28].get('main').get('temp'),
+            evening_temp = raw_api_dict.get('list')[s+30].get('main').get('temp'),
+            night_weather = raw_api_dict.get('list')[s+24].get('weather'),
+            morning_weather = raw_api_dict.get('list')[s+27].get('weather'),
+            afternoon_weather = raw_api_dict.get('list')[s+28].get('weather'),
+            evening_weather = raw_api_dict.get('list')[s+30].get('weather'),
+            night_windspeed = raw_api_dict.get('list')[s+24].get('wind').get('speed'),
+            morning_windspeed = raw_api_dict.get('list')[s+27].get('wind').get('speed'),
+            afternoon_windspeed = raw_api_dict.get('list')[s+28].get('wind').get('speed'),
+            evening_windspeed = raw_api_dict.get('list')[s+30].get('wind').get('speed'),
+            night_humidity = raw_api_dict.get('list')[s+24].get('main').get('humidity'),
+            morning_humidity = raw_api_dict.get('list')[s+27].get('main').get('humidity'),
+            afternoon_humidity = raw_api_dict.get('list')[s+28].get('main').get('humidity'),
+            evening_humidity = raw_api_dict.get('list')[s+30].get('main').get('humidity')
             )
         )
     return data
@@ -139,9 +182,8 @@ def data_organizer_current(raw_api_dict):
         country=raw_api_dict.get('sys').get('country'),
         temp=raw_api_dict.get('main').get('temp'),
         humidity=raw_api_dict.get('main').get('humidity'),
-        weather=raw_api_dict['weather'][0]['description'],
+        weather=raw_api_dict['weather'],
         wind=raw_api_dict.get('wind').get('speed'),
-        dt=time_converter(raw_api_dict.get('dt'))
     )
     return data
 
@@ -245,6 +287,7 @@ def extract_date_and_time(command):
         полдень = 2,
         полночь = 0,
         ночь = 0,
+        ночью = 0,
         утро = 1,
         обед = 2,
         вечер = 3
@@ -295,15 +338,15 @@ def extract_date_and_time(command):
         if(stemmer.stem(day_hour) in word_list):
             time_of_the_day = daytime[day_hour]        
 
-    return_array = [days_ahead, time_of_the_day]
+    return_array = [str(days_ahead), str(time_of_the_day)]
     return return_array
 
 def get_weather(command):
     command = replace_dates(command)
     output = ''
     speech = ''
-    days_ahead = 0
-    time_of_the_day = 2
+    days_ahead = '1'
+    time_of_the_day = '2'
     m_symbol = '\xb0' + 'C'
     translator = Translator()
     feature_list = extract_feature_list(command)
@@ -315,55 +358,55 @@ def get_weather(command):
         if((not date_and_time_array[0]) and (not date_and_time_array[1])):
             data = data_organizer_current(data_fetch(url_builder(city, 'weather')))
             if('погода' in feature_list or not feature_list):
-                output = output + 'Погода в: {}, {}: \n'.format(data['city'], data['country'])
-                output = output + str(data['temp']) + m_symbol + ' ' + data['weather'] + '\n'
-                output = output + 'Влажность воздуха: {} %\n'.format(data['humidity']) 
-                output = output + 'Скорость ветра: {} м/сек\n'.format(data['wind'])
+                output = output + Earth + 'Погода в: {}, {}: \n'.format(data['city'], data['country'])
+                output = output + Thermometer + str(data['temp']) + m_symbol + ' ' + getEmoji(data['weather'][0]['id']) + data['weather'][0]['description'] + '\n'
+                output = output + Drops + 'Влажность воздуха: {} %\n'.format(data['humidity']) 
+                output = output + Fog + 'Скорость ветра: {} м/сек\n'.format(data['wind'])
                 output = output + '-----------------------------------------------\n'
-                output = output + 'Последние обновления были получены с сервера: {}\n'.format(data['dt'])
-                speech = 'В городе {} {}, {} градусов по цельсию'.format(city, data['weather'], str(int(data['temp']))) 
+                speech = 'В городе {} {}, {} градусов по цельсию'.format(city, data['weather'][0]['description'], str(int(data['temp']))) 
                 return output, speech
             elif('температура' in feature_list):
-                output = output + 'Температура воздуха: {}'.format(data['temp']) + m_symbol
+                output = output + Thermometer + 'Температура воздуха: {}'.format(data['temp']) + m_symbol
                 speech = 'Температура воздуха в городе {} {} градусов по цельсию'.format(city, int(data['temp']))
                 return output, speech
             elif('влажность' in feature_list):
-                output = output + 'Влажность воздуха: {} %'.format(data['humidity'])
+                output = output + Drops +'Влажность воздуха: {} %'.format(data['humidity'])
                 speech = 'Влажность водуха в городе {} {} процентов'.format(city, int(data['humidity']))
                 return output, speech
             elif('скорость' in feature_list or 'ветер' in feature_list):
-                output = output + 'Скорость ветра: {} м/сек'.format(data['wind'])
+                output = output + Fog + 'Скорость ветра: {} м/сек'.format(data['wind'])
                 speech = 'Скорость ветра в городе {} {} метров в секунду'.format(city, data['wind'])
                 return output, speech
         else:
             data = data_organizer_forecast(data_fetch(url_builder(city, 'forecast')))
             if date_and_time_array[0]:
-                days_ahead = date_and_time_array[0]
-                if(days_ahead > 4):
+                if(date_and_time_array[0] != '0'):
+                    days_ahead = date_and_time_array[0]
+                if(int(days_ahead) > 4):
                     return('У нас имеется прогноз погоды на ближайшие четыре дня')
             if date_and_time_array[1]:
                 time_of_the_day = date_and_time_array[1]
-            day_dict = 'day_' + str(days_ahead)
+            day_dict = 'day_' + days_ahead
             time_of_the_day_array = ['night', 'morning', 'afternoon', 'evening']
 
             if('погода' in feature_list or not feature_list):
-                output = output + 'Погода в: {}, {}:\n'.format(data['city'], data['country'])
-                output = output + str('' + data[day_dict][time_of_the_day_array[time_of_the_day] + '_temp']) + m_symbol + ' ' + data[day_dict][time_of_the_day_array[time_of_the_day] + '_weather'] + '\n'
-                output = output + 'Влажность воздуха: {} %\n'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_humidity'])
-                output = output + 'Скорость ветра: {} м/сек'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_windspeed'])
-                speech = 'В городе {} {}, {} градусов по цельсию'.format(city, data[day_dict][time_of_the_day_array[time_of_the_day] + '_weather'], str(int(data[day_dict][time_of_the_day_array[time_of_the_day] + '_temp'])))
+                output = output + Earth + 'Погода в: {}, {}:\n'.format(data['city'], data['country'])
+                output = output + Thermometer + str(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_temp']) + m_symbol + ' ' + getEmoji(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_weather'][0]['id']) + data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_weather'][0]['description'] + '\n'
+                output = output + Drops + 'Влажность воздуха: {} %\n'.format(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_humidity'])
+                output = output + Fog + 'Скорость ветра: {} м/сек'.format(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_windspeed'])
+                speech = 'В городе {} {}, {} градусов по цельсию'.format(city, data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_weather'][0]['description'], str(int(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_temp'])))
                 return output, speech
             elif('температура' in feature_list):
-                output = output + 'Температура воздуха: {}'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_temp']) + m_symbol
-                speech = 'Температура воздуха в городе {} {} градусов по цельсию'.format(city, str(int(data[day_dict][time_of_the_day_array[time_of_the_day] + '_temp'])))
+                output = output + Thermometer + 'Температура воздуха: {}'.format(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_temp']) + m_symbol
+                speech = 'Температура воздуха в городе {} {} градусов по цельсию'.format(city, str(int(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_temp'])))
                 return output, speech
             elif('влажность' in feature_list):
-                output = output + 'Влажность воздуха: {} %'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_humidity'])
-                speech = 'Влажность водуха в городе {} {} процентов'.format(city, int(data[day_dict][time_of_the_day_array[time_of_the_day] + '_humidity']))
+                output = output + Drops + 'Влажность воздуха: {} %'.format(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_humidity'])
+                speech = 'Влажность водуха в городе {} {} процентов'.format(city, int(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_humidity']))
                 return output, speech
             elif('скорость' in feature_list or 'ветер' in feature_list):
-                output = output + 'Скорость ветра: {} м/сек'.format(data[day_dict][time_of_the_day_array[time_of_the_day] + '_windspeed'])
-                speech = 'Скорость ветра в городе {} {} метров в секунду'.format(city, data[day_dict][time_of_the_day_array[time_of_the_day] + '_windspeed'])
+                output = output + Fog + 'Скорость ветра: {} м/сек'.format(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_windspeed'])
+                speech = 'Скорость ветра в городе {} {} метров в секунду'.format(city, data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_windspeed'])
                 return output, speech
     except:
         print('В работе программы возникли неполадки, введите запрос еще раз.')
