@@ -79,7 +79,6 @@ def get_cinema_id(city_id, cinema_name):
     return cinema_id
 
 def get_movie_list(city_id):
-    city_id = extract_city_id(command)
     url = url_api + str(city_id) + '/movies'
     data = data_fetch(url)
     movie_list = []
@@ -148,15 +147,13 @@ def get_ticket_url(cinema_name, city_id):
 
     return url
 
-def movie_description(city_id, movie_name):
+def movie_description(city_id, movie_id):
     url = url_api + str(city_id) + '/movies'
     data = data_fetch(url)
     movie_description = 0
     for i in data:
-        if(i.get('title') == movie_name):
+        if(i.get('id') == movie_id):
             movie_description = i.get('description')
             break
     
     return movie_description
-
-print(extract_city_id('афиша'))
