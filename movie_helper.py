@@ -27,11 +27,11 @@ def show_city_name(message):
     if city_id == 0:
         user = User(message.chat.id)
         user_dict[message.chat.id] = user
-        markup = types.InlineKeyboardMarkup()
+        markup = types.ReplyKeyboardMarkup(resize_keyboard=true)
         city_list_name_movie = get_city_dict()
         city_names_movie = city_list_name_movie.keys()
         for x in city_names_movie:
-            b = types.InlineKeyboardButton(x)
+            b = types.KeyboardButton(x)
             markup.add(b)
         msg = bot.send_message(message.chat.id, 'Пожалуйста, выберите название города из списка', reply_markup=markup)
         bot.register_next_step_handler(msg, process_city_name)
@@ -39,10 +39,10 @@ def show_city_name(message):
         user = User(message.chat.id)
         user.city = city_id
         user_dict[message.chat.id] = user
-        markup = types.InlineKeyboardMarkup()
+        markup = types.ReplyKeyboardMarkup(resize_keyboard=true)
         movie_list = get_movie_list(city_id)
         for x in movie_list:
-            markup.add(types.InlineKeyboardButton(x))        
+            markup.add(types.KeyboardButton(x))        
         msg = bot.send_message(message.chat.id, 'Выберите название фильма', reply_markup=markup)
         bot.register_next_step_handler(msg, process_movie_name)
 
