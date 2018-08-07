@@ -64,7 +64,6 @@ def get_voice(message):
 def start_function(message):
     if message.text == KEYBOARD['HELP']:
         bot.send_message(message.chat.id, help_text)
-
     elif message.text == KEYBOARD['WEATHER']:
         def weather(message):
             if message.text:
@@ -76,7 +75,9 @@ def start_function(message):
                         bot.send_message(message.chat.id, output)
                     else:
                         bot.send_message(message.chat.id, 'Извините, я вас не понимаю, но я учусь :3')
-                else:
+                except:
+                    pass
+            else:
                 file_info = bot.get_file(message.voice.file_id)
                 file = requests.get('https://api.telegram.org/file/bot{0}/{1}'.format(token, file_info.file_path))
                 # try:
@@ -95,7 +96,9 @@ def start_function(message):
                         voice = get_voice(answer)
                         # bot.send_message(message.chat.id, answer)
                         bot.send_voice(message.chat.id, voice)
-    elif message.text = KEYBOARD['COMPANION']:
+                except:
+                    pass
+    elif message.text == KEYBOARD['COMPANION']:
         def handle_message(message):
             if message.text:
                 command = message.text
