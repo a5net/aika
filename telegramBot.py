@@ -15,6 +15,14 @@ answer_mood = ["Замечательно, спасибо!!", "Хорошо. Ка
 answer_philosophy = ['42']
 answer_action = ['Разговариваю с тобой', 'Существую', 'Тихо жду здесь пока у меня что-то спросят']
 answer_status_good = ['Рада слышать', 'Круто', 'Отлично!', 'Я очень рада :)']
+help_text = ('''    Данный бот умеет выполнять следующий список действий:
+
+    • Бот умеет давать прогноз погоды на ближайшие дни для ее активаций вы можете прописать обычный текст, например "Покажи мне прогноз погоды на сегодня в Астане"
+    • Бот в первую очередь представляет собой голосового помощника, с которым вы сможете вести обычный диалог с помощью чата либо с помощью голосовых сообщений, например, можете написать либо записать на ауди слово "Привет" и бот вас поприветствует
+    • ''')
+start_text = ('''Здравствуйте!
+        Я виртуальный помощник Айка. С моей помощью вы можете получить прогноз погоды на ближайшие дни, найти для себя сеанс в кино а также я просто умею разговаривать подробней обо каждой функций вы можете узнать по запросу /help''')
+
 command = '1'
 bot = telebot.TeleBot(token)
 print("Программа запущена")
@@ -36,6 +44,8 @@ def handle_message(message):
             if(predicted_class == 'weather'):
                 output, speech = get_weather(command)
                 bot.send_message(message.chat.id, output)
+            elif(command == '/start'):
+                bot.send_message(message.chat.id, start_text)
             elif(predicted_class == 'greetings'):
                 bot.send_message(message.chat.id, answer_greetings[random.randint(0,(len(answer_greetings)-1))])
             elif(predicted_class == 'greetings_mood'):
@@ -44,6 +54,8 @@ def handle_message(message):
                 bot.send_message(message.chat.id, answer_mood[random.randint(0,(len(answer_mood)-1))])
             elif(predicted_class == 'philosophy'):
                 bot.send_message(message.chat.id, answer_philosophy[0]) 
+            elif(predicted_class == 'help'):
+                bot.send_message(message.chat.id, help_text) 
             elif(predicted_class == 'action'):
                 bot.send_message(message.chat.id, answer_action[random.randint(0,(len(answer_action)-1))])
             elif(predicted_class == 'status_good'):
@@ -69,7 +81,7 @@ def handle_message(message):
                 bot.send_message(message.chat.id, output)
                 bot.send_voice(message.chat.id, voice)
             elif(predicted_class == 'greetings'):
-                answer = answer[random.randint(0,(len(answer)-1))]
+                answer = answer_greetings[random.randint(0,(len(answer_greetings)-1))]
                 voice = get_voice(answer)
                 # bot.send_message(message.chat.id, message)
                 bot.send_voice(message.chat.id, voice)
