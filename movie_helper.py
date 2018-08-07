@@ -95,7 +95,7 @@ def process_cinema_name(message):
         if(len(sessions_list) != 0):
             bot.send_message(chat_id, movie_description(user.city, user.movie_name))
             msg = bot.send_message(chat_id, 'Выберите сеанс', reply_markup=markup)
-            bot.register_next_step_handler(msg, get_link)
+            # bot.register_next_step_handler(msg, get_link)
         else:
             msg = bot.send_message(chat_id, 'К сожелению в данном кинотеатре не показывают ваш фильм, выберите другой')
         
