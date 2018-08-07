@@ -316,7 +316,7 @@ def get_weather(command):
             data = data_organizer_current(data_fetch(url_builder(city, 'weather')))
             if('погода' in feature_list or not feature_list):
                 output = output + 'Погода в: {}, {}: \n'.format(data['city'], data['country'])
-                output = output + str('' + data['temp']) + m_symbol + ' ' + data['weather'] + '\n'
+                output = output + str(data['temp']) + m_symbol + ' ' + data['weather'] + '\n'
                 output = output + 'Влажность воздуха: {} %\n'.format(data['humidity']) 
                 output = output + 'Скорость ветра: {} м/сек\n'.format(data['wind'])
                 output = output + '-----------------------------------------------\n'

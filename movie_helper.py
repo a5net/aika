@@ -100,12 +100,9 @@ def process_cinema_name(message):
             msg = bot.send_message(chat_id, 'К сожелению в данном кинотеатре не показывают ваш фильм, выберите другой')
         
     except Exception as e:
-        pass
+        pass    
 
-
-def  
-
-bot.enable_save_next_step_handlers(delay = 2)
+bot.enable_save_next_step_handlers(delay=2)
 
 bot.load_next_step_handlers()
 
