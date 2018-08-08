@@ -9,7 +9,7 @@ from num2words import num2words
 from transliterate import translit, get_available_language_codes
 
 
-url_api = 'http://localhost:3000/api/v1/cities/'
+url_api = 'http://10.101.20.243:3000/api/v1/cities/'
 def url_builder_geocoding(city):
     user_api = 'AIzaSyB43dwBw0qIRcKVoMvCYuCh4bHEZjS0bG0'
     full_api_url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + urllib.parse.quote_plus(city) +'&language=ru&components=administrative_area:1&key=' + user_api
@@ -138,7 +138,7 @@ def get_ticket_url(cinema_name, city_id):
     if('kinopark' in cinema_name_list):
         url = 'http://kinopark.kz/ru/shedule?interval=today&cinema=' + kinopark[cinema_name]
     else:
-        url = 'http://localhost:3000/api/v1/cities/' + str(city_id)
+        url = url_api + str(city_id)
         data = data_fetch(url)
         for i in data:
             if(i.get('name') == cinema_name):
