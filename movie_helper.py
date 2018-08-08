@@ -3,9 +3,9 @@ from telebot import types
 import time
 from movie import *
 
-#API_TOKEN = '184429324:AAG4AbqtubyehDiFqgKItv4JE_bG0Dz5FTc' это @GinetBot
-API_TOKEN = "695195394:AAEsxvvCgKTClHNKL2ElIYbN_iBZYhHki-U"
-bot = telebot.TeleBot(API_TOKEN)
+# #API_TOKEN = '184429324:AAG4AbqtubyehDiFqgKItv4JE_bG0Dz5FTc' это @GinetBot
+# API_TOKEN = "695195394:AAEsxvvCgKTClHNKL2ElIYbN_iBZYhHki-U"
+# bot = telebot.TeleBot(API_TOKEN)
 
 
 class User:
@@ -62,6 +62,8 @@ def draw_seesions_list(city_id, movie_id, cinema_id, cinema_name):
     markup.add(types.InlineKeyboardButton("Назад к выбору кинотеатра", callback_data="back_to_cinema"))
     return markup
 
+
+
 @bot.message_handler(commands=['movie'])
 def start_movie_helper(message):
     chat_id = message.chat.id
@@ -75,10 +77,13 @@ def start_movie_helper(message):
         markup = draw_movie_list(city_id)
         bot.send_message(chat_id, "Movie Bot", reply_markup=markup)
         user = User(chat_id)
+        user.city_id = city_id
+        user.cinema_name = city_dict_id_as_key[city_id]        
         user_dict[chat_id] = user
     
 @bot.callback_query_handler(func=lambda call: True)
 def message_query_handler(call):
+    print(call.data)
     raw_message = call.data.split()
     message_type = raw_message[0]
     message = ' '.join(raw_message[1:])
@@ -112,5 +117,19 @@ def message_query_handler(call):
         markup = draw_seesions_list(user.city_id, user.movie_id, user.cinema_id, user.cinema_name)
         user_dict[chat_id] = user
         bot.edit_message_text('А вот и сеансы', call.from_user.id, call.message.message_id, reply_markup=markup)
+    if(message_type == 'ignore'):
+        bot.answer_callback_query(call.id, text="")
 
-bot.polling(none_stop=True)
+@bot.message_handler(commands=['astana'])
+def start(message , text):
+    city_id = extract_city_id(text)
+    print(city_id)
+    markup = draw_movie_list(city_id)
+    chat_id = message.chat.id
+    bot.send_message(chat_id, "Какой фильм хотите посмотреть?", reply_markup=markup)
+    user = User(chat_id)
+    user.city_id = city_id
+    user.city_name = city_dict_id_as_key[city_id]        
+    user_dict[chat_id] = user
+
+#bot.polling(none_stop=True)
