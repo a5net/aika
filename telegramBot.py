@@ -8,7 +8,7 @@ import requests
 
 
 
-token = '655665228:AAGfa7LvWw46UzckGEMbyG3HZ4-XTo3nQ0E'
+token = '695195394:AAEsxvvCgKTClHNKL2ElIYbN_iBZYhHki-U'
 answer_greetings = ["Привет!", "Здравствуй", "Приветствую!", "Здравствуйте"]
 answer_greetings_mood = ["Привет. Пойдет. Как у тебя?", "Здравствуй. Хорошо. Как у тебя?", "Приветствую. Нормально. Как у тебя?", "Здарова. Неплохо. Как у тебя?", "Здравствуйте. Все отлично. Как у вас?"]
 answer_mood = ["Замечательно, спасибо!!", "Хорошо. Как у тебя дела?", "Все нормально. Как у вас?", "Все отлично. Как у тебя?", "Пойдет. А у тебя?"]
@@ -18,7 +18,7 @@ answer_status_good = ['Рада слышать', 'Круто', 'Отлично!'
 help_text = ('''    Данный бот умеет выполнять следующий список действий:
 
     • Бот умеет давать прогноз погоды на ближайшие дни для ее активаций вы можете прописать обычный текст. Например "Покажи мне прогноз погоды на сегодня в Астане"
-    • Бот умеет вести обычный диалог с помощью чата либо с помощью голосовых сообщений. Например, можете написать либо записать на ауди слово "Привет" и бот вас поприветствует
+    • Бот умеет вести обычный диалог с помощью чата либо с помощью голосовых сообщений. Например, можете написать либо записать на аудио слово "Привет" и бот вас поприветствует
     • Бот позволяет искать сеансы фильмов по подходящим вам параметрам для ее работы вы можете написать, например "афиши кино" или просто "фильмы" ''')
 start_text = ('''Здравствуйте!
         Я виртуальный помощник Айка. С моей помощью вы можете получить прогноз погоды на ближайшие дни, найти для себя сеанс в кино а также я просто умею разговаривать подробней обо каждой функций вы можете узнать по запросу /help''')
@@ -40,39 +40,38 @@ def handle_message(message):
     if message.text:
         command = message.text
         try:
-            predicted_class = classify(command)
-            if(predicted_class == 'weather'):
-                output, speech = get_weather(command)
-                bot.send_message(message.chat.id, output)
-            elif(command == '/start'):
+            if(command == '/start'):
                 bot.send_message(message.chat.id, start_text)
-            elif(predicted_class == 'greetings'):
-                bot.send_message(message.chat.id, answer_greetings[random.randint(0,(len(answer_greetings)-1))])
-            elif(predicted_class == 'greetings_mood'):
-                bot.send_message(message.chat.id, answer_greetings_mood[random.randint(0,(len(answer_greetings_mood)-1))])
-            elif(predicted_class == 'mood'):
-                bot.send_message(message.chat.id, answer_mood[random.randint(0,(len(answer_mood)-1))])
-            elif(predicted_class == 'philosophy'):
-                bot.send_message(message.chat.id, answer_philosophy[0]) 
-            elif(predicted_class == 'help'):
-                bot.send_message(message.chat.id, help_text) 
-            elif(predicted_class == 'action'):
-                bot.send_message(message.chat.id, answer_action[random.randint(0,(len(answer_action)-1))])
-            elif(predicted_class == 'status_good'):
-                bot.send_message(message.chat.id, answer_status_good[random.randint(0,(len(answer_status_good)-1))])
-            # elif(predicted_class == 'translate'):
-            #         bot.send_message(message.chat.id, print(translate(command)))
             else:
-                bot.send_message(message.chat.id, 'Извините, я вас не понимаю, но я учусь :3')
+                predicted_class = classify(command)
+                if(predicted_class == 'weather'):
+                    output, speech = get_weather(command)
+                    bot.send_message(message.chat.id, output)
+                elif(predicted_class == 'greetings'):
+                    bot.send_message(message.chat.id, answer_greetings[random.randint(0,(len(answer_greetings)-1))])
+                elif(predicted_class == 'greetings_mood'):
+                    bot.send_message(message.chat.id, answer_greetings_mood[random.randint(0,(len(answer_greetings_mood)-1))])
+                elif(predicted_class == 'mood'):
+                    bot.send_message(message.chat.id, answer_mood[random.randint(0,(len(answer_mood)-1))])
+                elif(predicted_class == 'philosophy'):
+                    bot.send_message(message.chat.id, answer_philosophy[0]) 
+                elif(predicted_class == 'help'):
+                    bot.send_message(message.chat.id, help_text) 
+                elif(predicted_class == 'action'):
+                    bot.send_message(message.chat.id, answer_action[random.randint(0,(len(answer_action)-1))])
+                elif(predicted_class == 'status_good'):
+                    bot.send_message(message.chat.id, answer_status_good[random.randint(0,(len(answer_status_good)-1))])
+                else:
+                    bot.send_message(message.chat.id, 'Извините, я вас не понимаю, но я учусь :3')
         except:
             pass
     else:
         file_info = bot.get_file(message.voice.file_id)
         file = requests.get('https://api.telegram.org/file/bot{0}/{1}'.format(token, file_info.file_path))
-        # try:
-        command = speech_to_text(bytes=file.content)
-        # except:
-            # bot.send_message(message.chat.id, 'Распознование голоса не удалось, попробуйте снова')
+        try:
+            command = speech_to_text(bytes=file.content)
+        except:
+            bot.send_message(message.chat.id, 'Распознование голоса не удалось, попробуйте снова')
         try:    
             predicted_class = classify(command)
             if(predicted_class == 'weather'):
@@ -110,8 +109,6 @@ def handle_message(message):
                 voice = get_voice(answer)
                 # bot.send_message(message.chat.id, answer)
                 bot.send_voice(message.chat.id, voice)
-            # elif(predicted_class == 'translate'):
-            #         bot.send_message(message.chat.id, print(translate(command)))
             else:
                 answer = 'Извините, я вас не понимаю, но я учусь :3'
                 voice = get_voice(answer)

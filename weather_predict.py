@@ -118,6 +118,7 @@ def data_organizer_forecast(raw_api_dict):
             morning_humidity = raw_api_dict.get('list')[s+3].get('main').get('humidity'),
             afternoon_humidity = raw_api_dict.get('list')[s+4].get('main').get('humidity'),
             evening_humidity = raw_api_dict.get('list')[s+6].get('main').get('humidity'),
+            date = get_date(raw_api_dict.get('list')[s].get('dt'))
             ),
         day_2 = dict(
             night_temp = raw_api_dict.get('list')[s+8].get('main').get('temp'),
@@ -136,6 +137,7 @@ def data_organizer_forecast(raw_api_dict):
             morning_humidity = raw_api_dict.get('list')[s+11].get('main').get('humidity'),
             afternoon_humidity = raw_api_dict.get('list')[s+12].get('main').get('humidity'),
             evening_humidity = raw_api_dict.get('list')[s+14].get('main').get('humidity'),
+            date = get_date(raw_api_dict.get('list')[s+8].get('dt'))
             ),
         day_3 = dict(
             night_temp = raw_api_dict.get('list')[s+16].get('main').get('temp'),
@@ -153,7 +155,8 @@ def data_organizer_forecast(raw_api_dict):
             night_humidity = raw_api_dict.get('list')[s+16].get('main').get('humidity'),
             morning_humidity = raw_api_dict.get('list')[s+19].get('main').get('humidity'),
             afternoon_humidity = raw_api_dict.get('list')[s+20].get('main').get('humidity'),
-            evening_humidity = raw_api_dict.get('list')[s+22].get('main').get('humidity')
+            evening_humidity = raw_api_dict.get('list')[s+22].get('main').get('humidity'),
+            date = get_date(raw_api_dict.get('list')[s+16].get('dt'))
             ),
         day_4 = dict(
             night_temp = raw_api_dict.get('list')[s+24].get('main').get('temp'),
@@ -171,7 +174,8 @@ def data_organizer_forecast(raw_api_dict):
             night_humidity = raw_api_dict.get('list')[s+24].get('main').get('humidity'),
             morning_humidity = raw_api_dict.get('list')[s+27].get('main').get('humidity'),
             afternoon_humidity = raw_api_dict.get('list')[s+28].get('main').get('humidity'),
-            evening_humidity = raw_api_dict.get('list')[s+30].get('main').get('humidity')
+            evening_humidity = raw_api_dict.get('list')[s+30].get('main').get('humidity'),
+            date = get_date(raw_api_dict.get('list')[s+24].get('dt'))
             )
         )
     return data
@@ -184,6 +188,7 @@ def data_organizer_current(raw_api_dict):
         humidity=raw_api_dict.get('main').get('humidity'),
         weather=raw_api_dict['weather'],
         wind=raw_api_dict.get('wind').get('speed'),
+        date = get_date(raw_api_dict.get('dt'))
     )
     return data
 
@@ -351,30 +356,27 @@ def get_weather(command):
     translator = Translator()
     feature_list = extract_feature_list(command)
     city = extract_city(command)
-    if(city == ''):
-        return('Не указано название города')
     date_and_time_array = extract_date_and_time(command)
     try:
         if((not date_and_time_array[0]) and (not date_and_time_array[1])):
             data = data_organizer_current(data_fetch(url_builder(city, 'weather')))
             if('погода' in feature_list or not feature_list):
-                output = output + Earth + 'Погода в: {}, {}: \n'.format(data['city'], data['country'])
+                output = output + Earth + 'Погода в: {}, {}: {} \n'.format(data['city'], data['country'], data['date'])
                 output = output + Thermometer + str(data['temp']) + m_symbol + ' ' + getEmoji(data['weather'][0]['id']) + data['weather'][0]['description'] + '\n'
                 output = output + Drops + 'Влажность воздуха: {} %\n'.format(data['humidity']) 
                 output = output + Fog + 'Скорость ветра: {} м/сек\n'.format(data['wind'])
-                output = output + '-----------------------------------------------\n'
                 speech = 'В городе {} {}, {} градусов по цельсию'.format(city, data['weather'][0]['description'], str(int(data['temp']))) 
                 return output, speech
             elif('температура' in feature_list):
-                output = output + Thermometer + 'Температура воздуха: {}'.format(data['temp']) + m_symbol
+                output = output + Thermometer + 'Температура воздуха на {}: {}'.format(data['date'], data['temp']) + m_symbol
                 speech = 'Температура воздуха в городе {} {} градусов по цельсию'.format(city, int(data['temp']))
                 return output, speech
             elif('влажность' in feature_list):
-                output = output + Drops +'Влажность воздуха: {} %'.format(data['humidity'])
+                output = output + Drops +'Влажность воздуха на {}: {} %'.format(data['date'], data['humidity'])
                 speech = 'Влажность водуха в городе {} {} процентов'.format(city, int(data['humidity']))
                 return output, speech
             elif('скорость' in feature_list or 'ветер' in feature_list):
-                output = output + Fog + 'Скорость ветра: {} м/сек'.format(data['wind'])
+                output = output + Fog + 'Скорость ветра на {}: {} м/сек'.format(data['date'], data['wind'])
                 speech = 'Скорость ветра в городе {} {} метров в секунду'.format(city, data['wind'])
                 return output, speech
         else:
@@ -383,30 +385,30 @@ def get_weather(command):
                 if(date_and_time_array[0] != '0'):
                     days_ahead = date_and_time_array[0]
                 if(int(days_ahead) > 4):
-                    return('У нас имеется прогноз погоды на ближайшие четыре дня')
+                    return 'У нас имеется прогноз погоды на ближайшие четыре дня', 'У нас имеется прогноз погоды на ближайшие четыре дня'
             if date_and_time_array[1]:
                 time_of_the_day = date_and_time_array[1]
             day_dict = 'day_' + days_ahead
             time_of_the_day_array = ['night', 'morning', 'afternoon', 'evening']
 
             if('погода' in feature_list or not feature_list):
-                output = output + Earth + 'Погода в: {}, {}:\n'.format(data['city'], data['country'])
+                output = output + Earth + 'Погода в: {}:{} на {}\n'.format(data['city'], data['country'], data[day_dict]['date'])
                 output = output + Thermometer + str(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_temp']) + m_symbol + ' ' + getEmoji(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_weather'][0]['id']) + data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_weather'][0]['description'] + '\n'
                 output = output + Drops + 'Влажность воздуха: {} %\n'.format(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_humidity'])
                 output = output + Fog + 'Скорость ветра: {} м/сек'.format(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_windspeed'])
-                speech = 'В городе {} {}, {} градусов по цельсию'.format(city, data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_weather'][0]['description'], str(int(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_temp'])))
+                speech = 'В городе {} будет {}, {} градусов по цельсию'.format(city, data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_weather'][0]['description'], str(int(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_temp'])))
                 return output, speech
             elif('температура' in feature_list):
-                output = output + Thermometer + 'Температура воздуха: {}'.format(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_temp']) + m_symbol
-                speech = 'Температура воздуха в городе {} {} градусов по цельсию'.format(city, str(int(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_temp'])))
+                output = output + Thermometer + 'Температура воздуха на {}: {}'.format(data[day_dict]['date'], data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_temp']) + m_symbol
+                speech = 'Температура воздуха в городе {} будет {} градусов по цельсию'.format(city, str(int(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_temp'])))
                 return output, speech
             elif('влажность' in feature_list):
-                output = output + Drops + 'Влажность воздуха: {} %'.format(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_humidity'])
-                speech = 'Влажность водуха в городе {} {} процентов'.format(city, int(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_humidity']))
+                output = output + Drops + 'Влажность воздуха на {} : {} %'.format(data[day_dict]['date'], data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_humidity'])
+                speech = 'Влажность водуха в городе {} будет {} процентов'.format(city, int(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_humidity']))
                 return output, speech
             elif('скорость' in feature_list or 'ветер' in feature_list):
-                output = output + Fog + 'Скорость ветра: {} м/сек'.format(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_windspeed'])
-                speech = 'Скорость ветра в городе {} {} метров в секунду'.format(city, data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_windspeed'])
+                output = output + Fog + 'Скорость ветра на {} : {} м/сек'.format(data[day_dict]['date'], data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_windspeed'])
+                speech = 'Скорость ветра в городе {} будет {} метров в секунду'.format(city, data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_windspeed'])
                 return output, speech
     except:
-        print('В работе программы возникли неполадки, введите запрос еще раз.')
+        return 'В работе программы возникли неполадки, возможно не указано название города', 'В работе программы возникли неполадки, возможно не указано название города'

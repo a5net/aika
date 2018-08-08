@@ -96,3 +96,5 @@ def message_query_handler(call):
         user.Cinema_id = get_cinema_id(user.city_id, user.cinema_name)
         markup = draw_seesions_list(user.city_id, user.movie_id, user.cinema_id, user.cinema_name)
         bot.edit_message_text('Movie Bot', call.from_user.id, call.message.message_id, reply_markup=markup)
+
+bot.polling(none_stop=True)
