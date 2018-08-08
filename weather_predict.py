@@ -21,16 +21,36 @@ Thermometer = emojize(":thermometer:", use_aliases=True)
 
 
 def get_date(time):
+    date = time.split()[0]
+    months = {'1':'Января', '2':'Февраля', '3':'Марта', '4':'Апреля', '5':'Мая', '6':'Июня', '7':'Июля', '8':'Августа', '9':'Сентября', '10':'Октября', '11':'Ноября', '12':'Декабря'}
+    
+    return date.split('-')[2] + ' ' + months[str(date.split('-')[1])]
+
+def get_current_date(time):
     converted_time = datetime.datetime.fromtimestamp(
         int(time)
-    ).strftime('%Y-%m-%d')
+    ).strftime('%Y-%-m-%-d')
     return converted_time
+
+def forecast_current_date(time):
+    hour = get_time_hour(time)
+    new_time = time
+    if(hour < 6):
+        new_time = time - datetime.timedelta(1)
+    converted_time = datetime.datetime.fromtimestamp(
+        int(new_time)
+    ).strftime('%Y-%-m-%-d')
+
+    return converted_time
+
+
 
 def get_time_hour(time):
     converted_time = datetime.datetime.fromtimestamp(
         int(time)
-    ).strftime('%H')
-    return converted_time
+    ).strftime('%-H')
+
+    return int(converted_time)
 
 def getEmoji(weather_id):
     # Openweathermap Weather codes and corressponding emojis
@@ -96,7 +116,7 @@ def data_organizer_forecast(raw_api_dict):
     for i in range(len(raw_api_dict.get('list'))):
         s = i
         h = get_time_hour(raw_api_dict['list'][i].get('dt'))
-        if(h == '06'):
+        if(h == 6):
             break
     data = dict(
         city = raw_api_dict.get('city').get('name'),
@@ -118,7 +138,7 @@ def data_organizer_forecast(raw_api_dict):
             morning_humidity = raw_api_dict.get('list')[s+3].get('main').get('humidity'),
             afternoon_humidity = raw_api_dict.get('list')[s+4].get('main').get('humidity'),
             evening_humidity = raw_api_dict.get('list')[s+6].get('main').get('humidity'),
-            date = get_date(raw_api_dict.get('list')[s].get('dt'))
+            date = get_date(forecast_current_date(raw_api_dict.get('list')[s].get('dt')))
             ),
         day_2 = dict(
             night_temp = raw_api_dict.get('list')[s+8].get('main').get('temp'),
@@ -137,7 +157,7 @@ def data_organizer_forecast(raw_api_dict):
             morning_humidity = raw_api_dict.get('list')[s+11].get('main').get('humidity'),
             afternoon_humidity = raw_api_dict.get('list')[s+12].get('main').get('humidity'),
             evening_humidity = raw_api_dict.get('list')[s+14].get('main').get('humidity'),
-            date = get_date(raw_api_dict.get('list')[s+8].get('dt'))
+            date = get_date(forecast_current_date(raw_api_dict.get('list')[s+8].get('dt')))
             ),
         day_3 = dict(
             night_temp = raw_api_dict.get('list')[s+16].get('main').get('temp'),
@@ -156,7 +176,7 @@ def data_organizer_forecast(raw_api_dict):
             morning_humidity = raw_api_dict.get('list')[s+19].get('main').get('humidity'),
             afternoon_humidity = raw_api_dict.get('list')[s+20].get('main').get('humidity'),
             evening_humidity = raw_api_dict.get('list')[s+22].get('main').get('humidity'),
-            date = get_date(raw_api_dict.get('list')[s+16].get('dt'))
+            date = get_date(forecast_current_date(raw_api_dict.get('list')[s+16].get('dt')))
             ),
         day_4 = dict(
             night_temp = raw_api_dict.get('list')[s+24].get('main').get('temp'),
@@ -175,7 +195,7 @@ def data_organizer_forecast(raw_api_dict):
             morning_humidity = raw_api_dict.get('list')[s+27].get('main').get('humidity'),
             afternoon_humidity = raw_api_dict.get('list')[s+28].get('main').get('humidity'),
             evening_humidity = raw_api_dict.get('list')[s+30].get('main').get('humidity'),
-            date = get_date(raw_api_dict.get('list')[s+24].get('dt'))
+            date = get_date(forecast_current_date(raw_api_dict.get('list')[s+24].get('dt')))
             )
         )
     return data
@@ -188,7 +208,7 @@ def data_organizer_current(raw_api_dict):
         humidity=raw_api_dict.get('main').get('humidity'),
         weather=raw_api_dict['weather'],
         wind=raw_api_dict.get('wind').get('speed'),
-        date = get_date(raw_api_dict.get('dt'))
+        date = get_date(get_current_date(raw_api_dict.get('dt')))
     )
     return data
 
