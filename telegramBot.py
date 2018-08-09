@@ -6,6 +6,7 @@ import telebot
 from speech_to_text import *
 import requests
 from emoji import emojize
+from movie_helper import *
 
 
 token = '695195394:AAEsxvvCgKTClHNKL2ElIYbN_iBZYhHki-U'
@@ -55,6 +56,8 @@ def handle_message(message):
                 if(predicted_class == 'weather'):
                     output, speech = get_weather(command)
                     bot.send_message(message.chat.id, output)
+                elif(predicted_class == 'cinema'):
+                    movie_start(message, message.text)
                 elif(predicted_class == 'greetings'):
                     bot.send_message(message.chat.id, answer_greetings[random.randint(0,(len(answer_greetings)-1))])
                 elif(predicted_class == 'greetings_mood'):
@@ -87,6 +90,8 @@ def handle_message(message):
                 voice = get_voice(speech)
                 bot.send_message(message.chat.id, output)
                 bot.send_voice(message.chat.id, voice)
+            elif(predicted_class == 'cinema'):
+                movie_start(message, command)
             elif(predicted_class == 'greetings'):
                 answer = answer_greetings[random.randint(0,(len(answer_greetings)-1))]
                 voice = get_voice(answer)

@@ -3,9 +3,9 @@ from telebot import types
 import time
 from movie import *
 
-API_TOKEN = '184429324:AAG4AbqtubyehDiFqgKItv4JE_bG0Dz5FTc'# это @GinetBot
-# API_TOKEN = "695195394:AAEsxvvCgKTClHNKL2ElIYbN_iBZYhHki-U"
-bot = telebot.TeleBot(API_TOKEN)
+# API_TOKEN = '184429324:AAG4AbqtubyehDiFqgKItv4JE_bG0Dz5FTc'# это @GinetBot
+# # API_TOKEN = "695195394:AAEsxvvCgKTClHNKL2ElIYbN_iBZYhHki-U"
+# bot = telebot.TeleBot(API_TOKEN)
 
 
 class User:
@@ -123,8 +123,7 @@ def message_query_handler(call):
     if(message_type == 'ignore'):
         bot.answer_callback_query(call.id, text="")
 
-@bot.message_handler(commands=['astana'])
-def start(message , text):
+def movie_start(message , text):
     city_id = extract_city_id(text)
     print(city_id)
     markup = draw_movie_list(city_id)
@@ -135,4 +134,4 @@ def start(message , text):
     user.city_name = city_dict_id_as_key[city_id]        
     user_dict[chat_id] = user
 
-bot.polling(none_stop=True)
+# bot.polling(none_stop=True)
