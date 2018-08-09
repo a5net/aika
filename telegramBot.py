@@ -171,8 +171,16 @@ for x in city_list_for_movie:
 
 def draw_city_list():
     markup = types.InlineKeyboardMarkup()
+    row = []
+    i = 0
     for x in city_list_for_movie:
-        markup.add(types.InlineKeyboardButton(x, callback_data="movie " + str(city_dict_names_as_key[x])))
+        i += 1
+        if(i % 3 != 0):
+            row.append(types.InlineKeyboardButton(x, callback_data="movie " + str(city_dict_names_as_key[x])))
+        else:
+            markup.add(row)
+            row = []
+            row.append(types.InlineKeyboardButton(x, callback_data="movie " + str(city_dict_names_as_key[x])))
     return markup
 
 def draw_movie_list(city_id):
