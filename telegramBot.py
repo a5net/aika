@@ -77,7 +77,7 @@ def handle_message(message):
                     bot.send_message(message.chat.id, answer_status_good[random.randint(0,(len(answer_status_good)-1))])
                 elif(predicted_class == 'how_old'):
                     bot.send_message(message.chat.id, answer_how_old[random.randint(0,(len(answer_status_good)-1))])
-                elif(preidcted_class == 'who_are_you'):
+                elif(predicted_class == 'who_are_you'):
                     bot.send_message(message.chat.id, answer_who_are_you[random.randint(0,(len(answer_status_good)-1))])
                 else:
                     bot.send_message(message.chat.id, 'Извините, я вас не понимаю, но я учусь :3')
@@ -178,9 +178,11 @@ def draw_city_list():
         if(i % 3 != 0):
             row.append(types.InlineKeyboardButton(x, callback_data="movie " + str(city_dict_names_as_key[x])))
         else:
-            markup.add(row)
+            markup.row(*row)
             row = []
             row.append(types.InlineKeyboardButton(x, callback_data="movie " + str(city_dict_names_as_key[x])))
+    if(len(row) != 0):
+        markup.row(*row)
     return markup
 
 def draw_movie_list(city_id):
@@ -201,6 +203,7 @@ def draw_cinema_list(city_id):
 
 def draw_seesions_list(city_id, movie_id, cinema_id, cinema_name):
     markup = types.InlineKeyboardMarkup()
+    sessions_list = get_session_list(city_id, movie_id, cinema_id)
     for x in sessions_list:
         markup.add(types.InlineKeyboardButton(text=x, callback_data="ignore"))
     markup.add(types.InlineKeyboardButton(text="Купить билеты в " + cinema_name, url=get_ticket_url(cinema_name, city_id)))
