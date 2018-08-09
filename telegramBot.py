@@ -188,9 +188,18 @@ def draw_city_list():
 def draw_movie_list(city_id):
     markup = types.InlineKeyboardMarkup()
     movie_list = get_movie_list(city_id)
+    row = []
+    i = 0
     for x in movie_list:
-        markup.add(types.InlineKeyboardButton(text=x, callback_data="cinema " + str(get_movie_id(city_id, x))))
-    markup.add(types.InlineKeyboardButton("Назад к выбору города", callback_data="back_to_city"))
+        i += 1
+        if(i % 2 != 0):
+            row.append(types.InlineKeyboardButton(text=x, callback_data="cinema " + str(get_movie_id(city_id, x))))
+        else:
+            markup.row(*row)
+            row = []
+            row.append(types.InlineKeyboardButton(text=x, callback_data="cinema " + str(get_movie_id(city_id, x))))
+    if(len(row) != 0):
+        markup.row(*row)
     return markup
 
 def draw_cinema_list(city_id):
