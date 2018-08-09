@@ -19,10 +19,22 @@ Drops = emojize(":sweat_drops:", use_aliases=True)
 Fog = emojize(":fog:", use_aliases=True)
 Thermometer = emojize(":thermometer:", use_aliases=True)
 
+class color:
+   PURPLE = "\033[95m"
+   CYAN = "\033[96m"
+   DARKCYAN = "\033[36m"
+   BLUE = "\033[94m"
+   GREEN = "\033[92m"
+   YELLOW = "\033[93m"
+   RED = "\033[91m"
+   BOLD = "\033[1m"
+   UNDERLINE = "\033[4m"
+   END = "\033[0m"
+
 
 def get_date(time):
     date = time.split()[0]
-    months = {'1':'Января', '2':'Февраля', '3':'Марта', '4':'Апреля', '5':'Мая', '6':'Июня', '7':'Июля', '8':'Августа', '9':'Сентября', '10':'Октября', '11':'Ноября', '12':'Декабря'}
+    months = {'1':'января', '2':'февраля', '3':'марта', '4':'апреля', '5':'мая', '6':'июня', '7':'июля', '8':'августа', '9':'сентября', '10':'октября', '11':'ноября', '12':'декабря'}
     
     return date.split('-')[2] + ' ' + months[str(date.split('-')[1])]
 
@@ -30,6 +42,7 @@ def get_current_date(time):
     converted_time = datetime.datetime.fromtimestamp(
         int(time)
     ).strftime('%Y-%-m-%-d')
+
     return converted_time
 
 def forecast_current_date(time):
@@ -252,6 +265,7 @@ def replace_dates(command):
     for i in dates:
         if(stemmer.stem(i) in word_list):
             command = re.sub(i, str(dates[i]), command)
+
     return command
 
 def extract_feature_list(command):
@@ -263,6 +277,7 @@ def extract_feature_list(command):
     for i in feature_list:
         if stemmer.stem(i) in word_list:
             features.append(i)
+
     return features
 
 def extract_city(command):
@@ -278,12 +293,15 @@ def extract_city(command):
         if(result):
             match_list.append(result[0])
     match_list = [word for word in match_list if word.strip() not in stopwords.words('russian')]
+    print(match_list)
     for i in match_list:
         data = data_fetch(url_builder_geocoding(i))
         if(data.get('status') != 'ZERO_RESULTS'):
             out.append(data.get('results')[0].get('address_components')[0].get('long_name'))
+    print(out)
     if(out):
         city = out[0]
+
     return city
 
 def extract_date_and_time(command):
@@ -364,6 +382,7 @@ def extract_date_and_time(command):
             time_of_the_day = daytime[day_hour]        
 
     return_array = [str(days_ahead), str(time_of_the_day)]
+    
     return return_array
 
 def get_weather(command):
@@ -381,7 +400,8 @@ def get_weather(command):
         if((not date_and_time_array[0]) and (not date_and_time_array[1])):
             data = data_organizer_current(data_fetch(url_builder(city, 'weather')))
             if('погода' in feature_list or not feature_list):
-                output = output + Earth + 'Погода в: {}, {}: {} \n'.format(data['city'], data['country'], data['date'])
+                output = output + "::::::::::::"+ data['date'] + "::::::::::\n\n"
+                output = output + Earth + '{}, {} \n'.format(data['city'], data['country'])
                 output = output + Thermometer + str(data['temp']) + m_symbol + ' ' + getEmoji(data['weather'][0]['id']) + data['weather'][0]['description'] + '\n'
                 output = output + Drops + 'Влажность воздуха: {} %\n'.format(data['humidity']) 
                 output = output + Fog + 'Скорость ветра: {} м/сек\n'.format(data['wind'])
@@ -393,7 +413,7 @@ def get_weather(command):
                 return output, speech
             elif('влажность' in feature_list):
                 output = output + Drops +'Влажность воздуха на {}: {} %'.format(data['date'], data['humidity'])
-                speech = 'Влажность водуха в городе {} {} процентов'.format(city, int(data['humidity']))
+                speech = 'Влажность воздуха в городе {} {} процентов'.format(city, int(data['humidity']))
                 return output, speech
             elif('скорость' in feature_list or 'ветер' in feature_list):
                 output = output + Fog + 'Скорость ветра на {}: {} м/сек'.format(data['date'], data['wind'])
@@ -412,7 +432,7 @@ def get_weather(command):
             time_of_the_day_array = ['night', 'morning', 'afternoon', 'evening']
 
             if('погода' in feature_list or not feature_list):
-                output = output + Earth + 'Погода в: {}:{} на {}\n'.format(data['city'], data['country'], data[day_dict]['date'])
+                output = output + Earth + 'Погода в: {}:{}, {}\n'.format(data['city'], data['country'], data[day_dict]['date'])
                 output = output + Thermometer + str(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_temp']) + m_symbol + ' ' + getEmoji(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_weather'][0]['id']) + data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_weather'][0]['description'] + '\n'
                 output = output + Drops + 'Влажность воздуха: {} %\n'.format(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_humidity'])
                 output = output + Fog + 'Скорость ветра: {} м/сек'.format(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_windspeed'])
@@ -431,4 +451,4 @@ def get_weather(command):
                 speech = 'Скорость ветра в городе {} будет {} метров в секунду'.format(city, data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_windspeed'])
                 return output, speech
     except:
-        return 'В работе программы возникли неполадки, возможно не указано название города', 'В работе программы возникли неполадки, возможно не указано название города'
+        return 'Я не нашла название города. Повторите запрос с именем города', 'Я не нашла название города. Повторите запрос с именем города'
