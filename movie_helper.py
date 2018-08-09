@@ -48,7 +48,7 @@ def draw_cinema_list(city_id):
     cinema_list = get_cinema_list(city_id)
     markup = types.InlineKeyboardMarkup()
     for x in cinema_list:
-        markup.add(types.InlineKeyboardButton(text=x, callback_data="sessions " + x))
+        markup.add(types.InlineKeyboardButton(text=x, callback_data="sessions " + str(get_cinema_id(city_id, x))))
     markup.add(types.InlineKeyboardButton("Назад к выбору фильма", callback_data="back_to_movie"))
     return markup
 
@@ -72,10 +72,10 @@ def start_movie_helper(message):
     user = User(chat_id)
     if(city_id == 0):
         markup = draw_city_list()
-        bot.send_message(chat_id, "Movie Bot", reply_markup=markup)
+        bot.send_message(chat_id, "Выберите город из списка ниже: ", reply_markup=markup)
     else:
         markup = draw_movie_list(city_id)
-        bot.send_message(chat_id, "Movie Bot", reply_markup=markup)
+        bot.send_message(chat_id, "Какой фильм хотите посмотреть?", reply_markup=markup)
         user = User(chat_id)
         user.city_id = city_id
         user.cinema_name = city_dict_id_as_key[city_id]        
@@ -108,17 +108,20 @@ def message_query_handler(call):
             movie_list = get_movie_list(user.city_id)
             for x in movie_list:
                 if(get_cinema_id(user.city_id, x) == int(message)):
-                    user._movie_name = x
+                    user.movie_name = x
             user.movie_id = int(message)
             user_dict[chat_id] = user
         markup = draw_cinema_list(user.city_id)
         bot.edit_message_text(text='Выберите кинотеатр из списка ниже', chat_id=call.from_user.id, message_id=call.message.message_id, reply_markup=markup)
     if(message_type == 'sessions'):
-        user.cinema_name = message
-        user.cinema_id = get_cinema_id(user.city_id, user.cinema_name)
+        cinema_list = get_cinema_list(user.city_id)
+        user.cinema_id = message
+        for x in cinema_list:
+            if(get_cinema_id(user.city_id, x) == int(message)):
+                user.cinema_name = x
         markup = draw_seesions_list(user.city_id, user.movie_id, user.cinema_id, user.cinema_name)
         user_dict[chat_id] = user
-        bot.edit_message_text(text='А вот и сеансы', chat_id=call.from_user.id, message_id=call.message.message_id, reply_markup=markup)
+        bot.edit_message_text(text= "  "+ movie_description(user.city_id, user.movie_id), chat_id=call.from_user.id, message_id=call.message.message_id, reply_markup=markup)
     if(message_type == 'ignore'):
         bot.answer_callback_query(call.id, text="")
 
@@ -128,10 +131,10 @@ def movie_start(message , text):
     user = User(chat_id)
     if(city_id == 0):
         markup = draw_city_list()
-        bot.send_message(chat_id, "Movie Bot", reply_markup=markup)
+        bot.send_message(chat_id, "Выберите город из списка ниже: ", reply_markup=markup)
     else:
         markup = draw_movie_list(city_id)
-        bot.send_message(chat_id, "Movie Bot", reply_markup=markup)
+        bot.send_message(chat_id, "Какой фильм хотите посмотреть?", reply_markup=markup)
         user = User(chat_id)
         user.city_id = city_id
         user.cinema_name = city_dict_id_as_key[city_id]        
