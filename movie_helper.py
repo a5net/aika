@@ -2,11 +2,10 @@ import telebot
 from telebot import types
 import time
 from movie import *
-from telegramBot import *
 
-# API_TOKEN = '184429324:AAG4AbqtubyehDiFqgKItv4JE_bG0Dz5FTc'# это @GinetBot
+API_TOKEN = '184429324:AAG4AbqtubyehDiFqgKItv4JE_bG0Dz5FTc'# это @GinetBot
 # # API_TOKEN = "695195394:AAEsxvvCgKTClHNKL2ElIYbN_iBZYhHki-U"
-# bot = telebot.TeleBot(API_TOKEN)
+bot = telebot.TeleBot(API_TOKEN)
 
 
 class User:
