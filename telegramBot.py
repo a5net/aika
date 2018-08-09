@@ -10,31 +10,36 @@ from telebot import types
 from movie import *
 
 
-token = '695195394:AAEsxvvCgKTClHNKL2ElIYbN_iBZYhHki-U'
+token = '655665228:AAGfa7LvWw46UzckGEMbyG3HZ4-XTo3nQ0E'
 
 Wrench = emojize(":wrench:", use_aliases=True)
 Movie_camera = emojize(":movie_camera:", use_aliases=True)
 Earth = emojize(":earth_asia:", use_aliases=True)
 Speach_baloon = emojize(":speech_balloon:", use_aliases=True)
 
-answer_how_old = ["Буквально пару часов назад, на коленках дописали", "Да вот, в такси дописали только что"]
+answer_how_old = ["Буквально пару часов назад, на коленках дописали, так что мало.", "Да вот, в такси дописали только что, так что немного."]
+answer_jokes = ["Мои создатели рассказали мне только одну шутку. Походу с чувством юмора у них не очень", "У вас спина белая"]
+answer_other_bots = ["Говорят когда меня писали, мои создатели брали с нее пример", "Если бы не она, меня сейчас здесь не было", "Стараюсь брать пример с нее, они ведь старше и умнее", "Уважаю ее труд, знать как правильно ответить на каждый вопрос довлоьно таки сложно"]
+answer_creator = ["Меня создали несколько умельцев из Астаны и Алматы", "Студенты из Метод Про являются моими создателями, а так же друзьями", "У меня нет биологических родителей как у вас, меня написали начинающие программисты"]
+answer_your_master = ["Я свободный бот, у меня нет хозяина", "Я независимый бот двадцать первого века", "Сейчас ты спрашиваешь кто мой хозяин, а через некоторое время будешь меня так называть."]
 answer_who_are_you = ["Меня зовут Айка", "Я голосовой ассистент Айка"]
 answer_greetings = ["Привет!", "Здравствуй", "Приветствую!", "Здравствуйте"]
 answer_greetings_mood = ["Привет. Пойдет. Как у тебя?", "Здравствуй. Хорошо. Как у тебя?", "Приветствую. Нормально. Как у тебя?", "Здарова. Неплохо. Как у тебя?", "Здравствуйте. Все отлично. Как у вас?"]
-answer_mood = ["Замечательно, спасибо!!", "Хорошо. Как у тебя дела?", "Все нормально. Как у вас?", "Все отлично. Как у тебя?", "Пойдет. А у тебя?"]
-answer_philosophy = ['42']
+answer_mood = ["Замечательно, спасибо! Как у вас дела?", "Хорошо. Как у вас дела?", "Все нормально. Как у вас?", "Все отлично. Как у вас?", "Пойдет. А у вас?"]
+answer_philosophy = ['Один супермощный компьютер мен подсказал что ответ 42']
+answer_bye = ['Пока, рада была пообщаться.', 'Удачи', 'Счастливо', 'До скорой встречи', 'До свидания']
 answer_action = ['Разговариваю с тобой', 'Существую', 'Тихо жду здесь пока у меня что-то спросят']
 answer_status_good = ['Рада слышать', 'Круто', 'Отлично!', 'Я очень рада :)']
-help_text = ('''Я являюсь виртуальным помощником который может понимать ваши текстовые и аудио сообщения\n\n.
-    {}Благодаря этому я могу выполнять следующие функций:
+help_text = ('''Я являюсь виртуальным помощником который может понимать ваши текстовые и аудио сообщения\n
+    {} Благодаря этому я могу выполнять следующие функций:
 
-    {}Я могу выдать вам точный прогноз погоды на четыре дня. Для этого вы можете например спросить: \n "Какая погода завтра в Астане"
+    {} Я могу выдать вам точный прогноз погоды на четыре дня. Например: "Какая погода завтра в Астане"
     
-    {}Я могу искать сеансы фильмов для вас. Чтобы ее работы вы можете написать, например: "афиша кино" или просто "фильмы"
+    {} Я могу искать сеансы фильмов для вас. Например: "афиша кино Астана"
     
-    {}Я могу просто вести обычный человеческий дилаог. Если хотите можете например написать "Привет. Как дела? ''').format(Wrench, Earth, Movie_camera, Speach_baloon)
+    {} Я могу просто вести обычный человеческий диалог. Например: "Привет. Как дела?" ''').format(Wrench, Earth, Movie_camera, Speach_baloon)
 start_text = ('''Здравствуйте!
-        Я виртуальный помощник Айка. С моей помощью вы можете получить прогноз погоды на ближайшие дни, найти для себя сеанс в кино а также я просто умею разговаривать подробней обо каждой функций вы можете узнать по запросу /help''')
+        Я виртуальный помощник Айка. Я новичок и пока что поселилась здесь в телеграме. Если хотите узнать что я умею можешь спросить. Или по команде /help''')
 
 bot = telebot.TeleBot(token)
 print("Программа запущена")
@@ -54,6 +59,8 @@ def handle_message(message):
         try:
             if(command == '/start'):
                 bot.send_message(message.chat.id, start_text)
+            elif(command == '/help'):
+                bot.send_message(message.chat.id, help_text)
             else:
                 predicted_class = classify(command)
                 if(predicted_class == 'weather'):
@@ -76,11 +83,24 @@ def handle_message(message):
                 elif(predicted_class == 'status_good'):
                     bot.send_message(message.chat.id, answer_status_good[random.randint(0,(len(answer_status_good)-1))])
                 elif(predicted_class == 'how_old'):
-                    bot.send_message(message.chat.id, answer_how_old[random.randint(0,(len(answer_status_good)-1))])
+                    bot.send_message(message.chat.id, answer_how_old[random.randint(0,(len(answer_how_old)-1))])
                 elif(predicted_class == 'who_are_you'):
-                    bot.send_message(message.chat.id, answer_who_are_you[random.randint(0,(len(answer_status_good)-1))])
+                    bot.send_message(message.chat.id, answer_who_are_you[random.randint(0,(len(answer_who_are_you)-1))])
+                elif(predicted_class == 'other_bots'):
+                    bot.send_message(message.chat.id, answer_other_bots[random.randint(0,(len(answer_other_bots)-1))])
+                elif(predicted_class == 'your_master'):
+                    bot.send_message(message.chat.id, answer_your_master[random.randint(0,(len(answer_your_master)-1))])
+                elif(predicted_class == 'creator'):
+                    bot.send_message(message.chat.id, answer_creator[random.randint(0,(len(answer_creator)-1))])
+                elif(predicted_class == 'jokes'):
+                    answer = answer_jokes[random.randint(0,(len(answer_jokes)-1))]
+                    bot.send_message(message.chat.id, answer)
+                    if(answer == answer_jokes[1]):
+                        bot.send_voice(message.chat.id, open('joke.mp3', 'rb'))
+                elif(predicted_class == 'bye'):
+                    bot.send_message(message.chat.id, answer_bye[random.randint(0,(len(answer_bye)-1))])    
                 else:
-                    bot.send_message(message.chat.id, 'Извините, я вас не понимаю, но я учусь :3')
+                    bot.send_message(message.chat.id, 'Извините, я вас не понимаю, но я учусь')
         except:
             pass
     else:
@@ -130,17 +150,41 @@ def handle_message(message):
                 # bot.send_message(message.chat.id, answer)
                 bot.send_voice(message.chat.id, voice)
             elif(predicted_class == 'how_old'):
-                answer = answer_how_old[random.randint(0,(len(answer_status_good)-1))]
+                answer = answer_how_old[random.randint(0,(len(answer_how_old)-1))]
                 voice = get_voice(answer)
                 bot.send_voice(message.chat.id, voice)
             elif(predicted_class == 'who_are_you'):
-                answer = answer_who_are_you[random.randint(0,(len(answer_status_good)-1))]
+                answer = answer_who_are_you[random.randint(0,(len(answer_who_are_you)-1))]
+                voice = get_voice(answer)
+                bot.send_voice(message.chat.id, voice)
+            elif(predicted_class == 'other_bots'):
+                answer = answer_other_bots[random.randint(0,(len(answer_other_bots)-1))]
+                voice = get_voice(answer)
+                bot.send_voice(message.chat.id, voice)
+            elif(predicted_class == 'your_master'):
+                answer = answer_your_master[random.randint(0,(len(answer_your_master)-1))]
+                voice = get_voice(answer)
+                bot.send_voice(message.chat.id, voice)
+            elif(predicted_class == 'creator'):
+                answer = answer_creator[random.randint(0,(len(answer_creator)-1))]
+                voice = get_voice(answer)
+                bot.send_voice(message.chat.id, voice)
+            elif(predicted_class == 'joke'):
+                answer = answer_jokes[random.randint(0,(len(answer_jokes)-1))]
+                voice = get_voice(answer)
+                if(answer == answer_jokes[1]):
+                    bot.send_voice(message.chat.id, voice)
+                    bot.send_voice(message.chat.id, open('joke.mp3', 'rb'))
+                else:
+                    bot.send_voice(message.chat.id, voice)
+            elif(predicted_class == 'bye'):
+                answer = answer_bye[random.randint(0,(len(answer_bye)-1))]
                 voice = get_voice(answer)
                 bot.send_voice(message.chat.id, voice)
             elif(predicted_class == 'help'):
                 bot.send_message(message.chat.id, help_text)
             else:
-                answer = 'Извините, я вас не понимаю, но я учусь :3'
+                answer = 'Извините, я вас не понимаю, но я учусь'
                 voice = get_voice(answer)
                 # bot.send_message(message.chat.id, answer)
                 bot.send_voice(message.chat.id, voice)
