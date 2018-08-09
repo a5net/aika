@@ -146,7 +146,7 @@ def handle_message(message):
                 bot.send_voice(message.chat.id, voice)
         except:
             pass
-            
+
 class User:
     def __init__(self, chat_id):
         self.chat_id = chat_id
@@ -193,8 +193,6 @@ def draw_cinema_list(city_id):
 
 def draw_seesions_list(city_id, movie_id, cinema_id, cinema_name):
     markup = types.InlineKeyboardMarkup()
-    sessions_list = get_session_list(city_id, movie_id, cinema_id)
-    print(sessions_list)
     for x in sessions_list:
         markup.add(types.InlineKeyboardButton(text=x, callback_data="ignore"))
     markup.add(types.InlineKeyboardButton(text="Купить билеты в " + cinema_name, url=get_ticket_url(cinema_name, city_id)))
@@ -260,7 +258,7 @@ def message_query_handler(call):
                 user.cinema_name = x
         markup = draw_seesions_list(user.city_id, user.movie_id, user.cinema_id, user.cinema_name)
         user_dict[chat_id] = user
-        bot.edit_message_text(text= "🎞  "+ movie_description(user.city_id, user.movie_id), chat_id=call.from_user.id, message_id=call.message.message_id, reply_markup=markup)
+        bot.edit_message_text(text= "  🎞 "+ movie_description(user.city_id, user.movie_id), chat_id=call.from_user.id, message_id=call.message.message_id, reply_markup=markup)
     if(message_type == 'ignore'):
         bot.answer_callback_query(call.id, text="")
 

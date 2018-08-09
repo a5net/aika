@@ -40,7 +40,6 @@ def extract_city_id(command):
     for i in match_list:
         data = data_fetch(url_builder_geocoding(i))
         if(data.get('status') != 'ZERO_RESULTS'):
-            print(data)
             out.append(data.get('results')[0].get('address_components')[0].get('long_name'))
     if(out):
         city = out[0]
@@ -136,7 +135,7 @@ def get_ticket_url(cinema_name, city_id):
     cinema_name_list = cinema_name.split()
     cinema_name_list = [a.lower() for a in cinema_name_list]
     if('kinopark' in cinema_name_list):
-        url = 'http://kinopark.kz/ru/shedule?interval=today&cinema=' + kinopark[cinema_name]
+        url = 'http://kinopark.kz/ru/shedule?interval=today&cinema=' + str(kinopark[cinema_name])
     else:
         url = url_api + str(city_id)
         data = data_fetch(url)

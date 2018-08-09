@@ -398,7 +398,7 @@ def get_weather(command):
         if((not date_and_time_array[0]) and (not date_and_time_array[1])):
             data = data_organizer_current(data_fetch(url_builder(city, 'weather')))
             if('погода' in feature_list or not feature_list):
-                output = output + "::::::::::::"+ data['date'] + "::::::::::\n\n"
+                output = output + "_____________"+ data['date'] + "_____________\n\n"
                 output = output + Earth + '{}, {} \n'.format(data['city'], data['country'])
                 output = output + Thermometer + str(data['temp']) + m_symbol + ' ' + getEmoji(data['weather'][0]['id']) + data['weather'][0]['description'] + '\n'
                 output = output + Drops + 'Влажность воздуха: {} %\n'.format(data['humidity']) 
@@ -430,7 +430,8 @@ def get_weather(command):
             time_of_the_day_array = ['night', 'morning', 'afternoon', 'evening']
 
             if('погода' in feature_list or not feature_list):
-                output = output + Earth + 'Погода в: {}:{}, {}\n'.format(data['city'], data['country'], data[day_dict]['date'])
+                output = output + "_____________"+ data[day_dict]['date'] + "_____________\n\n"
+                output = output + Earth + '{}:{}\n'.format(data['city'], data['country'])
                 output = output + Thermometer + str(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_temp']) + m_symbol + ' ' + getEmoji(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_weather'][0]['id']) + data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_weather'][0]['description'] + '\n'
                 output = output + Drops + 'Влажность воздуха: {} %\n'.format(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_humidity'])
                 output = output + Fog + 'Скорость ветра: {} м/сек'.format(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_windspeed'])
