@@ -293,12 +293,10 @@ def extract_city(command):
         if(result):
             match_list.append(result[0])
     match_list = [word for word in match_list if word.strip() not in stopwords.words('russian')]
-    print(match_list)
     for i in match_list:
         data = data_fetch(url_builder_geocoding(i))
         if(data.get('status') != 'ZERO_RESULTS'):
             out.append(data.get('results')[0].get('address_components')[0].get('long_name'))
-    print(out)
     if(out):
         city = out[0]
 
@@ -382,7 +380,7 @@ def extract_date_and_time(command):
             time_of_the_day = daytime[day_hour]        
 
     return_array = [str(days_ahead), str(time_of_the_day)]
-    
+
     return return_array
 
 def get_weather(command):
