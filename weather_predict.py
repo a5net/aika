@@ -18,6 +18,7 @@ Earth = emojize(":earth_asia:", use_aliases=True)
 Drops = emojize(":sweat_drops:", use_aliases=True)
 Fog = emojize(":fog:", use_aliases=True)
 Thermometer = emojize(":thermometer:", use_aliases=True)
+Clock = emojize(":clock12:", use_aliases=True)
 
 class color:
    PURPLE = "\033[95m"
@@ -398,7 +399,7 @@ def get_weather(command):
         if((not date_and_time_array[0]) and (not date_and_time_array[1])):
             data = data_organizer_current(data_fetch(url_builder(city, 'weather')))
             if('погода' in feature_list or not feature_list):
-                output = output + "_____________"+ data['date'] + "_____________\n\n"
+                output = output + ":::: " + Clock + " " + data['date'] + "::::\n\n"
                 output = output + Earth + '{}, {} \n'.format(data['city'], data['country'])
                 output = output + Thermometer + str(data['temp']) + m_symbol + ' ' + getEmoji(data['weather'][0]['id']) + data['weather'][0]['description'] + '\n'
                 output = output + Drops + 'Влажность воздуха: {} %\n'.format(data['humidity']) 
@@ -430,7 +431,7 @@ def get_weather(command):
             time_of_the_day_array = ['night', 'morning', 'afternoon', 'evening']
 
             if('погода' in feature_list or not feature_list):
-                output = output + "_____________"+ data[day_dict]['date'] + "_____________\n\n"
+                output = output + ":::: " + Clock + " " + data[day_dict]['date'] + "::::\n\n"
                 output = output + Earth + '{}:{}\n'.format(data['city'], data['country'])
                 output = output + Thermometer + str(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_temp']) + m_symbol + ' ' + getEmoji(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_weather'][0]['id']) + data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_weather'][0]['description'] + '\n'
                 output = output + Drops + 'Влажность воздуха: {} %\n'.format(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_humidity'])
