@@ -3,9 +3,9 @@ from telebot import types
 import time
 from movie import *
 
-# #API_TOKEN = '184429324:AAG4AbqtubyehDiFqgKItv4JE_bG0Dz5FTc' это @GinetBot
+API_TOKEN = '184429324:AAG4AbqtubyehDiFqgKItv4JE_bG0Dz5FTc'# это @GinetBot
 # API_TOKEN = "695195394:AAEsxvvCgKTClHNKL2ElIYbN_iBZYhHki-U"
-# bot = telebot.TeleBot(API_TOKEN)
+bot = telebot.TeleBot(API_TOKEN)
 
 
 class User:
@@ -23,6 +23,8 @@ user_dict = {}
 city_dict_names_as_key = get_city_dict()
 city_list_for_movie = city_dict_names_as_key.keys()
 city_dict_id_as_key = {}
+
+
 for x in city_list_for_movie:
     city_dict_id_as_key[city_dict_names_as_key[x]] = x
 
@@ -37,18 +39,16 @@ def draw_city_list():
 def draw_movie_list(city_id):
     markup = types.InlineKeyboardMarkup()
     movie_list = get_movie_list(city_id)
-    #markup.add(types.InlineKeyboardButton("Выберите название фильма", callback_data="ignore"))
     for x in movie_list:
-        markup.add(types.InlineKeyboardButton(x, callback_data="cinema " + x))
+        markup.add(types.InlineKeyboardButton(text=x, callback_data="cinema " + str(get_movie_id(city_id, x))))
     markup.add(types.InlineKeyboardButton("Назад к выбору города", callback_data="back_to_city"))
     return markup
 
 def draw_cinema_list(city_id):
     cinema_list = get_cinema_list(city_id)
     markup = types.InlineKeyboardMarkup()
-    #markup.add(types.InlineKeyboardButton("Выберите название кинотеатра", callback_data="ignore"))
     for x in cinema_list:
-        markup.add(types.InlineKeyboardButton(x, callback_data="sessions " + x))
+        markup.add(types.InlineKeyboardButton(text=x, callback_data="sessions " + x))
     markup.add(types.InlineKeyboardButton("Назад к выбору фильма", callback_data="back_to_movie"))
     return markup
 
@@ -57,9 +57,9 @@ def draw_seesions_list(city_id, movie_id, cinema_id, cinema_name):
     sessions_list = get_session_list(city_id, movie_id, cinema_id)
     print(sessions_list)
     for x in sessions_list:
-        markup.add(types.InlineKeyboardButton(x, callback_data="ignore"))
+        markup.add(types.InlineKeyboardButton(text=x, callback_data="ignore"))
     markup.add(types.InlineKeyboardButton(text="Купить билеты в " + cinema_name, url=get_ticket_url(cinema_name, city_id)))
-    markup.add(types.InlineKeyboardButton("Назад к выбору кинотеатра", callback_data="back_to_cinema"))
+    markup.add(types.InlineKeyboardButton(text="Назад к выбору кинотеатра", callback_data="back_to_cinema"))
     return markup
 
 
@@ -96,27 +96,30 @@ def message_query_handler(call):
         user_dict[chat_id] = user
     if(message_type == 'city' or message_type == 'back_to_city'):
         markup = draw_city_list()
-        bot.edit_message_text('Выберите город из списка ниже: ', call.from_user.id, call.message.message_id, reply_markup=markup)
+        bot.edit_message_text(text='Выберите город из списка ниже: ', chat_id=call.from_user.id, message_id=call.message.message_id, reply_markup=markup)
     if(message_type == 'movie' or message_type == 'back_to_movie'):
         if(message_type == 'movie'):
             user.city = city_dict_id_as_key[int(message)]
             user.city_id = int(message)
             user_dict[chat_id] = user
         markup = draw_movie_list(user.city_id)
-        bot.edit_message_text('Какой фильм хотите посмотреть?', call.from_user.id, call.message.message_id, reply_markup=markup)
+        bot.edit_message_text(text='Какой фильм хотите посмотреть?', chat_id=call.from_user.id, message_id=call.message.message_id, reply_markup=markup)
     if(message_type == 'cinema' or message_type == 'back_to_cinema'):
         if(message_type == 'cinema'):
-            user.movie_name = message
-            user.movie_id = get_movie_id(user.city_id, message)
+            movie_list = get_movie_list(user.city_id)
+            for x in movie_list:
+                if(get_cinema_id(user.city_id, x) == int(message)):
+                    user._movie_name = x
+            user.movie_id = int(message)
             user_dict[chat_id] = user
         markup = draw_cinema_list(user.city_id)
-        bot.edit_message_text('Выберите кинотеатр из списка ниже', call.from_user.id, call.message.message_id, reply_markup=markup)
+        bot.edit_message_text(text='Выберите кинотеатр из списка ниже', chat_id=call.from_user.id, message_id=call.message.message_id, reply_markup=markup)
     if(message_type == 'sessions'):
         user.cinema_name = message
         user.cinema_id = get_cinema_id(user.city_id, user.cinema_name)
         markup = draw_seesions_list(user.city_id, user.movie_id, user.cinema_id, user.cinema_name)
         user_dict[chat_id] = user
-        bot.edit_message_text('А вот и сеансы', call.from_user.id, call.message.message_id, reply_markup=markup)
+        bot.edit_message_text(text='А вот и сеансы', chat_id=call.from_user.id, message_id=call.message.message_id, reply_markup=markup)
     if(message_type == 'ignore'):
         bot.answer_callback_query(call.id, text="")
 
@@ -132,4 +135,4 @@ def start(message , text):
     user.city_name = city_dict_id_as_key[city_id]        
     user_dict[chat_id] = user
 
-#bot.polling(none_stop=True)
+bot.polling(none_stop=True)
