@@ -2,6 +2,7 @@ import telebot
 from telebot import types
 import time
 from movie import *
+from telegramBot import *
 
 # API_TOKEN = '184429324:AAG4AbqtubyehDiFqgKItv4JE_bG0Dz5FTc'# это @GinetBot
 # # API_TOKEN = "695195394:AAEsxvvCgKTClHNKL2ElIYbN_iBZYhHki-U"
@@ -83,7 +84,6 @@ def start_movie_helper(message):
     
 @bot.callback_query_handler(func=lambda call: True)
 def message_query_handler(call):
-    print(call.data)
     raw_message = call.data.split()
     message_type = raw_message[0]
     message = ' '.join(raw_message[1:])
@@ -124,14 +124,17 @@ def message_query_handler(call):
         bot.answer_callback_query(call.id, text="")
 
 def movie_start(message , text):
-    city_id = extract_city_id(text)
-    print(city_id)
-    markup = draw_movie_list(city_id)
     chat_id = message.chat.id
-    bot.send_message(chat_id, "Какой фильм хотите посмотреть?", reply_markup=markup)
+    city_id = extract_city_id(text)
     user = User(chat_id)
-    user.city_id = city_id
-    user.city_name = city_dict_id_as_key[city_id]        
-    user_dict[chat_id] = user
+    if(city_id == 0):
+        markup = draw_city_list()
+        bot.send_message(chat_id, "Movie Bot", reply_markup=markup)
+    else:
+        markup = draw_movie_list(city_id)
+        bot.send_message(chat_id, "Movie Bot", reply_markup=markup)
+        user = User(chat_id)
+        user.city_id = city_id
+        user.cinema_name = city_dict_id_as_key[city_id]        
+        user_dict[chat_id] = user
 
-# bot.polling(none_stop=True)
