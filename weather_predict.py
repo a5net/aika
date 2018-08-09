@@ -412,7 +412,7 @@ def get_weather(command):
             time_of_the_day_array = ['night', 'morning', 'afternoon', 'evening']
 
             if('погода' in feature_list or not feature_list):
-                output = output + Earth + 'Погода в: {}:{} на {}\n'.format(data['city'], data['country'], data[day_dict]['date'])
+                output = output + Earth + 'Погода в: {}:{}, {}\n'.format(data['city'], data['country'], data[day_dict]['date'])
                 output = output + Thermometer + str(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_temp']) + m_symbol + ' ' + getEmoji(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_weather'][0]['id']) + data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_weather'][0]['description'] + '\n'
                 output = output + Drops + 'Влажность воздуха: {} %\n'.format(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_humidity'])
                 output = output + Fog + 'Скорость ветра: {} м/сек'.format(data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_windspeed'])
@@ -431,4 +431,4 @@ def get_weather(command):
                 speech = 'Скорость ветра в городе {} будет {} метров в секунду'.format(city, data[day_dict][time_of_the_day_array[int(time_of_the_day)] + '_windspeed'])
                 return output, speech
     except:
-        return 'В работе программы возникли неполадки, возможно не указано название города', 'В работе программы возникли неполадки, возможно не указано название города'
+        return 'Повторите запрос с названиием города', 'Повторите запрос с названием города'
