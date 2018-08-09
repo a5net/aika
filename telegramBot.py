@@ -183,6 +183,7 @@ def draw_city_list():
             row.append(types.InlineKeyboardButton(x, callback_data="movie " + str(city_dict_names_as_key[x])))
     if(len(row) != 0):
         markup.row(*row)
+    
     return markup
 
 def draw_movie_list(city_id):
@@ -200,6 +201,7 @@ def draw_movie_list(city_id):
             row.append(types.InlineKeyboardButton(text=x, callback_data="cinema " + str(get_movie_id(city_id, x))))
     if(len(row) != 0):
         markup.row(*row)
+    markup.add(types.InlineKeyboardButton("Назад к выбору города", callback_data="back_to_city"))
     return markup
 
 def draw_cinema_list(city_id):
