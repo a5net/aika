@@ -109,6 +109,8 @@ def handle_message(message):
                 voice = get_voice(answer)
                 # bot.send_message(message.chat.id, answer)
                 bot.send_voice(message.chat.id, voice)
+            elif(predicted_class == 'help'):
+                bot.send_message(message.chat.id, help_text)
             else:
                 answer = 'Извините, я вас не понимаю, но я учусь :3'
                 voice = get_voice(answer)
