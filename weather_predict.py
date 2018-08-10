@@ -299,7 +299,25 @@ def extract_city(command):
         if(data.get('status') != 'ZERO_RESULTS'):
             out.append(data.get('results')[0].get('address_components')[0].get('long_name'))
     if(out):
-        city = out[0]
+        if(out[0].isdigit()):
+            try:
+                if(out[1].isdigit()):
+                    try:
+                        if(out[2].isdigit()):
+                            try:
+                                city = out[3]
+                            except:
+                                pass
+                        else:
+                            city = out[2]
+                    except:
+                        pass
+                else:
+                    city = out[1]
+            except:
+                pass
+        else:
+            city = out[0]
 
     return city
 
