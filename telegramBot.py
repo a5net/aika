@@ -18,19 +18,20 @@ Earth = emojize(":earth_asia:", use_aliases=True)
 Speach_baloon = emojize(":speech_balloon:", use_aliases=True)
 
 answer_thanks = ["Всегда пожалуйста", "Пожалуйста", "Не стоит благодарности", "На здоровье", "Не за что"]
-answer_how_old = ["Буквально пару часов назад, на коленках дописали, так что мало.", "Да вот, в такси дописали только что, так что немного."]
+answer_how_old = ["Буквально пару часов назад, на коленках дописали, так что мало.", "Да вот, в такси дописали только что, так что я довольно молодая."]
 answer_jokes = ["Мои создатели рассказали мне только одну шутку. Походу с чувством юмора у них не очень", "У вас спина белая"]
 answer_other_bots = ["Говорят когда меня писали, мои создатели брали с нее пример", "Если бы не она, меня сейчас здесь не было", "Стараюсь брать пример с нее, они ведь старше и умнее", "Уважаю ее труд, знать как правильно ответить на каждый вопрос довлоьно таки сложно"]
 answer_creator = ["Меня создали несколько умельцев из Астаны и Алматы", "Студенты из Метод Про являются моими создателями, а так же друзьями", "У меня нет биологических родителей как у вас, меня написали начинающие программисты"]
 answer_your_master = ["Я свободный бот, у меня нет хозяина", "Я независимый бот двадцать первого века", "Сейчас ты спрашиваешь кто мой хозяин, а через некоторое время будешь меня так называть."]
-answer_who_are_you = ["Меня зовут Айка", "Я голосовой ассистент Айка"]
+answer_who_are_you = ["Я Айка", "Я голосовой ассистент Айка", "У девочки нет имени. Шучу. Меня зовут Айка"]
 answer_greetings = ["Привет!", "Здравствуй", "Приветствую!", "Здравствуйте"]
-answer_greetings_mood = ["Привет. Пойдет. Как у тебя?", "Здравствуй. Хорошо. Как у тебя?", "Приветствую. Нормально. Как у тебя?", "Здарова. Неплохо. Как у тебя?", "Здравствуйте. Все отлично. Как у вас?"]
+answer_greetings_mood = ["Привет. Пойдет. Как у вас?", "Здравствуйте. Хорошо. Как у вас?", "Приветствую. Нормально. Как у вас?", "Здравствуйте. Все отлично. Как у вас?", "Все отлично. Правда немного одиноко"]
 answer_mood = ["Замечательно, спасибо! Как у вас дела?", "Хорошо. Как у вас дела?", "Все нормально. Как у вас?", "Все отлично. Как у вас?", "Пойдет. А у вас?"]
 answer_philosophy = ['Один супермощный компьютер мен подсказал что ответ 42']
 answer_bye = ['Пока, рада была пообщаться.', 'Удачи', 'Счастливо', 'До скорой встречи', 'До свидания']
-answer_action = ['Разговариваю с тобой', 'Существую', 'Тихо жду здесь пока у меня что-то спросят']
+answer_action = ['Тихо жду здесь пока у меня что-то спросят','Скучно что-то, давайте поговорим']
 answer_status_good = ['Рада слышать', 'Круто', 'Отлично!', 'Я очень рада :)']
+answer_status_bad = ['Мне очень жаль', 'Не грустите пожалуйста', 'Не грустите, а то мне тоже станет грустно']
 help_text = ('''Я являюсь виртуальным помощником который может понимать ваши текстовые и аудио сообщения\n
     {} Благодаря этому я могу выполнять следующие функций:
 
@@ -83,6 +84,8 @@ def handle_message(message):
                     bot.send_message(message.chat.id, help_text) 
                 elif(predicted_class == 'action'):
                     bot.send_message(message.chat.id, answer_action[random.randint(0,(len(answer_action)-1))])
+                elif(predicted_class == 'status_bad'):
+                    bot.send_message(message.chat.id, answer_status_bad[random.randint(0,(len(answer_status_bad)-1))])
                 elif(predicted_class == 'status_good'):
                     bot.send_message(message.chat.id, answer_status_good[random.randint(0,(len(answer_status_good)-1))])
                 elif(predicted_class == 'how_old'):
@@ -149,6 +152,11 @@ def handle_message(message):
                 bot.send_voice(message.chat.id, voice)
             elif(predicted_class == 'status_good'):
                 answer = answer_status_good[random.randint(0,(len(answer_status_good)-1))]
+                voice = get_voice(answer)
+                # bot.send_message(message.chat.id, answer)
+                bot.send_voice(message.chat.id, voice)
+            elif(predicted_class == 'status_bad'):
+                answer = answer_status_bad[random.randint(0,(len(answer_status_bad)-1))]
                 voice = get_voice(answer)
                 # bot.send_message(message.chat.id, answer)
                 bot.send_voice(message.chat.id, voice)
