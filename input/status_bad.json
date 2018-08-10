@@ -1,0 +1,34 @@
+[
+	{
+		"class": "status_bad",
+		"text": "плохо"
+	},
+	{
+		"class": "status_bad",
+		"text": "нехорошо"
+	},
+	{
+		"class": "status_bad",
+		"text": "ужасно"
+	},
+	{
+		"class": "status_bad",
+		"text": "никак"
+	},
+	{
+		"class": "status_bad",
+		"text": "тяжко"
+	},
+	{
+		"class": "status_bad",
+		"text": "так себе"
+	},
+	{
+		"class": "status_bad",
+		"text": "херова"
+	},
+	{
+		"class": "status_bad",
+		"text": "невесело"
+	}
+]
