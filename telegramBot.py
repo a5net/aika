@@ -17,6 +17,7 @@ Movie_camera = emojize(":movie_camera:", use_aliases=True)
 Earth = emojize(":earth_asia:", use_aliases=True)
 Speach_baloon = emojize(":speech_balloon:", use_aliases=True)
 
+answer_thanks = ["Всегда пожалуйста", "Пожалуйста", "Не стоит благодарности", "На здоровье", "Не за что"]
 answer_how_old = ["Буквально пару часов назад, на коленках дописали, так что мало.", "Да вот, в такси дописали только что, так что немного."]
 answer_jokes = ["Мои создатели рассказали мне только одну шутку. Походу с чувством юмора у них не очень", "У вас спина белая"]
 answer_other_bots = ["Говорят когда меня писали, мои создатели брали с нее пример", "Если бы не она, меня сейчас здесь не было", "Стараюсь брать пример с нее, они ведь старше и умнее", "Уважаю ее труд, знать как правильно ответить на каждый вопрос довлоьно таки сложно"]
@@ -75,7 +76,9 @@ def handle_message(message):
                 elif(predicted_class == 'mood'):
                     bot.send_message(message.chat.id, answer_mood[random.randint(0,(len(answer_mood)-1))])
                 elif(predicted_class == 'philosophy'):
-                    bot.send_message(message.chat.id, answer_philosophy[0]) 
+                    bot.send_message(message.chat.id, answer_philosophy[0])
+                elif(predicted_class == 'thanks'):
+                    bot.send_message(message.chat.id, answer_thanks[random.randint(0,(len(answer_thanks)-1))])  
                 elif(predicted_class == 'help'):
                     bot.send_message(message.chat.id, help_text) 
                 elif(predicted_class == 'action'):
@@ -92,7 +95,7 @@ def handle_message(message):
                     bot.send_message(message.chat.id, answer_your_master[random.randint(0,(len(answer_your_master)-1))])
                 elif(predicted_class == 'creator'):
                     bot.send_message(message.chat.id, answer_creator[random.randint(0,(len(answer_creator)-1))])
-                elif(predicted_class == 'jokes'):
+                elif(predicted_class == 'joke'):
                     answer = answer_jokes[random.randint(0,(len(answer_jokes)-1))]
                     bot.send_message(message.chat.id, answer)
                     if(answer == answer_jokes[1]):
@@ -155,6 +158,10 @@ def handle_message(message):
                 bot.send_voice(message.chat.id, voice)
             elif(predicted_class == 'who_are_you'):
                 answer = answer_who_are_you[random.randint(0,(len(answer_who_are_you)-1))]
+                voice = get_voice(answer)
+                bot.send_voice(message.chat.id, voice)
+            elif(predicted_class == 'thanks'):
+                answer = answer_thanks[random.randint(0,(len(answer_thanks)-1))]
                 voice = get_voice(answer)
                 bot.send_voice(message.chat.id, voice)
             elif(predicted_class == 'other_bots'):
