@@ -98,6 +98,8 @@ def handle_message(message):
                     bot.send_message(message.chat.id, answer_your_master[random.randint(0,(len(answer_your_master)-1))])
                 elif(predicted_class == 'creator'):
                     bot.send_message(message.chat.id, answer_creator[random.randint(0,(len(answer_creator)-1))])
+                elif(predicted_class == 'news'):
+                    bot.send_message(message.chat.id, returnNews())
                 elif(predicted_class == 'joke'):
                     answer = answer_jokes[random.randint(0,(len(answer_jokes)-1))]
                     bot.send_message(message.chat.id, answer)
