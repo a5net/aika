@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from weather_predict import *
 import random
 from classify import *
@@ -36,9 +38,9 @@ help_text = ('''Я являюсь виртуальным помощником к
     {} Благодаря этому я могу выполнять следующие функций:
 
     {} Я могу выдать вам точный прогноз погоды на четыре дня. Например: "Какая погода завтра в Астане"
-    
+
     {} Я могу искать сеансы фильмов для вас. Например: "афиша кино Астана"
-    
+
     {} Я могу просто вести обычный человеческий диалог. Например: "Привет. Как дела?" ''').format(Wrench, Earth, Movie_camera, Speach_baloon)
 start_text = ('''Здравствуйте!
         Я виртуальный помощник Айка. Я новичок и пока что поселилась здесь в телеграме. Если хотите узнать что я умею можешь спросить. Или по команде /help''')
@@ -47,7 +49,7 @@ bot = telebot.TeleBot(token)
 print("Программа запущена")
 
 def get_voice(message):
-    speech_url = 'https://tts.voicetech.yandex.net/generate?text={}&format=mp3&quality=lo&lang=ru-RU&speaker=oksana&emotion=good&key=c3667808-f5a2-4c52-8f90-699a3e23e4f2'.format(message)
+    speech_url = 'https://tts.voicetech.yandex.net/generate?text={}&format=mp3&quality=lo&lang=ru-RU&speaker=oksana&emotion=good&key=92b2f711-9cb2-4f1b-b23e-770a21e225a2'.format(message)
     doc = requests.get(speech_url)
     with open('audio.ogg', 'wb') as f:
         f.write(doc.content)
@@ -65,10 +67,8 @@ def handle_message(message):
                 bot.send_message(message.chat.id, help_text)
             else:
                 predicted_class = classify(command)
-                if(predicted_class == 'weather'):
-                    output, speech = get_weather(command)
-                    bot.send_message(message.chat.id, output)
-                elif(predicted_class == 'cinema'):
+
+                if(predicted_class == 'cinema'):
                     movie_start(message, message.text)
                 elif(predicted_class == 'greetings'):
                     bot.send_message(message.chat.id, answer_greetings[random.randint(0,(len(answer_greetings)-1))])
@@ -79,9 +79,9 @@ def handle_message(message):
                 elif(predicted_class == 'philosophy'):
                     bot.send_message(message.chat.id, answer_philosophy[0])
                 elif(predicted_class == 'thanks'):
-                    bot.send_message(message.chat.id, answer_thanks[random.randint(0,(len(answer_thanks)-1))])  
+                    bot.send_message(message.chat.id, answer_thanks[random.randint(0,(len(answer_thanks)-1))])
                 elif(predicted_class == 'help'):
-                    bot.send_message(message.chat.id, help_text) 
+                    bot.send_message(message.chat.id, help_text)
                 elif(predicted_class == 'action'):
                     bot.send_message(message.chat.id, answer_action[random.randint(0,(len(answer_action)-1))])
                 elif(predicted_class == 'status_bad'):
@@ -104,7 +104,7 @@ def handle_message(message):
                     if(answer == answer_jokes[1]):
                         bot.send_voice(message.chat.id, open('joke.mp3', 'rb'))
                 elif(predicted_class == 'bye'):
-                    bot.send_message(message.chat.id, answer_bye[random.randint(0,(len(answer_bye)-1))])    
+                    bot.send_message(message.chat.id, answer_bye[random.randint(0,(len(answer_bye)-1))])
                 else:
                     bot.send_message(message.chat.id, 'Извините, я вас не понимаю, но я учусь')
         except:
@@ -116,7 +116,7 @@ def handle_message(message):
             command = speech_to_text(bytes=file.content)
         except:
             bot.send_message(message.chat.id, 'Распознование голоса не удалось, попробуйте снова')
-        try:    
+        try:
             predicted_class = classify(command)
             if(predicted_class == 'weather'):
                 output, speech = get_weather(command)
@@ -144,7 +144,7 @@ def handle_message(message):
                 answer = answer_philosophy[0]
                 voice = get_voice(answer)
                 # bot.send_message(message.chat.id, answer)
-                bot.send_voice(message.chat.id, voice) 
+                bot.send_voice(message.chat.id, voice)
             elif(predicted_class == 'action'):
                 answer = answer_action[random.randint(0,(len(answer_action)-1))]
                 voice = get_voice(answer)
@@ -217,14 +217,14 @@ class User:
         self.cinema_id = None
 
 user_dict = {}
-
-city_dict_names_as_key = get_city_dict()
-city_list_for_movie = city_dict_names_as_key.keys()
-city_dict_id_as_key = {}
-
-
-for x in city_list_for_movie:
-    city_dict_id_as_key[city_dict_names_as_key[x]] = x
+#
+# city_dict_names_as_key = get_city_dict()
+# city_list_for_movie = city_dict_names_as_key.keys()
+# city_dict_id_as_key = {}
+#
+#
+# for x in city_list_for_movie:
+#     city_dict_id_as_key[city_dict_names_as_key[x]] = x
 
 
 
@@ -242,7 +242,7 @@ def draw_city_list():
             row.append(types.InlineKeyboardButton(x, callback_data="movie " + str(city_dict_names_as_key[x])))
     if(len(row) != 0):
         markup.row(*row)
-    
+
     return markup
 
 def draw_movie_list(city_id):
@@ -296,15 +296,15 @@ def start_movie_helper(message):
         bot.send_message(chat_id, "Какой фильм хотите посмотреть?", reply_markup=markup)
         user = User(chat_id)
         user.city_id = city_id
-        user.cinema_name = city_dict_id_as_key[city_id]        
+        user.cinema_name = city_dict_id_as_key[city_id]
         user_dict[chat_id] = user
-    
+
 @bot.callback_query_handler(func=lambda call: True)
 def message_query_handler(call):
     raw_message = call.data.split()
     message_type = raw_message[0]
     message = ' '.join(raw_message[1:])
-    
+
     chat_id = call.message.chat.id
     try:
         user = user_dict[chat_id]
@@ -355,7 +355,7 @@ def movie_start(message , text):
         bot.send_message(chat_id, "Какой фильм хотите посмотреть?", reply_markup=markup)
         user = User(chat_id)
         user.city_id = city_id
-        user.cinema_name = city_dict_id_as_key[city_id]        
+        user.cinema_name = city_dict_id_as_key[city_id]
         user_dict[chat_id] = user
 
 if __name__ == '__main__':

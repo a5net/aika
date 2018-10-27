@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*- 
 from googletrans import Translator
 import re
 import pandas as pd
@@ -17,7 +18,7 @@ for index, row in lang_frame.iterrows():
 #     code = 'ru'
 #     source_regex = 'с ([а-яА-ЯёЁ]+)'
 #     data = re.search(source_regex, command)
-#     if data != None:    
+#     if data != None:
 #         language = stemmer.stem(data.group(1))
 #         code = lang_dict[language]
 

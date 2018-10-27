@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import numpy as np # linear algebra
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 import json
@@ -28,13 +29,13 @@ def get_class_name_list():
         if(candidate == ".json"):
             res.append(list_names[i].replace('.json', ''))
     return set(res)
-    
+
 class_name_list = get_class_name_list()
 
 def get_all_class():
     train_data = []
     for x in class_name_list:
-        train_data += get_class_examples(x) 
+        train_data += get_class_examples(x)
     return train_data
 
 
@@ -46,7 +47,7 @@ def get_city_names():
     for j in city_list:
         #if j != "Дели":
         res.add(stemmer.stem(j).lower())
-        
+
     return res
 
 
@@ -55,12 +56,12 @@ def get_stopwords():
 #     stop_words_list = stopwords.words('russian')
     stop_words = get_city_names()
 
-    
+
     #stop_words.add('как')
     stop_words.add('в')
     return stop_words
 
-    
+
 def get_length(text, stop_words):
     count = 0
     for i in text:
@@ -125,7 +126,7 @@ def classify(sentence):
     high_class = None
     high_score = 0
     average = get_length(sentence.split(), city_names)
-    high_average = 0    
+    high_average = 0
     for c in class_words.keys():
         score = calculate_class_score(sentence, c)
         if score > high_score and score != 0:
@@ -139,7 +140,6 @@ def classify(sentence):
             if related_to_new_class < related_to_origin_class:
                 high_class = c
                 high_score = score
-                high_average = related_to_new_class            
+                high_average = related_to_new_class
     if(high_class == None): high_class = "unknown_command"
     return high_class
- 

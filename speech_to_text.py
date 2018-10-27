@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import requests
 import telebot
 import subprocess
@@ -7,7 +8,7 @@ import xml.etree.ElementTree as XmlElementTree
 import httplib2
 import uuid
 
-YANDEX_API_KEY = 'c3667808-f5a2-4c52-8f90-699a3e23e4f2'
+YANDEX_API_KEY = '92b2f711-9cb2-4f1b-b23e-770a21e225a2'
 YANDEX_ASR_HOST = 'asr.yandex.net'
 YANDEX_ASR_PATH = '/asr_xml'
 CHUNK_SIZE = 1024 ** 2
@@ -25,7 +26,7 @@ def convert_to_pcm16b16000r(in_filename=None, in_bytes=None):
 
         # Запрос в командную строку для обращения к FFmpeg
         command = [
-            r'/bin/ffmpeg',
+            r'/usr/bin/ffmpeg',
             '-i', in_filename,
             '-f', 's16le',
             '-acodec', 'pcm_s16le',
@@ -75,7 +76,7 @@ def speech_to_text(filename=None, bytes=None, request_id=uuid.uuid4().hex, topic
     # Считывание блока байтов
     chunks = read_chunks(CHUNK_SIZE, bytes)
 
-    # Установление соединения и формирование запроса 
+    # Установление соединения и формирование запроса
     connection = httplib2.HTTPConnectionWithTimeout(YANDEX_ASR_HOST)
 
     connection.connect()
@@ -120,4 +121,3 @@ def speech_to_text(filename=None, bytes=None, request_id=uuid.uuid4().hex, topic
 # Создание своего исключения
 class SpeechException(Exception):
     pass
-

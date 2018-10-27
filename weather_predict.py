@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*- 
 import pandas as pd
 import datetime
 import urllib.request
@@ -36,7 +37,7 @@ class color:
 def get_date(time):
     date = time.split()[0]
     months = {'1':'января', '2':'февраля', '3':'марта', '4':'апреля', '5':'мая', '6':'июня', '7':'июля', '8':'августа', '9':'сентября', '10':'октября', '11':'ноября', '12':'декабря'}
-    
+
     return date.split('-')[2] + ' ' + months[str(date.split('-')[1])]
 
 def get_current_date(time):
@@ -352,11 +353,11 @@ def extract_date_and_time(command):
         обед = 2,
         вечер = 3
         )
-    
+
     date_words_before = ['на','за']
     date_words_after = ['число']
     for word in date_words_before:
-        try:    
+        try:
             if(stemmer.stem(word).lower() in word_list):
                 current_day = datetime.date.today().timetuple().tm_mday
                 forecast_day = int(word_list[word_list.index(stemmer.stem(word).lower()) + 1])
@@ -369,7 +370,7 @@ def extract_date_and_time(command):
             pass
 
     for word in date_words_after:
-        try:    
+        try:
             if(stemmer.stem(word).lower() in word_list):
                 current_day = datetime.date.today().timetuple().tm_mday
                 forecast_day = int(word_list[word_list.index(stemmer.stem(word).lower()) - 1])
@@ -396,7 +397,7 @@ def extract_date_and_time(command):
 
     for day_hour in daytime:
         if(stemmer.stem(day_hour) in word_list):
-            time_of_the_day = daytime[day_hour]        
+            time_of_the_day = daytime[day_hour]
 
     return_array = [str(days_ahead), str(time_of_the_day)]
 
@@ -420,9 +421,9 @@ def get_weather(command):
                 output = output + ":::: " + Clock + " " + data['date'] + "::::\n\n"
                 output = output + Earth + '{}, {} \n'.format(data['city'], data['country'])
                 output = output + Thermometer + str(data['temp']) + m_symbol + ' ' + getEmoji(data['weather'][0]['id']) + data['weather'][0]['description'] + '\n'
-                output = output + Drops + 'Влажность воздуха: {} %\n'.format(data['humidity']) 
+                output = output + Drops + 'Влажность воздуха: {} %\n'.format(data['humidity'])
                 output = output + Fog + 'Скорость ветра: {} м/сек\n'.format(data['wind'])
-                speech = 'В городе {} {}, {} градусов по цельсию'.format(city, data['weather'][0]['description'], str(int(data['temp']))) 
+                speech = 'В городе {} {}, {} градусов по цельсию'.format(city, data['weather'][0]['description'], str(int(data['temp'])))
                 return output, speech
             elif('температура' in feature_list):
                 output = output + Thermometer + 'Температура воздуха на {}: {}'.format(data['date'], data['temp']) + m_symbol
