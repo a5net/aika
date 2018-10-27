@@ -11,21 +11,28 @@ from get_news import *
 from emoji import emojize
 from telebot import types
 from movie import *
+import time
 
 user_skip = {}
 
 token = '655665228:AAGfa7LvWw46UzckGEMbyG3HZ4-XTo3nQ0E'
 
 Wrench = emojize(":wrench:", use_aliases=True)
+
 Movie_camera = emojize(":movie_camera:", use_aliases=True)
 Earth = emojize(":earth_asia:", use_aliases=True)
 Speach_baloon = emojize(":speech_balloon:", use_aliases=True)
+Exclamation = emojize(":exclamation:", use_aliases=True)
+Newspaper = emojize(":newspaper:", use_aliases=True)
+Light = emojize(":traffic_light:", use_aliases=True)
+Girl = emojize(":raising_hand:", use_aliases=True)
+Sos = emojize(":sos:", use_aliases=True)
 
 answer_thanks = ["Всегда пожалуйста", "Пожалуйста", "Не стоит благодарности", "На здоровье", "Не за что"]
-answer_how_old = ["Буквально пару часов назад, на коленках дописали, так что мало.", "Да вот, в такси дописали только что, так что я довольно молодая."]
+answer_how_old = ["Не много, не мало. Неизвестно", "Не такая старая как вы думаете"]
 answer_jokes = ["Мои создатели рассказали мне только одну шутку. Походу с чувством юмора у них не очень", "У вас спина белая"]
-answer_other_bots = ["Говорят когда меня писали, мои создатели брали с нее пример", "Если бы не она, меня сейчас здесь не было", "Стараюсь брать пример с нее, они ведь старше и умнее", "Уважаю ее труд, знать как правильно ответить на каждый вопрос довлоьно таки сложно"]
-answer_creator = ["Меня создали несколько умельцев из Астаны и Алматы", "Студенты из Метод Про являются моими создателями, а так же друзьями", "У меня нет биологических родителей как у вас, меня написали начинающие программисты"]
+answer_other_bots = ["Говорят когда меня писали, мои создатели брали с нее пример", "Если бы не она, меня сейчас здесь не было", "Стараюсь брать пример с нее, она ведь старше и умнее", "Уважаю ее труд, знать как правильно ответить на каждый вопрос довлоьно таки сложно"]
+answer_creator = ["Несколько студентов из Назарбаев Университета", "Мои друзья", "У меня нет биологических родителей как у вас, меня написали начинающие программисты"]
 answer_your_master = ["Я свободный бот, у меня нет хозяина", "Я независимый бот двадцать первого века", "Сейчас ты спрашиваешь кто мой хозяин, а через некоторое время будешь меня так называть."]
 answer_who_are_you = ["Я Айка", "Я голосовой ассистент Айка", "У девочки нет имени. Шучу. Меня зовут Айка"]
 answer_greetings = ["Привет!", "Здравствуй", "Приветствую!", "Здравствуйте"]
@@ -36,16 +43,20 @@ answer_bye = ['Пока, рада была пообщаться.', 'Удачи',
 answer_action = ['Тихо жду здесь пока у меня что-то спросят','Скучно что-то, давайте поговорим']
 answer_status_good = ['Рада слышать', 'Круто', 'Отлично!', 'Я очень рада :)']
 answer_status_bad = ['Мне очень жаль', 'Не грустите пожалуйста', 'Не грустите, а то мне тоже станет грустно']
-help_text = ('''Я являюсь виртуальным помощником который может понимать ваши текстовые и аудио сообщения\n
-    {} Благодаря этому я могу выполнять следующие функций:
+help_text = ('''Я являюсь виртуальным помощником, который может понимать ваши текстовые и аудио сообщения. \n
+    {} Благодаря этому я могу выполнять следующие функции:
 
     {} Я могу выдать вам точный прогноз погоды на четыре дня. Например: "Какая погода завтра в Астане"
 
-    {} Я могу искать сеансы фильмов для вас. Например: "афиша кино Астана"
+    {} Я могу принять ваши жалобы и направить их в акимат
 
-    {} Я могу просто вести обычный человеческий диалог. Например: "Привет. Как дела?" ''').format(Wrench, Earth, Movie_camera, Speach_baloon)
+    {} Я могу рассказать вам о последних новостях
+
+    {} Я могу проверить наличие административных штрафов
+
+    {} Я могу просто вести обычный человеческий диалог. Например: "Привет. Как дела?" ''').format(Wrench, Earth, Exclamation, Newspaper, Light ,Speach_baloon)
 start_text = ('''Здравствуйте!
-        Я виртуальный помощник Айка. Я новичок и пока что поселилась здесь в телеграме. Если хотите узнать что я умею можешь спросить. Или по команде /help''')
+   {} Я виртуальный помощник Айка. Если хотите узнать все что я умею напишите /help.''').format(Girl)
 zhaloba_response = "Напишите или расскажите вашу жалобу. Уточните все подробности, и ваша жалоба будет обработана анонимно."
 bot = telebot.TeleBot(token)
 print("Программа запущена")
@@ -58,14 +69,27 @@ def get_voice(message):
     voice = open('audio.ogg', 'rb')
     return voice
 
+def get_voice_kaz(message):
+    speech_url = 'https://tts.voicetech.yandex.net/generate?text={}&format=mp3&quality=lo&lang=tr-TR&speaker=oksana&emotion=good&key=92b2f711-9cb2-4f1b-b23e-770a21e225a2'.format(message)
+    doc = requests.get(speech_url)
+    with open('audio.ogg', 'wb') as f:
+        f.write(doc.content)
+    voice = open('audio.ogg', 'rb')
+    return voice
+
 zhaloba_ok = "Ваша жалоба принята!"
 
 def check_if_skip(message):
     if message.chat.id in set(user_skip.keys()):
         if(user_skip[message.chat.id]):
             return True
+iin_check = {}
 
 
+def check_if_iin(message):
+    if message.chat.id in set(iin_check.keys()):
+        if iin_check[message.chat.id]:
+            return True
 
 @bot.message_handler(content_types=["text","voice"])
 def handle_message(message):
@@ -77,6 +101,12 @@ def handle_message(message):
             bot.send_voice(message.chat.id, voice)
         user_skip[message.chat.id] = False
         return
+    if check_if_iin(message):
+        time.sleep(3)
+        text = "Данные по ИИН: {} не найдены".format(message.text)
+        bot.send_message(message.chat.id, text)
+        iin_check[message.chat.id] = False
+        return
     if message.text:
         command = message.text
         try:
@@ -87,8 +117,16 @@ def handle_message(message):
             else:
                 predicted_class = classify(command)
 
-                if(predicted_class == 'cinema'):
-                    movie_start(message, message.text)
+                if(predicted_class == 'fines'):
+                    text = "Введите ИИН"
+                    bot.send_message(message.chat.id, text)
+                    iin_check[message.chat.id] = True
+                elif(predicted_class == 'greetings_kaz'):
+                    text = "салем"
+                    bot.send_message(message.chat.id, text)
+                elif(predicted_class == 'contacts'):
+                    text = "Вы можете связаться с акиматом через следующие социальные сети: \n Facebook: https://www.facebook.com/astanaakimat/ \n Instagram: https://www.instagram.com/astana_akimat/ \n Twitter: https://twitter.com/astana_akimat"
+                    bot.send_message(message.chat.id, text)
                 elif(predicted_class == 'zhaloba'):
                     user_skip[message.chat.id] = True
                     bot.send_message(message.chat.id, zhaloba_response)
@@ -149,12 +187,24 @@ def handle_message(message):
                 voice = get_voice(speech)
                 bot.send_message(message.chat.id, output)
                 bot.send_voice(message.chat.id, voice)
+            elif(predicted_class == 'greetings_kaz'):
+                text = "salem"
+                voice = get_voice_kaz(text)
+                bot.send_voice(message.chat.id, voice)
+            elif(predicted_class == 'contacts'):
+                text = "Вы можете связаться с акиматом через следующие социальные сети"
+                voice = get_voice(text)
+                text = "Facebook: https://www.facebook.com/astanaakimat/ \n Instagram: https://www.instagram.com/astana_akimat/ \n Twitter: https://twitter.com/astana_akimat"
+                bot.send_voice(message.chat.id, voice)
+                bot.send_message(message.chat.id, text)
             elif(predicted_class == 'zhaloba'):
                 voice = get_voice(zhaloba_response)
                 bot.send_voice(message.chat.id, voice)
                 user_skip[message.chat.id] = True
-            elif(predicted_class == 'cinema'):
-                movie_start(message, command)
+            elif(predicted_class == 'fines'):
+                text = "Введите ИИН"
+                bot.send_message(message.chat.id, text)
+                iin_check[message.chat.id] = True
             elif(predicted_class == 'greetings'):
                 answer = answer_greetings[random.randint(0,(len(answer_greetings)-1))]
                 voice = get_voice(answer)

@@ -26,5 +26,9 @@
 	{
 		"class": "thanks",
 		"text": "большое спасибо"
+	},
+	{
+		"class": "thanks",
+		"text" : "рахмет"
 	}
 ]
