@@ -7,10 +7,12 @@ from translate import *
 import telebot
 from speech_to_text import *
 import requests
+from get_news import *
 from emoji import emojize
 from telebot import types
 from movie import *
 
+user_skip = {}
 
 token = '655665228:AAGfa7LvWw46UzckGEMbyG3HZ4-XTo3nQ0E'
 
@@ -44,7 +46,7 @@ help_text = ('''Я являюсь виртуальным помощником к
     {} Я могу просто вести обычный человеческий диалог. Например: "Привет. Как дела?" ''').format(Wrench, Earth, Movie_camera, Speach_baloon)
 start_text = ('''Здравствуйте!
         Я виртуальный помощник Айка. Я новичок и пока что поселилась здесь в телеграме. Если хотите узнать что я умею можешь спросить. Или по команде /help''')
-
+zhaloba_response = "Напишите или расскажите вашу жалобу. Уточните все подробности, и ваша жалоба будет обработана анонимно."
 bot = telebot.TeleBot(token)
 print("Программа запущена")
 
@@ -56,8 +58,25 @@ def get_voice(message):
     voice = open('audio.ogg', 'rb')
     return voice
 
+zhaloba_ok = "Ваша жалоба принята!"
+
+def check_if_skip(message):
+    if message.chat.id in set(user_skip.keys()):
+        if(user_skip[message.chat.id]):
+            return True
+
+
+
 @bot.message_handler(content_types=["text","voice"])
 def handle_message(message):
+    if check_if_skip(message):
+        if message.text:
+            bot.send_message(message.chat.id, zhaloba_ok)
+        else:
+            voice = get_voice(zhaloba_ok)
+            bot.send_voice(message.chat.id, voice)
+        user_skip[message.chat.id] = False
+        return
     if message.text:
         command = message.text
         try:
@@ -70,6 +89,9 @@ def handle_message(message):
 
                 if(predicted_class == 'cinema'):
                     movie_start(message, message.text)
+                elif(predicted_class == 'zhaloba'):
+                    user_skip[message.chat.id] = True
+                    bot.send_message(message.chat.id, zhaloba_response)
                 elif(predicted_class == 'greetings'):
                     bot.send_message(message.chat.id, answer_greetings[random.randint(0,(len(answer_greetings)-1))])
                 elif(predicted_class == 'greetings_mood'):
@@ -111,20 +133,26 @@ def handle_message(message):
                     bot.send_message(message.chat.id, 'Извините, я вас не понимаю, но я учусь')
         except:
             pass
-    else:
+    else :
         file_info = bot.get_file(message.voice.file_id)
         file = requests.get('https://api.telegram.org/file/bot{0}/{1}'.format(token, file_info.file_path))
         try:
             command = speech_to_text(bytes=file.content)
+            print(command)
         except:
             bot.send_message(message.chat.id, 'Распознование голоса не удалось, попробуйте снова')
         try:
             predicted_class = classify(command)
+            print(predicted_class)
             if(predicted_class == 'weather'):
                 output, speech = get_weather(command)
                 voice = get_voice(speech)
                 bot.send_message(message.chat.id, output)
                 bot.send_voice(message.chat.id, voice)
+            elif(predicted_class == 'zhaloba'):
+                voice = get_voice(zhaloba_response)
+                bot.send_voice(message.chat.id, voice)
+                user_skip[message.chat.id] = True
             elif(predicted_class == 'cinema'):
                 movie_start(message, command)
             elif(predicted_class == 'greetings'):
@@ -184,6 +212,10 @@ def handle_message(message):
                 bot.send_voice(message.chat.id, voice)
             elif(predicted_class == 'creator'):
                 answer = answer_creator[random.randint(0,(len(answer_creator)-1))]
+                voice = get_voice(answer)
+                bot.send_voice(message.chat.id, voice)
+            elif(predicted_class == 'news'):
+                answer = voiceNews()
                 voice = get_voice(answer)
                 bot.send_voice(message.chat.id, voice)
             elif(predicted_class == 'joke'):
@@ -359,6 +391,7 @@ def movie_start(message , text):
         user.city_id = city_id
         user.cinema_name = city_dict_id_as_key[city_id]
         user_dict[chat_id] = user
+
 
 if __name__ == '__main__':
     bot.polling(none_stop=True)

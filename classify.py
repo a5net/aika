@@ -105,6 +105,7 @@ def calculate_class_score(text, class_name):
     count = 0
     for word in nltk.word_tokenize(text):
         if stemmer.stem(word.lower()) in class_words[class_name]:
+            print("Original word {}, stemmed_word ".format(stemmer.stem(word.lower())), word)
             count += (1 / corpus_words[stemmer.stem(word.lower())])
     return count
 

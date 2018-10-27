@@ -20,22 +20,6 @@
 },
 {
     "class": "greetings",
-    "text": "хей"
-},
-{
-    "class": "greetings",
-    "text": "чао"
-},
-{
-    "class": "greetings",
-    "text": "приветствую тебя"
-},
-{
-    "class": "greetings",
-    "text": "приветик"
-},
-{
-    "class": "greetings",
     "text": "и снова здравствуйте"
 },
 {
@@ -46,18 +30,7 @@
     "class": "greetings",
     "text": "давно не виделись"
 },
-{
-    "class": "greetings",
-    "text": "просто хотел поздороваться"
-},
-{
-    "class": "greetings",
-    "text": "хотелось бы тебя поприветствовать"
-},
-{
-    "class": "greetings",
-    "text": "хочу сказать тебе привет"
-},
+
 {
     "class": "greetings",
     "text": "здарова"
@@ -65,18 +38,6 @@
 {
     "class": "greetings",
     "text": "салам"
-},
-{
-    "class": "greetings",
-    "text": "ку"
-},
-{
-    "class": "greetings",
-    "text": "шелом"
-},
-{
-    "class": "greetings",
-    "text": "здравия желаю"
 },
 {
     "class": "greetings",
