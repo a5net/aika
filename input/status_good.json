@@ -5,6 +5,10 @@
 	},
 	{
 		"class": "status_good",
+		"text": "пойдет"
+	},
+	{
+		"class": "status_good",
 		"text": "неплохо"
 	},
 	{
